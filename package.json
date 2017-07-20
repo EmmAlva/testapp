@@ -1,0 +1,30 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "aplicacion web de test",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katherineortega/test-app.git"
+  },
+  "keywords": [
+    "app",
+    "web",
+    "utp",
+    "test",
+    "app",
+    "testapp",
+    "talent_fest",
+    "laboratoria"
+  ],
+  "author": "Milagros Gutierrez, Leslie Avendaño, Emma Tapia, Flor Condori, Katherine Ortega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katherineortega/test-app/issues"
+  },
+  "homepage": "https://github.com/katherineortega/test-app#readme"
+}
