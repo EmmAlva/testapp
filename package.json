@@ -26,5 +26,19 @@
   "bugs": {
     "url": "https://github.com/katherineortega/test-app/issues"
   },
-  "homepage": "https://github.com/katherineortega/test-app#readme"
+  "homepage": "https://github.com/katherineortega/test-app#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-add-src": "^0.2.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.0"
+  }
 }
