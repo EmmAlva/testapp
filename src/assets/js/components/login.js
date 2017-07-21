@@ -25,7 +25,7 @@ const Login  = (update) =>{
 	const span1 = $('<span id="response1" class="login_error"></span>');
 
 
-	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>')
+	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>');
 
 	section.append(div);
 	section.append(btn);
@@ -60,9 +60,8 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
-				console.log(state.userLogin);
+				//console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
-				console.log($("#register").parents());
 			}
 			else{
 				span0.text('*Completar campos');

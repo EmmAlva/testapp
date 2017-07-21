@@ -30,17 +30,35 @@ const Preguntas = () =>{
 	select.append(option10);
 	select.append(option15);
 	select.append(option20);
-
+	console.log(state.practicSelect);
 
 	btn.on('click',(e)=>{
 		const questions = $("select option:selected" ).text();
 		state.questions = questions;
 		e.preventDefault();
-		
-		$('section').replaceWith(Questions(state.practicSelect,state.questions));
-		console.log(state.practicSelect);
+
+		$('section').replaceWith(Questions(state.practicSelect, state.questions));
+      $('.carousel-number').owlCarousel({
+          items: 5,
+          loop: false,
+          dots: false,
+          margin: 0,
+          URLhashListener: true,
+          autoplay: false,
+          startPosition: 'URLHash'
+      });
+      $('.carousel-question').owlCarousel({
+          items: 1,
+          loop: false,
+          dots: false,
+          margin: 0,
+          URLhashListener: true,
+          autoplay: false,
+          startPosition: 'URLHash'
+      });
+		console.log(state.questions);
 	});
 	return section;
-}
+};
 
 // wrapper.append(Questions(state.courses[3].tests[3], 15));

@@ -1,24 +1,23 @@
 'use strict';
 
 const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
+    root.empty();
+    const wrapper = $('<div class="wrapper"></div>');
     wrapper.append(Header);
 
     wrapper.append(Login(_ => render(root)));
-  //}
-  root.append(wrapper);
-    
+    //}
+    root.append(wrapper);
 
 };
 
 const state = {
-    userLogin : null,
+    userLogin: null,
     users: null,
     courses: null,
-    coursesSelected : null,
-    practicSelect:null,
-    questions : null
+    coursesSelected: null,
+    practicSelect: null,
+    questions: null
 };
 
 $(_ => {
@@ -26,33 +25,14 @@ $(_ => {
         state.users = data;
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-            console.log(json);
-             //active menu
+            //active menu
             const root = $('.root');
             render(root);
             // state.nextPage= Login;
 
-            $(".button-collapse").sideNav();
-            $('#modal1').modal();
+            /*$(".button-collapse").sideNav();*/
+            /*$('#modal1').modal();*/
 
-            $('.carousel-number').owlCarousel({
-                items:5,
-                loop:false,
-                dots: false,
-                margin:0,
-                URLhashListener:true,
-                autoplay:false,
-                startPosition: 'URLHash',
-            });
-            $('.carousel-question').owlCarousel({
-                items:1,
-                loop:false,
-                dots: false,
-                margin:0,
-                URLhashListener:true,
-                autoplay:false,
-                startPosition: 'URLHash',
-            });
         });
     });
 });

@@ -1,5 +1,26 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const Cursos = (update) => {
+'use strict';
+
+const Construccion = () =>{
+	const section = $('<section id="build" class="relative-col bg_morado" ></section>');
+	const div = $('<div class="container absolute-child "></div>');
+	const row0 = $('<div class="row"></div>');
+	const col0 = $('<div class="col l12 s12 center relative-col white-text"></div>');
+	const img = $('<img src="assets/img/data.svg" alt ="construccion">');
+	const title = $('<h3><strong>¡EN CONSTRUCCIÓN</strong></h3>');
+	const p = $('<p><strong>Esta sección estará disponible para ti muy pronto</strong></p>');
+
+	section.append(div);
+	div.append(row0);
+	row0.append(col0);
+	col0.append(img);
+	col0.append(title);
+	col0.append(p);
+
+	return section;
+
+}
+const Cursos = () => {
   const section = $('<section></section>');
   const containerPrincipal = $('<div class="container"></div>');
   const columna1 = $('<div class="row center"></div>');
@@ -9,7 +30,7 @@ const Cursos = (update) => {
   const numCursos = state.users[state.userLogin].courses;
     numCursos.forEach((e)=>{
       columna2.append(curso(state.courses[e-1]));
-      console.log(state.courses[e-1]);
+      //console.log(state.courses[e-1]);
     });
 
   columna1.append(title);
@@ -18,7 +39,7 @@ const Cursos = (update) => {
   section.append(containerPrincipal);
 
   return section;
-}
+};
 
 const curso = (data)  => {
   const fila1 = $('<div class="col l4 s6 curso"></div>');
@@ -33,7 +54,7 @@ const curso = (data)  => {
 
   fila1.on('click', ()=>{
     state.coursesSelected = data;
-    console.log(data);
+    //console.log(data);
     $('section').replaceWith(Practicas());
   });
 
@@ -122,7 +143,7 @@ const Login  = (update) =>{
 	const span1 = $('<span id="response1" class="login_error"></span>');
 
 
-	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>')
+	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>');
 
 	section.append(div);
 	section.append(btn);
@@ -157,9 +178,8 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
-				console.log(state.userLogin);
+				//console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
-				console.log($("#register").parents());
 			}
 			else{
 				span0.text('*Completar campos');
@@ -185,7 +205,7 @@ const Practicas = ()=>{
 	$('.back').on('click', ()=>{
 		state.coursesSelected = null;
 		$('section').replaceWith(Cursos());
-	})
+	});
 
 	$.each(state.coursesSelected.tests, (i, obj)=>{
 		let divCol;
@@ -204,14 +224,14 @@ const Practicas = ()=>{
 		quiz.on("click", (e)=>{
 		    		e.preventDefault();
 						state.practicSelect = obj;
-						console.log(obj);
+						//console.log(obj);
 		    		$('section').replaceWith(Preguntas());
 		});
 
 		temas.on("click", (e)=>{
 			e.preventDefault();
 			state.practicSelect = obj;
-			console.log(obj);
+			//console.log(obj);
 			$('section').replaceWith(Temario());
 		});
 		divImg.append(img);
@@ -238,6 +258,7 @@ const Practicas = ()=>{
 'use strict';
 
 const Questions = (theme, quantity) => {
+    console.log(theme);
     const container = $('<div class="container"></div>');
     const row = $('<div class="row"></div>');
     const relative = $('<div class="col s12 relative-col"></div>');
@@ -338,6 +359,8 @@ const Questions = (theme, quantity) => {
     row.append(relative);
     container.append(row);
 
+
+
     return container;
 };
 
@@ -373,18 +396,36 @@ const Preguntas = () =>{
 	select.append(option10);
 	select.append(option15);
 	select.append(option20);
-
+	console.log(state.practicSelect);
 
 	btn.on('click',(e)=>{
 		const questions = $("select option:selected" ).text();
 		state.questions = questions;
 		e.preventDefault();
-		
-		$('section').replaceWith(Questions(state.practicSelect,state.questions));
-		console.log(state.practicSelect);
+
+		$('section').replaceWith(Questions(state.practicSelect, state.questions));
+      $('.carousel-number').owlCarousel({
+          items: 5,
+          loop: false,
+          dots: false,
+          margin: 0,
+          URLhashListener: true,
+          autoplay: false,
+          startPosition: 'URLHash'
+      });
+      $('.carousel-question').owlCarousel({
+          items: 1,
+          loop: false,
+          dots: false,
+          margin: 0,
+          URLhashListener: true,
+          autoplay: false,
+          startPosition: 'URLHash'
+      });
+		console.log(state.questions);
 	});
 	return section;
-}
+};
 
 // wrapper.append(Questions(state.courses[3].tests[3], 15));
 
@@ -448,24 +489,23 @@ const Result = () => {
 'use strict';
 
 const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
+    root.empty();
+    const wrapper = $('<div class="wrapper"></div>');
     wrapper.append(Header);
 
     wrapper.append(Login(_ => render(root)));
-  //}
-  root.append(wrapper);
-    
+    //}
+    root.append(wrapper);
 
 };
 
 const state = {
-    userLogin : null,
+    userLogin: null,
     users: null,
     courses: null,
-    coursesSelected : null,
-    practicSelect:null,
-    questions : null
+    coursesSelected: null,
+    practicSelect: null,
+    questions: null
 };
 
 $(_ => {
@@ -473,33 +513,14 @@ $(_ => {
         state.users = data;
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-            console.log(json);
-             //active menu
+            //active menu
             const root = $('.root');
             render(root);
             // state.nextPage= Login;
 
-            $(".button-collapse").sideNav();
-            $('#modal1').modal();
+            /*$(".button-collapse").sideNav();*/
+            /*$('#modal1').modal();*/
 
-            $('.carousel-number').owlCarousel({
-                items:5,
-                loop:false,
-                dots: false,
-                margin:0,
-                URLhashListener:true,
-                autoplay:false,
-                startPosition: 'URLHash',
-            });
-            $('.carousel-question').owlCarousel({
-                items:1,
-                loop:false,
-                dots: false,
-                margin:0,
-                URLhashListener:true,
-                autoplay:false,
-                startPosition: 'URLHash',
-            });
         });
     });
 });

@@ -12,7 +12,7 @@ const Practicas = ()=>{
 	$('.back').on('click', ()=>{
 		state.coursesSelected = null;
 		$('section').replaceWith(Cursos());
-	})
+	});
 
 	$.each(state.coursesSelected.tests, (i, obj)=>{
 		let divCol;
@@ -31,14 +31,14 @@ const Practicas = ()=>{
 		quiz.on("click", (e)=>{
 		    		e.preventDefault();
 						state.practicSelect = obj;
-						console.log(obj);
+						//console.log(obj);
 		    		$('section').replaceWith(Preguntas());
 		});
 
 		temas.on("click", (e)=>{
 			e.preventDefault();
 			state.practicSelect = obj;
-			console.log(obj);
+			//console.log(obj);
 			$('section').replaceWith(Temario());
 		});
 		divImg.append(img);

@@ -1,6 +1,7 @@
 'use strict';
 
 const Questions = (theme, quantity) => {
+    console.log(theme);
     const container = $('<div class="container"></div>');
     const row = $('<div class="row"></div>');
     const relative = $('<div class="col s12 relative-col"></div>');
@@ -100,6 +101,8 @@ const Questions = (theme, quantity) => {
     relative.append(absolute);
     row.append(relative);
     container.append(row);
+
+
 
     return container;
 };
