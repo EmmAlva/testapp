@@ -518,7 +518,7 @@ $(_ => {
             render(root);
             // state.nextPage= Login;
 
-            /*$(".button-collapse").sideNav();*/
+            $(".button-collapse").sideNav();
             /*$('#modal1').modal();*/
 
         });
