@@ -24,13 +24,17 @@ $(_ => {
             console.log(json);
             const root = $('.root');
             render(root);
+
+            $(".button-collapse").sideNav();
+            $('.dropdown-button').dropdown('open');
+            $('.dropdown-button').dropdown('close');
         });
     });
 });
 'use strict';
 
 const Header = () => {
-    const nav = $('<nav></nav>');
+    const nav = $('<nav class="bg_nav"></nav>');
     const navWrap = $('<div class="nav-wrapper"></div>');
     const aLogo = $('<a href="#!" class="brand-logo">TestAPP</a>');
     const menu = $(' <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');
@@ -55,11 +59,34 @@ const Header = () => {
 };
 
 const Result = () => {
-    const main = $('<section id="results"></section>');
+    const main = $('<section id="resultado"></section>');
     const container = $('<div class="container"></div>');
     const row = $('<div class="row center"></div>');
-    const col12 = $('<div class="col l12 s12"></div>');
+    const porcentaje = $('<div class="col l12 s12"></div>');
+    const h1 = $('<h1>60%</h1>');
+    const h5 = $('<h5>¡Sigue mejorando!</h5>');
+    porcentaje.append(h1);
+    porcentaje.append(h5);
+    row.append(porcentaje);
 
+    const row2 = $('<div class="row center"></div>');
+    const respuestas = $('<div class="col l12 s12"></div>');
+    const dropdown = $('<a class="dropdown-button btn" data-beloworigin="true" href="#" data-activates="dropdown1">Tus respuestas <i class="material-icons">cloud</i></a>');
+    const ulDD = $('<ul id="dropdown1" class="dropdown-content"></ul>');
+    const liDD1 = $('<li><a href="#!">Correctas</a></li>');
+    const liDD2 = $('<li><a href="#!">Incorrectas</a></li>');
+    ulDD.append(liDD1);
+    ulDD.append(liDD2);
+    respuestas.append(dropdown);
+    respuestas.append(ulDD);
+    row2.append(respuestas);
+
+    // const row3 = $('<div class="row center"></div>');
+    // const feedback = $('<div class="col l12 s12"></div>');
+
+    container.append(row);
+    container.append(row2);
+    main.append(container);
     return main;
 };
 },{}]},{},[1])

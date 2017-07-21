@@ -23,6 +23,10 @@ $(_ => {
             console.log(json);
             const root = $('.root');
             render(root);
+
+            $(".button-collapse").sideNav();
+            $('.dropdown-button').dropdown('open');
+            $('.dropdown-button').dropdown('close');
         });
     });
 });
