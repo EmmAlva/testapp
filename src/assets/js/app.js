@@ -3,6 +3,8 @@
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
 
+    wrapper.append(Practicas);
+
     root.append(wrapper);
 };
 
@@ -15,10 +17,10 @@ $(_ => {
 
     $.getJSON("/api/users/", (data) => {
         state.users = data;
-        console.log(data);
+
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-            console.log(json);
+
             const root = $('.root');
             render(root);
         });
