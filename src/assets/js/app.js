@@ -12,7 +12,7 @@ const render = (root) => {
 const state = {
     users: null,
     courses: null,
-    coursesSelected = null
+    coursesSelected : null
 };
 
 $(_ => {

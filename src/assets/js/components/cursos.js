@@ -14,7 +14,6 @@ const Cursos = () => {
   containerPrincipal.append(columna2);
   section.append(containerPrincipal);
 
-
   return section;
 }
 

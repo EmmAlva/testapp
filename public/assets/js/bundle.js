@@ -3,14 +3,17 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Cursos());
 
+    // if (state.users != null) {
+      wrapper.append(Cursos());
+    // }
     root.append(wrapper);
 };
 
 const state = {
     users: null,
-    courses: null
+    courses: null,
+    coursesSelected : null
 };
 
 $(_ => {
@@ -43,10 +46,6 @@ const Cursos = () => {
   containerPrincipal.append(columna2);
   section.append(containerPrincipal);
 
-  section.on('click', ()=>{
-    
-  })
-
   return section;
 }
 
@@ -59,6 +58,11 @@ const curso = (data)  => {
   curso1.append(titleCourse);
   curso1.append(practica);
   fila1.append(curso1);
+
+  section.on('click', ()=>{
+    state.coursesSelected = data.id;
+  });
+
   return fila1;
 }
 
