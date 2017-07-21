@@ -25,7 +25,13 @@ const Practicas = ()=>{
 
 	console.log(curso.tests);
 	$.each(curso.tests, (i, obj)=>{
-		let divCol = $("<div class='col l4 s6 test'></div>");
+		let divCol;
+		if(i>3){
+			divCol = $("<div class='col l4 s12 test'></div>");
+		}else{
+			divCol = $("<div class='col l4 s6 test'></div>");
+		}
+		
 		let divImg = $("<div class='nivel valign-wrapper'></div>");
 		let img = $(`<img src='assets/img/${obj.image}'/>`);
 		let divDetails = $(`<div class='detail'></div>`);

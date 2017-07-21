@@ -6929,7 +6929,8 @@ h3 {
 .nivel {
   height: 10rem;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  background: #009688; }
 
 .nivel img {
   width: 70%;
@@ -6939,12 +6940,24 @@ h3 {
 .test {
   margin: 10px 0; }
 
-.test:last-child {
-  margin: 0 auto; }
+.test:nth-child(3) .detail a:nth-child(3),
+.test:nth-child(4) .detail a:nth-child(3) {
+  background-color: #ABCB6A;
+  border: 1px solid #ABCB6A; }
+
+.test:last-child .detail a {
+  width: 50%;
+  display: inline-block;
+  text-align: center; }
+
+.test:last-child .detail a:nth-child(3) {
+  background-color: #F9AC3E;
+  border-top: 1px solid #F9AC3E; }
 
 .title {
   margin-bottom: 3%;
-  margin-top: 2%; }
+  margin-top: 2%;
+  font-size: 600; }
 
 .detail a:nth-child(3) {
   color: #fff;

@@ -102,6 +102,7 @@ h3{
   height: 10rem;
   display: flex;
   justify-content: center;
+  background: #009688;
 }
 .nivel img{
   width: 70%;
@@ -111,12 +112,25 @@ h3{
 .test{
   margin: 10px 0;
 }
-.test:last-child{
-  margin: 0 auto;
+.test:nth-child(3) .detail a:nth-child(3),
+.test:nth-child(4) .detail a:nth-child(3)
+{
+  background-color: $verde;
+  border: 1px solid $verde;
+}
+.test:last-child .detail a{
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.test:last-child .detail a:nth-child(3){
+  background-color: $naranja;
+  border-top: 1px solid $naranja;
 }
 .title{
   margin-bottom: 3%;
   margin-top: 2%;
+  font-size: 600;
 }
 .detail a:nth-child(3){
   color: $white;
