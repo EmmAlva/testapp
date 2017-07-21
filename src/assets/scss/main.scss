@@ -55,10 +55,18 @@ section{
 button.select-label{
   bottom: 0;
 }
+
 .bg_morado{
   background-color: $morado;
 }
-
+button:focus{
+  background-color: rgba(143,43,143,0.5) !important;
+}
+/*LOGIN*/
+.login_error{
+  color:red;
+  font-size: 0.8rem;
+}
 /*MENU*/
 .bg_profile{
   background-color: $morado;
@@ -77,6 +85,9 @@ li .circle{
 }
 li:first-child > a{
   top: 8rem;
+}
+.back i{
+  font-size: 3rem !important;
 }
 
 /*CUrsos*/
@@ -183,4 +194,18 @@ select option
   background-color: $turquesa;
   margin: 10px;
   text-align: center;
+}
+
+/*COntrucción*/
+#build img{
+  width: 60%;
+}
+#build .col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#build p{
+  width: 60%;
 }

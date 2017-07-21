@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .materialize-red {
   background-color: #e51c23 !important; }
 
@@ -6891,6 +6892,14 @@ button.select-label {
 .bg_morado {
   background-color: #9A3267; }
 
+button:focus {
+  background-color: rgba(143, 43, 143, 0.5) !important; }
+
+/*LOGIN*/
+.login_error {
+  color: red;
+  font-size: 0.8rem; }
+
 /*MENU*/
 .bg_profile {
   background-color: #9A3267;
@@ -6909,6 +6918,9 @@ li .circle {
 
 li:first-child > a {
   top: 8rem; }
+
+.back i {
+  font-size: 3rem !important; }
 
 /*CUrsos*/
 h3 {
@@ -7006,3 +7018,16 @@ select option .alternatives div {
   background-color: #00BAF2;
   margin: 10px;
   text-align: center; }
+
+/*COntrucción*/
+#build img {
+  width: 60%; }
+
+#build .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+#build p {
+  width: 60%; }

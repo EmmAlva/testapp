@@ -3,8 +3,8 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Header);
-    wrapper.append(Preguntas);
+    wrapper.append(Construccion);
+
 
     root.append(wrapper);
 };
@@ -36,10 +36,32 @@ $(_ => {
 });
 'use strict';
 
+const Construccion = () =>{
+	const section = $('<section id="build" class="relative-col bg_morado" ></section>');
+	const div = $('<div class="container absolute-child "></div>');
+	const row0 = $('<div class="row"></div>');
+	const col0 = $('<div class="col l12 s12 center relative-col white-text"></div>');
+	const img = $('<img src="assets/img/data.svg" alt ="construccion">');
+	const title = $('<h3><strong>¡EN CONSTRUCCIÓN</strong></h3>');
+	const p = $('<p><strong>Esta sección estará disponible para ti muy pronto</strong></p>');
+
+	section.append(div);
+	div.append(row0);
+	row0.append(col0);
+	col0.append(img);
+	col0.append(title);
+	col0.append(p);
+
+	return section;
+
+}
+'use strict';
+
 const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
+	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo">TestAPP</a>');
 	const a1 = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');
 	const ul = $('<ul class="side-nav" id="mobile-demo"></ul>');
@@ -49,9 +71,9 @@ const Header = () => {
 	const name = $('<a class="select-label white-text" href="#"></a>');
 	const span = $('<span>Hola Alonso !</span>');
 	const li1 = $('<li></li>');
-	const aprof = $('<a href="">Profile</a>');
+	const aprof = $('<a href="">Perfil</a>');
 	const li2 = $('<li></li>');
-	const apract = $('<a href="">Practice</a>');
+	const apract = $('<a href="">Pruebas</a>');
 	const li3 = $('<li></li>');
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
@@ -74,7 +96,10 @@ const Header = () => {
 	ul.append(li4);
 	div.append(a);
 	div.append(a1);
+	div.append(back);
 	div.append(ul);
+
+	//back.display.none
 
 
 	return header;
@@ -120,12 +145,15 @@ const Login  = () =>{
 	const row2 = $('<div class="row"></div>');
 	const form =$('<form class="col l12 s12"></form>');
 	const divIn0 = $('<div class="input-field col s12"></div>');
-	const input0 = $('<input id="last_name" type="text" class="validate">');
-	const label0 = $(' <label for="last_name">Usuario</label>');
+	const span0 = $('<span id="response0" class="login_error"></span>');
+	const input0 = $('<input id="user_name" type="text" class="validate m-0">');
+	const label0 = $(' <label for="user_name">Usuario</label>');
 
 	const divIn1 = $('<div class="input-field col s12"></div>');
-	const input1 = $('<input id="password" type="password" class="validate">');
+	const input1 = $('<input id="password" type="password" class="validate m-0">');
 	const label1 = $('<label for="password">Password</label>');
+	const span1 = $('<span id="response1" class="login_error"></span>');
+
 
 	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>')
 
@@ -146,8 +174,24 @@ const Login  = () =>{
 
 	divIn0.append(input0);
 	divIn0.append(label0);
+	divIn0.append(span0);
+
 	divIn1.append(input1);
 	divIn1.append(label1);
+	divIn1.append(span1);
+
+
+	btn.on('click', (e) =>{
+		e.preventDefault();
+		if($('#user_name').val() == "" && $('#password').val() == ""){
+			span0.text('*Completa el campo');
+			$('#response1').text('*Completa el campo');
+		}
+		else{
+			state.user == Preguntas;
+			render(root);
+		}
+	});
 
 	return section;
 }
@@ -181,6 +225,28 @@ const Login  = () =>{
 		</div>
 		<button class="center btn-down purple select-label" >INGRESAR</button>
 	</section>*/
+'use strict';
+
+const Questions = (theme, quantity) => {
+    const container = $('<div class="container"></div>');
+    const row = $('<div class="row"></div>');
+    const relative = $('<div class="col s12 relative-col"></div>');
+    const absolute = $('<div class="absolute-child"></div>');
+
+    theme.questions.forEach((data, index) => {
+        if (index < quantity) {
+            console.log(data);
+            const p = $('<p>' + data.problem + '</p>');
+            absolute.append(p);
+        }
+    });
+
+    relative.append(absolute);
+    row.append(relative);
+    container.append(row);
+
+    return container;
+};
 'use strict';
 
 const Preguntas = () =>{
@@ -277,26 +343,4 @@ const Preguntas = () =>{
 		</div>		
 		<button class="center btn-down select-label" >QUIZ</button>
 	</section>*/
-'use strict';
-
-const Questions = (theme, quantity) => {
-    const container = $('<div class="container"></div>');
-    const row = $('<div class="row"></div>');
-    const relative = $('<div class="col s12 relative-col"></div>');
-    const absolute = $('<div class="absolute-child"></div>');
-
-    theme.questions.forEach((data, index) => {
-        if (index < quantity) {
-            console.log(data);
-            const p = $('<p>' + data.problem + '</p>');
-            absolute.append(p);
-        }
-    });
-
-    relative.append(absolute);
-    row.append(relative);
-    container.append(row);
-
-    return container;
-};
 },{}]},{},[1])

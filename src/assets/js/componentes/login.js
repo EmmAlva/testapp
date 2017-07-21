@@ -14,12 +14,15 @@ const Login  = () =>{
 	const row2 = $('<div class="row"></div>');
 	const form =$('<form class="col l12 s12"></form>');
 	const divIn0 = $('<div class="input-field col s12"></div>');
-	const input0 = $('<input id="last_name" type="text" class="validate">');
-	const label0 = $(' <label for="last_name">Usuario</label>');
+	const span0 = $('<span id="response0" class="login_error"></span>');
+	const input0 = $('<input id="user_name" type="text" class="validate m-0">');
+	const label0 = $(' <label for="user_name">Usuario</label>');
 
 	const divIn1 = $('<div class="input-field col s12"></div>');
-	const input1 = $('<input id="password" type="password" class="validate">');
+	const input1 = $('<input id="password" type="password" class="validate m-0">');
 	const label1 = $('<label for="password">Password</label>');
+	const span1 = $('<span id="response1" class="login_error"></span>');
+
 
 	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>')
 
@@ -40,8 +43,24 @@ const Login  = () =>{
 
 	divIn0.append(input0);
 	divIn0.append(label0);
+	divIn0.append(span0);
+
 	divIn1.append(input1);
 	divIn1.append(label1);
+	divIn1.append(span1);
+
+
+	btn.on('click', (e) =>{
+		e.preventDefault();
+		if($('#user_name').val() == "" && $('#password').val() == ""){
+			span0.text('*Completa el campo');
+			$('#response1').text('*Completa el campo');
+		}
+		else{
+			state.user == Preguntas;
+			render(root);
+		}
+	});
 
 	return section;
 }

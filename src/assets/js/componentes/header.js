@@ -4,6 +4,7 @@ const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
+	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo">TestAPP</a>');
 	const a1 = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');
 	const ul = $('<ul class="side-nav" id="mobile-demo"></ul>');
@@ -13,9 +14,9 @@ const Header = () => {
 	const name = $('<a class="select-label white-text" href="#"></a>');
 	const span = $('<span>Hola Alonso !</span>');
 	const li1 = $('<li></li>');
-	const aprof = $('<a href="">Profile</a>');
+	const aprof = $('<a href="">Perfil</a>');
 	const li2 = $('<li></li>');
-	const apract = $('<a href="">Practice</a>');
+	const apract = $('<a href="">Pruebas</a>');
 	const li3 = $('<li></li>');
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
@@ -38,7 +39,10 @@ const Header = () => {
 	ul.append(li4);
 	div.append(a);
 	div.append(a1);
+	div.append(back);
 	div.append(ul);
+
+	//back.display.none
 
 
 	return header;
