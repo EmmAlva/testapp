@@ -1,72 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
-
-const render = (root) => {
-  root.empty();
-  const wrapper = $('<div class="wrapper"></div>');
-  // wrapper.append(Construccion);
-
-
-    //if(state.userLogin != null){
-
-    wrapper.append(Header);
-     //wrapper.append(Cursos(_=>render(root)));
-//  }else{
-    wrapper.append(Login(_ => render(root)));
-  //}
-  root.append(wrapper);
-
-};
-
-const state = {
-    userLogin : null,
-    users: null,
-    courses: null,
-    coursesSelected : null,
-    practicSelect:null,
-    questions : null
-};
-
-$(_ => {
-    $.getJSON("/api/users/", (data) => {
-        state.users = data;
-        console.log(data);
-        $.getJSON("/api/courses/", (json) => {
-            state.courses = json;
-            console.log(json);
-             //active menu
-            const root = $('.root');
-            render(root);
-            state.nextPage= Login;
-
-            $(".button-collapse").sideNav();
-            $('#modal1').modal();
-
-        });
-    });
-});
-
-'use strict';
-
-const Construccion = () =>{
-	const section = $('<section id="build" class="relative-col bg_morado" ></section>');
-	const div = $('<div class="container absolute-child "></div>');
-	const row0 = $('<div class="row"></div>');
-	const col0 = $('<div class="col l12 s12 center relative-col white-text"></div>');
-	const img = $('<img src="assets/img/data.svg" alt ="construccion">');
-	const title = $('<h3><strong>¡EN CONSTRUCCIÓN</strong></h3>');
-	const p = $('<p><strong>Esta sección estará disponible para ti muy pronto</strong></p>');
-
-	section.append(div);
-	div.append(row0);
-	row0.append(col0);
-	col0.append(img);
-	col0.append(title);
-	col0.append(p);
-
-	return section;
-
-}
 const Cursos = (update) => {
   const section = $('<section></section>');
   const containerPrincipal = $('<div class="container"></div>');
@@ -135,8 +67,7 @@ const Header = () => {
 	apract.on('click', (e)=>{
 		e.preventDefault();
 		$('section').replaceWith(Construccion());
-
-	})
+	});
 
 	header.append(nav);
 	nav.append(div);
@@ -268,7 +199,7 @@ const Practicas = ()=>{
 		let divDetails = $(`<div class='detail'></div>`);
 		let title = $(`<p class='title'>${obj.name}</p>`);
 		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-		let quiz = $("<a href='#'>Quiz</a>");
+		let quiz = $("<a href='# class='btn-danger'>Quiz</a>");
 
 		quiz.on("click", (e)=>{
 		    		e.preventDefault();
@@ -312,20 +243,104 @@ const Questions = (theme, quantity) => {
     const relative = $('<div class="col s12 relative-col"></div>');
     const absolute = $('<div class="absolute-child"></div>');
 
-    theme.questions.forEach((data, index) => {
-        if (index < quantity) {
-            console.log(data);
-            const p = $('<p>' + data.problem + '</p>');
-            absolute.append(p);
+    const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
+    const carruselQuestion = $('<div class="owl-carousel owl-theme center' +
+        ' carousel-question"></div>');
+
+    const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
+
+    const easy = [];
+    const medium = [];
+    const difficult = [];
+
+    const showQuestion = [];
+    const quesquan = {
+        "5": [2, 2, 1],
+        "10": [4, 3, 3],
+        "15": [5, 5, 5],
+        "20": [7, 7, 6]
+    };
+
+
+    theme.questions.forEach((data) => {
+        if (data.difficult == 1) {
+            easy.push(data);
+        } else if (data.difficult == 2) {
+            medium.push(data);
+        } else if (data.difficult == 3) {
+            difficult.push(data);
+        }
+    });
+    const selectQuantity = quesquan["" + quantity + ""];
+
+    easy.forEach((e, index) => {
+        if (index < selectQuantity[0]) {
+            showQuestion.push(e);
+        }
+    });
+    medium.forEach((e, index) => {
+        if (index < selectQuantity[1]) {
+            showQuestion.push(e);
+        }
+    });
+    difficult.forEach((e, index) => {
+        if (index < selectQuantity[2]) {
+            showQuestion.push(e);
         }
     });
 
+    const percentQ = 100 / showQuestion.length;
+    let percentFinal = 0;
+
+    let totalQuestion = 0;
+
+    showQuestion.forEach((data, index) => {
+        if (index < showQuestion.length) {
+            const i = index + 1;
+            const title = $('<h5>Pregunta ' + i + ':</h5>');
+            const problem = $('<h4 class="problem">' + data.problem + '</h4>');
+
+            const itemNumber = $('<div class="item"><a href="#' + data.name + '"><div' +
+                ' class="item-number">' + i + '</div></a></div>');
+            const itemQuestion = $('<div class="item item-question" data-hash="' + data.name + '"></div>');
+
+            itemQuestion.append(title);
+            itemQuestion.append(problem);
+
+            const array = [1, 2, 3, 4];
+            array.forEach((ind) => {
+                const btn = $('<button class="btn btn-info">' + data["" + ind + ""] + '</button>');
+                btn.on('click', () => {
+                    if (ind.toString() === data.correct.toString()) {
+                        percentFinal += percentQ;
+                        totalQuestion += index;
+                    }
+                });
+                itemQuestion.append(btn);
+            });
+            carouselNumber.append(itemNumber);
+            carruselQuestion.append(itemQuestion);
+        }
+    });
+
+    submit.on('click', (e) =>{
+      e.preventDefault();
+        Result(percentFinal, totalQuestion,showQuestion);
+        submit.attr('disabled','disabled');
+        $('section').replaceWith(Result());
+    });
+
+
+    absolute.append(carouselNumber);
+    absolute.append(carruselQuestion);
+    absolute.append(submit);
     relative.append(absolute);
     row.append(relative);
     container.append(row);
 
     return container;
 };
+
 'use strict';
 
 const Preguntas = () =>{
@@ -364,11 +379,14 @@ const Preguntas = () =>{
 		const questions = $("select option:selected" ).text();
 		state.questions = questions;
 		e.preventDefault();
-		$('section').replaceWith(Result());
-		// $('section').replaceWith(Componente KAT());
+		
+		$('section').replaceWith(Questions(state.practicSelect,state.questions));
+		console.log(state.practicSelect);
 	});
 	return section;
 }
+
+// wrapper.append(Questions(state.courses[3].tests[3], 15));
 
 'use strict';
 const Result = () => {
@@ -426,5 +444,64 @@ const Result = () => {
     return main;
 };
 
+
+'use strict';
+
+const render = (root) => {
+  root.empty();
+  const wrapper = $('<div class="wrapper"></div>');
+    wrapper.append(Header);
+
+    wrapper.append(Login(_ => render(root)));
+  //}
+  root.append(wrapper);
+    
+
+};
+
+const state = {
+    userLogin : null,
+    users: null,
+    courses: null,
+    coursesSelected : null,
+    practicSelect:null,
+    questions : null
+};
+
+$(_ => {
+    $.getJSON("/api/users/", (data) => {
+        state.users = data;
+        $.getJSON("/api/courses/", (json) => {
+            state.courses = json;
+            console.log(json);
+             //active menu
+            const root = $('.root');
+            render(root);
+            // state.nextPage= Login;
+
+            $(".button-collapse").sideNav();
+            $('#modal1').modal();
+
+            $('.carousel-number').owlCarousel({
+                items:5,
+                loop:false,
+                dots: false,
+                margin:0,
+                URLhashListener:true,
+                autoplay:false,
+                startPosition: 'URLHash',
+            });
+            $('.carousel-question').owlCarousel({
+                items:1,
+                loop:false,
+                dots: false,
+                margin:0,
+                URLhashListener:true,
+                autoplay:false,
+                startPosition: 'URLHash',
+            });
+        });
+    });
+});
 
 },{}]},{},[1])

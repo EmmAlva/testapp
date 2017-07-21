@@ -25,8 +25,7 @@ const Header = () => {
 	apract.on('click', (e)=>{
 		e.preventDefault();
 		$('section').replaceWith(Construccion());
-
-	})
+	});
 
 	header.append(nav);
 	nav.append(div);

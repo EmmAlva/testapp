@@ -26,7 +26,7 @@ const Practicas = ()=>{
 		let divDetails = $(`<div class='detail'></div>`);
 		let title = $(`<p class='title'>${obj.name}</p>`);
 		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-		let quiz = $("<a href='#'>Quiz</a>");
+		let quiz = $("<a href='# class='btn-danger'>Quiz</a>");
 
 		quiz.on("click", (e)=>{
 		    		e.preventDefault();

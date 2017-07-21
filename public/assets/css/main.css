@@ -6847,6 +6847,217 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/ }
 
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+.owl-carousel, .owl-carousel .owl-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative; }
+
+.owl-carousel {
+  display: none;
+  width: 100%;
+  z-index: 1; }
+
+.owl-carousel .owl-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+  -moz-backface-visibility: hidden; }
+
+.owl-carousel .owl-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0); }
+
+.owl-carousel .owl-item, .owl-carousel .owl-wrapper {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0); }
+
+.owl-carousel .owl-item {
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none; }
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: 100%; }
+
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+  display: none; }
+
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+  display: block; }
+
+.owl-carousel .owl-dot, .owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-prev {
+  cursor: pointer;
+  cursor: hand;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.owl-carousel.owl-loading {
+  opacity: 0;
+  display: block; }
+
+.owl-carousel.owl-hidden {
+  opacity: 0; }
+
+.owl-carousel.owl-refresh .owl-item {
+  visibility: hidden; }
+
+.owl-carousel.owl-drag .owl-item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.owl-carousel.owl-grab {
+  cursor: move;
+  cursor: grab; }
+
+.owl-carousel.owl-rtl {
+  direction: rtl; }
+
+.owl-carousel.owl-rtl .owl-item {
+  float: right; }
+
+.owl-carousel .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both; }
+
+.owl-carousel .owl-animated-in {
+  z-index: 0; }
+
+.owl-carousel .owl-animated-out {
+  z-index: 1; }
+
+.owl-carousel .fadeOut {
+  animation-name: fadeOut; }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+.owl-height {
+  transition: height .5s ease-in-out; }
+
+.owl-carousel .owl-item .owl-lazy {
+  opacity: 0;
+  transition: opacity .4s ease; }
+
+.owl-carousel .owl-item img.owl-lazy {
+  transform-style: preserve-3d; }
+
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000; }
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(owl.video.play.png) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform .1s ease; }
+
+.owl-carousel .owl-video-play-icon:hover {
+  -ms-transform: scale(1.3, 1.3);
+  transform: scale(1.3, 1.3); }
+
+.owl-carousel .owl-video-playing .owl-video-play-icon, .owl-carousel .owl-video-playing .owl-video-tn {
+  display: none; }
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity .4s ease; }
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%; }
+
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+.owl-theme .owl-dots, .owl-theme .owl-nav {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; }
+
+.owl-theme .owl-nav {
+  margin-top: 10px; }
+
+.owl-theme .owl-nav [class*=owl-] {
+  color: #FFF;
+  font-size: 14px;
+  margin: 5px;
+  padding: 4px 7px;
+  background: #D6D6D6;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px; }
+
+.owl-theme .owl-nav [class*=owl-]:hover {
+  background: #869791;
+  color: #FFF;
+  text-decoration: none; }
+
+.owl-theme .owl-nav .disabled {
+  opacity: .5;
+  cursor: default; }
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+  margin-top: 10px; }
+
+.owl-theme .owl-dots .owl-dot {
+  display: inline-block;
+  zoom: 1; }
+
+.owl-theme .owl-dots .owl-dot span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 7px;
+  background: #D6D6D6;
+  display: block;
+  -webkit-backface-visibility: visible;
+  transition: opacity .2s ease;
+  border-radius: 30px; }
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+  background: #869791; }
+
 /*
 @font-face {
   font-family: 'CamingoDos Pro';
@@ -6919,6 +7130,30 @@ button.select-label {
   bottom: 0; }
 
 .bg_morado {
+  background-color: #9A3267; }
+
+/*REUSABLES*/
+.p-0 {
+  padding: 0 !important; }
+
+.m-0 {
+  margin: 0 !important; }
+
+.btn-down {
+  padding: 12px;
+  width: 100%;
+  border: none;
+  color: #fff;
+  font-weight: 500; }
+
+section {
+  padding: 30px 0; }
+
+button.select-label {
+  bottom: 0; }
+
+/*MENU*/
+.bg_profile {
   background-color: #9A3267; }
 
 button:focus {
@@ -7024,8 +7259,23 @@ li:first-child > a {
 .coursebg6 {
   border-top: 1px solid #B01E31; }
 
+li .circle {
+  background-image: url("http://lorempixel.com/300/175/technics");
+  position: absolute;
+  top: 4%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  background-size: 241%;
+  background-repeat: no-repeat;
+  background-position: 21% 2%; }
+
+li:first-child > a {
+  top: 8rem; }
+
+/*CUrsos*/
 h3 {
-  font-size: 2rem; }
+  font-size: 1.6rem; }
 
 .course {
   width: 100%;
@@ -7033,6 +7283,9 @@ h3 {
 
 .course h5 {
   padding: 20px 10px; }
+
+.course h2 {
+  padding: 0 20px; }
 
 .practica {
   padding: 10px; }
@@ -7068,13 +7321,21 @@ h3 {
   background-color: #F9AC3E;
   border-top: 1px solid #F9AC3E; }
 
+.btn-danger {
+  background-color: #F9AC3E; }
+
 .title {
   margin-bottom: 3%;
   margin-top: 2%;
   font-size: 600; }
 
 .detail a:nth-child(3) {
-  color: #fff;
+  color: #fff; }
+
+.test {
+  margin: 10px 0; }
+
+.detail {
   background-color: #00BAF2;
   border-top: 1px solid #00BAF2; }
 
@@ -7126,6 +7387,32 @@ h3 {
   background: #F9AC3E;
   color: #fff; }
 
+.modal {
+  width: 90% !important;
+  max-height: 80% !important; }
+
+.modal-content .row button {
+  width: 80%; }
+
+/*botones*/
+.exercise {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-around; }
+
+.exercise span {
+  float: left; }
+
+.exercise p {
+  margin: 0 auto; }
+
+.ex {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #F9AC3E;
+  color: #fff; }
+
 /*Q preguntas*/
 .number {
   width: 100px;
@@ -7149,6 +7436,15 @@ select {
 
 select:focus {
   outline: none; }
+
+.number {
+  width: 100px;
+  height: 100px;
+  background-color: #ABCB6A;
+  font-size: 4rem; }
+
+#cantidad .row:last-child button {
+  width: 100%; }
 
 /*prueba*/
 .alternatives div {
@@ -7216,3 +7512,46 @@ select:focus {
 
 .oculto {
   display: none; }
+
+/*Preguntas*/
+.carousel-number {
+  margin: 10% 0 5% 0; }
+  .carousel-number h5 {
+    margin: 0;
+    font-size: 1.3rem; }
+  .carousel-number .item {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid #b3b3b3;
+    border-radius: 50%; }
+    .carousel-number .item a {
+      color: #1a1a1a; }
+    .carousel-number .item .item-number {
+      padding: 8px;
+      width: 100%;
+      height: 100%; }
+
+.carousel-question .item-question {
+  height: 80vh; }
+  .carousel-question .item-question .problem {
+    margin: 10% 0; }
+
+.carousel-question .btn, .carousel-question .btn-large {
+  background-color: #00BAF2;
+  width: 70%;
+  height: 10%;
+  display: block;
+  margin: 5% auto; }
+  .carousel-question .btn:hover, .carousel-question .btn-large:hover {
+    background-color: #0093bf; }
+
+button.btn-submit {
+  position: absolute;
+  width: 50%;
+  bottom: 7%;
+  left: 25%;
+  background-color: #F9AC3E;
+  z-index: 9; }
+  button.btn-submit:hover {
+    background-color: #b26b06; }

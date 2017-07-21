@@ -36,8 +36,11 @@ const Preguntas = () =>{
 		const questions = $("select option:selected" ).text();
 		state.questions = questions;
 		e.preventDefault();
-		$('section').replaceWith(Result());
-		// $('section').replaceWith(Componente KAT());
+		
+		$('section').replaceWith(Questions(state.practicSelect,state.questions));
+		console.log(state.practicSelect);
 	});
 	return section;
 }
+
+// wrapper.append(Questions(state.courses[3].tests[3], 15));
