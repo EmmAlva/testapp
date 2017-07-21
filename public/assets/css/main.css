@@ -6852,7 +6852,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   src: url('../fonts/CamingoDos-Pro/CamingoDos Pro.otf');
 }*/
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
 .relative-col {
   position: relative;
@@ -6885,6 +6888,9 @@ section {
 button.select-label {
   bottom: 0; }
 
+.bg_morado {
+  background-color: #9A3267; }
+
 /*MENU*/
 .bg_profile {
   background-color: #9A3267;
@@ -6906,7 +6912,7 @@ li:first-child > a {
 
 /*CUrsos*/
 h3 {
-  font-size: 1.6rem; }
+  font-size: 2rem; }
 
 .course {
   width: 100%;
@@ -6981,8 +6987,21 @@ h3 {
 #cantidad .row:last-child button {
   width: 100%; }
 
-/*prueba*/
-.alternatives div {
+#cantidad .row {
+  margin: 40px 0; }
+
+select {
+  display: block;
+  width: 28%;
+  margin: auto;
+  border: none;
+  font-size: 2.6rem;
+  height: 11%; }
+
+select:focus {
+  outline: none; }
+
+select option .alternatives div {
   padding: 12px;
   background-color: #00BAF2;
   margin: 10px;

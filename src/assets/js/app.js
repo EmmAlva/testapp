@@ -2,7 +2,8 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Login);
+    wrapper.append(Header);
+    wrapper.append(Preguntas);
 
     root.append(wrapper);
 };

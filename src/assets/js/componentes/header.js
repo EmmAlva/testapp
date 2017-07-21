@@ -2,7 +2,7 @@
 
 const Header = () => {
 	const header = $('<header></header>');
-	const nav  = $('<nav></nav>');
+	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
 	const a = $('<a href="#!" class="brand-logo">TestAPP</a>');
 	const a1 = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');

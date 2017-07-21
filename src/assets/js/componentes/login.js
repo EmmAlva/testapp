@@ -5,7 +5,7 @@ const Login  = () =>{
 	const div = $('<div class="container"></div>');
 	const row0 = $('<div class="row"></div>');
 	const col0 = $('<div class="col l12 s12 center"></div>');
-	const logo = $('<img src="img/logo-utp.png" alt="logo">');
+	const logo = $('<img src="assets/img/logo-utp.png" alt="logo">');
 
 	const row1 = $('<div class="row"></div>');
 	const col1 = $('<div class="col l12 s12 center"></div>');
@@ -21,7 +21,7 @@ const Login  = () =>{
 	const input1 = $('<input id="password" type="password" class="validate">');
 	const label1 = $('<label for="password">Password</label>');
 
-	const btn = $('<button class="center btn-down purple select-label" >INGRESAR</button>')
+	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>')
 
 	section.append(div);
 	section.append(btn);
