@@ -23,6 +23,8 @@ $(_ => {
 
             const root = $('.root');
             render(root);
+            $('.modal').modal();
         });
     });
+
 });
