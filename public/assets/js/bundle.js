@@ -95,6 +95,7 @@ const curso = (data)  => {
 
   fila1.on('click', ()=>{
     state.coursesSelected = data.id;
+    console.log(data);
     console.log(state.coursesSelected);
     $('section').replaceWith(Practicas());
   });
@@ -227,103 +228,6 @@ const Login  = (update) =>{
 	return section;
 }
 
-'use strict';
-const Practicas = ()=>{
-
-	const curso = state.courses.filter((obj)=>{
-		if(obj.id == state.coursesSelected) return obj;
-	})[0];
-
-	const practicas = $("<section id='practicas'></section>");
-	const container = $("<div class='container'></div>");
-	const row = $("<div class='row'></div>");
-	const col12 = $("<div class='col s12'></div>");
-	const sub1 = $("<div class='col s12 center'></div>");
-	const h3 = $("<h3>Practicas</h3>");
-	const sub2 = $("<div class='col s12'></div>");
-	const modal = $("<div id='modal1' class='modal'></div>");
-	const modalContent = $("<div class='modal-content'></div>");
-	const button = $("<button class='modal-close right' data-dismiss='modal' aria-label='Close'></button>");
-	const aClose = $("<a class='black-text fs-2'  aria-hidden='true'>&times;</a>");
-	const rowModal = $("<div class='row'></div>");
-	const divButon =$("<div class='col l12 s12 center'>");
-	const butonQuiz = $("<button class='btn center btn-down'>Quiz</button>");
-
-	button.append(aClose);
-	modalContent.append(button);
-	modalContent.append(rowModal);
-	divButon.append(butonQuiz);
-	modalContent.append(divButon);
-	modal.append(modalContent);
-
-	col12.append(modal);
-	sub1.append(h3);
-	col12.append(sub1);
-	col12.append(sub2);
-	row.append(modal);
-	row.append(col12);
-	container.append(row);
-	practicas.append(container);
-
-	butonQuiz.on("click", (e)=>{
-		state.page = cantPreguntas;
-	});
-
-	console.log(curso.tests);
-	$.each(curso.tests, (i, obj)=>{
-		let divCol;
-		if(i>3){
-			divCol = $("<div class='col l4 s12 test'></div>");
-		}else{
-			divCol = $("<div class='col l4 s6 test'></div>");
-		}
-
-		let divImg = $("<div class='nivel valign-wrapper'></div>");
-		let img = $(`<img src='assets/img/${obj.image}'/>`);
-		let divDetails = $(`<div class='detail'></div>`);
-		let title = $(`<p class='title'>${obj.name}</p>`);
-		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-		let quiz = $("<a>Quiz</a>");
-
-		quiz.on('click',(e)=>{
-			e.preventDefault();
-			state.practicSelect = obj.codigo
-			$('section').replaceWith(Preguntas());
-		})
-
-		temas.on("click", (e)=>{
-			rowModal.empty();
-
-			var filtro = curso.tests.filter((obj)=>{
-				return obj.codigo == $(e.target).prop("id");
-			})[0];
-
-			//llenar modal
-			$.each(filtro.themes, (i, tema)=>{
-				if(i<3){
-					rowModal.append(`<p>${tema}</p>`);
-					rowModal.append("<p>Esta es la información para el tema .Debes considerar este tema para resolver este quiz.</p>");
-				}
-			});
-
-		});
-
-		divImg.append(img);
-
-		divDetails.append(title);
-		divDetails.append(temas);
-		divDetails.append(quiz);
-
-		divCol.append(divImg);
-		divCol.append(divDetails);
-
-		sub2.append(divCol);
-	});
-
-
-
-	return practicas;
-};
 
 'use strict';
 
@@ -359,25 +263,9 @@ const Preguntas = () =>{
 	const row1 = $('<div class="row"></div>');
 	const col1 = $('<div class="col l12 s12 center"></div>');
 	const select = $('<select name="number" id="questions"></select>');
-	const option1 = $('<option value="1">1</option>');
-	const option2 = $('<option value="2">2</option>');
-	const option3 = $('<option value="3">3</option>');
-	const option4 = $('<option value="4">4</option>');
 	const option5 = $('<option value="5">5</option>');
-	const option6 = $('<option value="6">6</option>');
-	const option7 = $('<option value="7">7</option>');
-	const option8 = $('<option value="8">8</option>');
-	const option9 = $('<option value="9">9</option>');
 	const option10 = $('<option value="10">10</option>');
-	const option11 = $('<option value="11">11</option>');
-	const option12 = $('<option value="12">12</option>');
-	const option13 = $('<option value="13">13</option>');
-	const option14 = $('<option value="14">14</option>');
 	const option15 = $('<option value="15">15</option>');
-	const option16 = $('<option value="16">16</option>');
-	const option17 = $('<option value="17">17</option>');
-	const option18 = $('<option value="18">18</option>');
-	const option19 = $('<option value="19">19</option>');
 	const option20 = $('<option value="20">20</option>');
 
 	const btn = $('<button class="center btn-down select-label " >QUIZ</button>');
@@ -391,56 +279,18 @@ const Preguntas = () =>{
 
 	row1.append(col1);
 	col1.append(select);
-	select.append(option1);
-	select.append(option2);
-	select.append(option3);
-	select.append(option4);
 	select.append(option5);
-	select.append(option6);
-	select.append(option7);
-	select.append(option8);
-	select.append(option9);
 	select.append(option10);
-	select.append(option11);
-	select.append(option12);
-	select.append(option13);
-	select.append(option14);
 	select.append(option15);
-	select.append(option16);
-	select.append(option17);
-	select.append(option18);
-	select.append(option19);
 	select.append(option20);
 
+	btn.on('click',(e)=>{
+		e.preventDefault();
+		// $('section').replaceWith(Componente KAT());
+	})
+
 	return section;
-	
+
 }
 
-/*<section id="cantidad">
-		<div class="container">
-			<div class="row">
-				<div class="col l12 s12">
-					<h3>Define una cantidad de preguntas</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col l12 s12 center">
-					<div class="number center-block valign-wrapper" >
-						<select name="number" id="questions">select
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col l12 s12 center">
-					<button class="btn ">Empezar</button>
-				</div>
-			</div>			
-		</div>		
-		<button class="center btn-down select-label" >QUIZ</button>
-	</section>*/
 },{}]},{},[1])
