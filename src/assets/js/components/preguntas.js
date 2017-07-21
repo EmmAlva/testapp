@@ -88,10 +88,8 @@ const Questions = (theme, quantity) => {
     });
 
     submit.on('click', (e) =>{
-      e.preventDefault();
-        Result(percentFinal, totalQuestion,showQuestion);
-        submit.attr('disabled','disabled');
-        $('section').replaceWith(Result());
+        //Result(percentFinal, totalQuestion,showQuestion);
+        $('.absolute-child').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
     });
 
 
