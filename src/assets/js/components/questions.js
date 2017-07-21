@@ -34,8 +34,6 @@ const Preguntas = () =>{
 	btn.on('click',(e)=>{
 		e.preventDefault();
 		// $('section').replaceWith(Componente KAT());
-	})
-
+	});
 	return section;
-
 }

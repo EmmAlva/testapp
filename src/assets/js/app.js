@@ -5,9 +5,7 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   // wrapper.append(Construccion);
   wrapper.append(Header());
-
   wrapper.append(Login(_ => render(root)));
-
   root.append(wrapper);
 
 };
@@ -17,7 +15,6 @@ const state = {
     users: null,
     courses: null,
     coursesSelected : null,
-    nextPage : null,
     practicSelect:null
 };
 
@@ -37,5 +34,4 @@ $(_ => {
             $('#modal1').modal();
         });
     });
-
 });

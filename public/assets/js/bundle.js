@@ -6,9 +6,7 @@ const render = (root) => {
   const wrapper = $('<div class="wrapper"></div>');
   // wrapper.append(Construccion);
   wrapper.append(Header());
-
   wrapper.append(Login(_ => render(root)));
-
   root.append(wrapper);
 
 };
@@ -18,7 +16,6 @@ const state = {
     users: null,
     courses: null,
     coursesSelected : null,
-    nextPage : null,
     practicSelect:null
 };
 
@@ -38,7 +35,6 @@ $(_ => {
             $('#modal1').modal();
         });
     });
-
 });
 
 'use strict';
@@ -88,15 +84,15 @@ const curso = (data)  => {
   const curso1 = $('<div class="course course'+data.id+'"></div>');
   const titleCourse = $('<h5>'+data.course+'</h5>');
   const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
+  $('.back').hide();
 
   curso1.append(titleCourse);
   curso1.append(practica);
   fila1.append(curso1);
 
   fila1.on('click', ()=>{
-    state.coursesSelected = data.id;
+    state.coursesSelected = data;
     console.log(data);
-    console.log(state.coursesSelected);
     $('section').replaceWith(Practicas());
   });
 
@@ -119,9 +115,9 @@ const Header = () => {
 	const name = $('<a class="select-label white-text" href="#"></a>');
 	const span = $('<span>Hola Alonso !</span>');
 	const li1 = $('<li></li>');
-	const aprof = $('<a href="">Perfil</a>');
+	const aprof = $('<a href="">Inicio</a>');
 	const li2 = $('<li></li>');
-	const apract = $('<a href="">Pruebas</a>');
+	const apract = $('<a href="">Perfil</a>');
 	const li3 = $('<li></li>');
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
@@ -213,9 +209,7 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
-				// state.nextPage = Cursos;
 				console.log(state.userLogin);
-				// update();
 				$('section').replaceWith(Cursos());
 			}
 			else{
@@ -228,6 +222,69 @@ const Login  = (update) =>{
 	return section;
 }
 
+'use strict';
+const Practicas = ()=>{
+/*	console.log(state.coursesSelected);*/
+	const practicas = $("<section id='practicas'></section>");
+	const container = $("<div class='container'></div>");
+	const row = $("<div class='row'></div>");
+	const sub1 = $("<div class='col s12 center'></div>");
+	const h3 = $("<h3>Practicas</h3>");
+	const sub2 = $("<div class='col s12'></div>");
+
+	$('.back').show();
+	$('.back').on('click', ()=>{
+		state.coursesSelected = null;
+		$('section').replaceWith(Cursos());
+	})
+
+	$.each(state.coursesSelected.tests, (i, obj)=>{
+		let divCol;
+		if(i>3){
+			divCol = $("<div class='col l4 s12 test'></div>");
+		}else{
+			divCol = $("<div class='col l4 s6 test'></div>");
+		}
+		let divImg = $("<a class='nivel valign-wrapper'></a>");
+		let img = $(`<img src='assets/img/${obj.image}'/>`);
+		let divDetails = $(`<div class='detail'></div>`);
+		let title = $(`<p class='title'>${obj.name}</p>`);
+		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
+		let quiz = $("<a href='#'>Quiz</a>");
+
+		quiz.on("click", (e)=>{
+		    		e.preventDefault();
+						state.practicSelect = obj;
+						console.log(obj);
+		    		$('section').replaceWith(Preguntas());
+		});
+
+		temas.on("click", (e)=>{
+			e.preventDefault();
+			state.practicSelect = obj;
+			console.log(obj);
+			$('section').replaceWith(Temario());
+		});
+		divImg.append(img);
+
+		divDetails.append(title);
+		divDetails.append(temas);
+		divDetails.append(quiz);
+
+		divCol.append(divImg);
+		divCol.append(divDetails);
+
+		sub2.append(divCol);
+	});
+
+	sub1.append(h3);
+	row.append(sub1);
+	row.append(sub2);
+	container.append(row);
+	practicas.append(container);
+
+	return practicas;
+};
 
 'use strict';
 
@@ -287,10 +344,9 @@ const Preguntas = () =>{
 	btn.on('click',(e)=>{
 		e.preventDefault();
 		// $('section').replaceWith(Componente KAT());
-	})
-
+	});
 	return section;
-
 }
+
 
 },{}]},{},[1])

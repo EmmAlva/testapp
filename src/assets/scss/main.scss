@@ -183,30 +183,23 @@ h3{
 .detail a {
   padding: 2px 11px;
 }
-.modal{
-  width: 79% !important;
-  max-height: 85% !important;
-  box-shadow: 0 8px 10px 7px rgba(0, 0, 0, 0.14), 0 3px 14px -4px rgba(0, 0, 0, 0.12), 0 5px 5px -9px rgba(0, 0, 0, 0.3);
 
-}
-.modal-content .row button{
-  width: 80%;
-}
 .btn.center.btn-down{
   margin-bottom: 20px;
   font-size: 1.3rem;
   padding: 0;
 }
-.modal .modal-close{
+.close{
   cursor: pointer;
   background: transparent;
   border: none;
   margin-top: -1rem;
+  float: right;
+  font-size: 3rem;
+  margin-right: 10px;
+  color: #000;
 }
-.modal-overlay{
-  background: white!important;
-  opacity: 1!important;
-}
+
 /*botones*/
 
 .exercise{

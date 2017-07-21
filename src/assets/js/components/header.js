@@ -14,9 +14,9 @@ const Header = () => {
 	const name = $('<a class="select-label white-text" href="#"></a>');
 	const span = $('<span>Hola Alonso !</span>');
 	const li1 = $('<li></li>');
-	const aprof = $('<a href="">Perfil</a>');
+	const aprof = $('<a href="">Inicio</a>');
 	const li2 = $('<li></li>');
-	const apract = $('<a href="">Pruebas</a>');
+	const apract = $('<a href="">Perfil</a>');
 	const li3 = $('<li></li>');
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');

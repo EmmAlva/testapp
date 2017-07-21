@@ -24,15 +24,15 @@ const curso = (data)  => {
   const curso1 = $('<div class="course course'+data.id+'"></div>');
   const titleCourse = $('<h5>'+data.course+'</h5>');
   const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
+  $('.back').hide();
 
   curso1.append(titleCourse);
   curso1.append(practica);
   fila1.append(curso1);
 
   fila1.on('click', ()=>{
-    state.coursesSelected = data.id;
+    state.coursesSelected = data;
     console.log(data);
-    console.log(state.coursesSelected);
     $('section').replaceWith(Practicas());
   });
 
