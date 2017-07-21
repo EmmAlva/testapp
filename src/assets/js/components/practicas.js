@@ -1,7 +1,8 @@
 'use strict';
 const Practicas = ()=>{
+
 	const curso = state.courses.filter((obj)=>{
-		if(obj.id == 4) return obj;
+		if(obj.id == state.coursesSelected) return obj;
 	})[0];
 
 	const practicas = $("<section id='practicas'></section>");
@@ -27,7 +28,7 @@ const Practicas = ()=>{
 	$.each(curso.tests, (i, obj)=>{
 		let divCol;
 		if(i>3){
-			divCol = $("<div class='col l4 s12 test'></div>");
+			divCol = $("<div class='col l4 s test'></div>");
 		}else{
 			divCol = $("<div class='col l4 s6 test'></div>");
 		}
