@@ -42,9 +42,9 @@ const Practicas = ()=>{
 
 			//llenar modal
 			$.each(filtro.themes, (i, tema)=>{
-				if(i<4){
+				if(i<3){
 					rowModal.append(`<p>${tema}</p>`);
-					rowModal.append("<p>harum optio? Temporibus fuga, vel hic perspiciatis et ipsam pariatur.</p>");
+					rowModal.append("<p>Esta es la información para el tema .Debes considerar este tema para resolver este quiz.</p>");
 				}				
 			});
 	
