@@ -1,14 +1,16 @@
-const Cursos = () => {
+const Cursos = (update) => {
   const section = $('<section></section>');
   const containerPrincipal = $('<div class="container"></div>');
   const columna1 = $('<div class="row center"></div>');
   const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
   const columna2 =$('<div class="row"></div>');
 
-  for (var i = 0; i < 6; i++) {
-    columna2.append(curso(state.courses[i]));
-  console.log(state.courses[i]);
-  }
+  const numCursos = state.users[state.userLogin].courses;
+    numCursos.forEach((e)=>{
+      columna2.append(curso(state.courses[e-1]));
+      console.log(state.courses[e-1]);
+    });
+
   columna1.append(title);
   containerPrincipal.append(columna1);
   containerPrincipal.append(columna2);
@@ -27,8 +29,9 @@ const curso = (data)  => {
   curso1.append(practica);
   fila1.append(curso1);
 
-  section.on('click', ()=>{
+  fila1.on('click', ()=>{
     state.coursesSelected = data.id;
+    console.log(state.coursesSelected);
   });
 
   return fila1;

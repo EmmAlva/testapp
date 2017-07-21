@@ -1,15 +1,22 @@
 'use strict';
 
 const render = (root) => {
-    const wrapper = $('<div class="wrapper"></div>');
+  root.empty();
+  const wrapper = $('<div class="wrapper"></div>');
+  // wrapper.append(Construccion);
+  wrapper.append(Header());
 
-    // if (state.users != null) {
-      wrapper.append(Cursos());
-    // }
-    root.append(wrapper);
+  if (state.userLogin == null) {
+    wrapper.append(Login(_ => render(root)));
+  }
+  else {
+    wrapper.append(Cursos(_ => render(root)));
+  }
+  root.append(wrapper);
 };
 
 const state = {
+    userLogin : null,
     users: null,
     courses: null,
     coursesSelected : null
@@ -25,6 +32,9 @@ $(_ => {
             console.log(json);
             const root = $('.root');
             render(root);
+             //active menu
+            $(".button-collapse").sideNav();
+
         });
     });
 });

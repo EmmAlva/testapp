@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .materialize-red {
   background-color: #e51c23 !important; }
 
@@ -6854,8 +6855,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 h5 {
   padding: 3px 8px; }
 
+.typo {
+  font-family: 'Shadows Into Light', cursive; }
+
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
 .relative-col {
   position: relative;
@@ -6888,6 +6895,17 @@ section {
 button.select-label {
   bottom: 0; }
 
+.bg_morado {
+  background-color: #9A3267; }
+
+button:focus {
+  background-color: rgba(143, 43, 143, 0.5) !important; }
+
+/*LOGIN*/
+.login_error {
+  color: red;
+  font-size: 0.8rem; }
+
 /*MENU*/
 .bg_profile {
   background-color: #9A3267;
@@ -6906,6 +6924,9 @@ li .circle {
 
 li:first-child > a {
   top: 8rem; }
+
+.back i {
+  font-size: 3rem !important; }
 
 /*Cursos*/
 .course1 {
@@ -6981,7 +7002,7 @@ li:first-child > a {
   border-top: 1px solid #B01E31; }
 
 h3 {
-  font-size: 1.6rem; }
+  font-size: 2rem; }
 
 .course {
   width: 100%;
@@ -7054,9 +7075,35 @@ h3 {
 #cantidad .row:last-child button {
   width: 100%; }
 
-/*prueba*/
-.alternatives div {
+#cantidad .row {
+  margin: 40px 0; }
+
+select {
+  display: block;
+  width: 28%;
+  margin: auto;
+  border: none;
+  font-size: 2.6rem;
+  height: 11%; }
+
+select:focus {
+  outline: none; }
+
+select option .alternatives div {
   padding: 12px;
   background-color: #00BAF2;
   margin: 10px;
   text-align: center; }
+
+/*COntrucción*/
+#build img {
+  width: 60%; }
+
+#build .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+#build p {
+  width: 60%; }

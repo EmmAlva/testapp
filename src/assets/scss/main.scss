@@ -19,12 +19,18 @@ $colors : (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$mai
  }
 //font
 $font-size: 16px;
+.typo{
+  font-family: 'Shadows Into Light', cursive;
+}
 
 body{
   font-size: $font-size;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-//container
+
 .relative-col{
   position: relative;
   height: 100vh;
@@ -59,6 +65,17 @@ button.select-label{
   bottom: 0;
 }
 
+.bg_morado{
+  background-color: $morado;
+}
+button:focus{
+  background-color: rgba(143,43,143,0.5) !important;
+}
+/*LOGIN*/
+.login_error{
+  color:red;
+  font-size: 0.8rem;
+}
 /*MENU*/
 .bg_profile{
   background-color: $morado;
@@ -78,6 +95,9 @@ li .circle{
 li:first-child > a{
   top: 8rem;
 }
+.back i{
+  font-size: 3rem !important;
+}
 
 /*Cursos*/
 @each $i, $c in $colors {
@@ -96,7 +116,7 @@ li:first-child > a{
 }
 
 h3{
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 .course{
   width: 100%;
@@ -176,10 +196,39 @@ h3{
 #cantidad .row:last-child button{
   width: 100%;
 }
+#cantidad  .row{
+  margin: 40px 0;
+}
+select {
+  display: block;
+  width: 28%;
+  margin: auto;
+  border: none;
+  font-size: 2.6rem;
+  height: 11%;
+}
+select:focus{
+  outline: none;
+}
+select option
 /*prueba*/
 .alternatives div{
   padding: 12px;
   background-color: $turquesa;
   margin: 10px;
   text-align: center;
+}
+
+/*COntrucción*/
+#build img{
+  width: 60%;
+}
+#build .col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#build p{
+  width: 60%;
 }
