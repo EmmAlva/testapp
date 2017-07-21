@@ -48,12 +48,7 @@ const Practicas = ()=>{
 
 		temas.on("click", (e)=>{
 			divInfo.empty();
-			var filtro = curso.tests.filter((obj)=>{
-				return obj.codigo == $(e.target).prop("id");
-			})[0];
-
-			//llenar modal
-			$.each(filtro.themes, (i, tema)=>{
+			$.each(obj.themes, (i, tema)=>{
 				if(i<3){
 					divInfo.append(`<p>${tema}</p>`);
 					divInfo.append("<p>Esta es la información para el tema .Debes considerar este tema para resolver este quiz.</p>");
