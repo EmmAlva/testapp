@@ -199,9 +199,9 @@ h3 {
     width: 40px;
     height: 40px;
     margin: 0 auto;
-    border: 1px solid darken($white,30%);
+    border: 1px solid darken($white, 30%);
     border-radius: 50%;
-    a{
+    a {
       color: darken($white, 90%);
     }
     .item-number {
@@ -215,7 +215,7 @@ h3 {
 .carousel-question {
   .item-question {
     height: 80vh;
-    .problem{
+    .problem {
       margin: 10% 0;
     }
   }
@@ -226,7 +226,18 @@ h3 {
     display: block;
     margin: 5% auto;
     &:hover {
-    background-color: darken($turquesa, 10%);
+      background-color: darken($turquesa, 10%);
     }
+  }
+}
+button.btn-submit {
+  position: absolute;
+  width: 50%;
+  bottom: 7%;
+  left: 25%;
+  background-color: $naranja;
+  z-index: 9;
+  &:hover{
+    background-color: darken($naranja,25%);
   }
 }

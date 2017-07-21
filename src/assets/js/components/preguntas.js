@@ -10,6 +10,8 @@ const Questions = (theme, quantity) => {
     const carruselQuestion = $('<div class="owl-carousel owl-theme center' +
         ' carousel-question"></div>');
 
+    const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
+
     const easy = [];
     const medium = [];
     const difficult = [];
@@ -50,6 +52,11 @@ const Questions = (theme, quantity) => {
         }
     });
 
+    const percentQ = 100 / showQuestion.length;
+    let percentFinal = 0;
+
+    let totalQuestion = 0;
+
     showQuestion.forEach((data, index) => {
         if (index < showQuestion.length) {
             const i = index + 1;
@@ -68,14 +75,15 @@ const Questions = (theme, quantity) => {
                 const btn = $('<button class="btn btn-info">' + data["" + ind + ""] + '</button>');
                 btn.on('click', () => {
                     if (ind.toString() === data.correct.toString()) {
-                        console.log('bien');
-                        const hash = itemQuestion.data('hash');
-                        console.log(hash);
-
-                    } else {
-                        console.log('mal');
+                        percentFinal += percentQ;
+                        /*const hash = itemQuestion.data('hash');
+                        console.log(hash);*/
+                        totalQuestion += index;
                     }
+                    //btn.attr('disabled','disabled');
                 });
+
+
 
                 itemQuestion.append(btn);
             });
@@ -85,8 +93,15 @@ const Questions = (theme, quantity) => {
         }
     });
 
+    submit.on('click', () =>{
+        Result(percentFinal, totalQuestion,showQuestion);
+        submit.attr('disabled','disabled');
+    });
+
+
     absolute.append(carouselNumber);
     absolute.append(carruselQuestion);
+    absolute.append(submit);
     relative.append(absolute);
     row.append(relative);
     container.append(row);

@@ -2,7 +2,7 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Questions(state.courses[3].tests[3], 5));
+    wrapper.append(Questions(state.courses[3].tests[3], 15));
 
     root.append(wrapper);
 };
