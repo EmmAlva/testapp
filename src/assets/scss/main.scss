@@ -14,9 +14,11 @@ $morado: #9A3267;
 $white: #fff;
 //font
 $font-size: 16px;
-<<<<<<< HEAD
 body {
     font-size: $font-size;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 //container
@@ -30,30 +32,6 @@ body {
         width: 100%;
         height: 100%;
     }
-=======
-
-body{
-  font-size: $font-size;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-//container
-.container{
-  width: 100%;
-}
-.relative-col{
-  position: relative;
-  height: 100vh;
-  .absolute-child{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
->>>>>>> fac7dbab10d28de1026b3e96763c8a7ea2f9ceca
 }
 
 

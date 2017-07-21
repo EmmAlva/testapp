@@ -6851,11 +6851,11 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   font-family: 'CamingoDos Pro';
   src: url('../fonts/CamingoDos-Pro/CamingoDos Pro.otf');
 }*/
-h5 {
-  padding: 3px 8px; }
-
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
 .relative-col {
   position: relative;
@@ -6907,93 +6907,23 @@ li .circle {
 li:first-child > a {
   top: 8rem; }
 
-/*Cursos*/
-.course1 {
-  border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg1 {
-  border-top: 1px solid #B01E31; }
-
-.course2 {
-  border-top: 5px solid #00BAF2;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg2 {
-  border-top: 1px solid #00BAF2; }
-
-.course3 {
-  border-top: 5px solid #ABCB6A;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg3 {
-  border-top: 1px solid #ABCB6A; }
-
-.course4 {
-  border-top: 5px solid #F9AC3E;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg4 {
-  border-top: 1px solid #F9AC3E; }
-
-.course5 {
-  border-top: 5px solid #9A3267;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg5 {
-  border-top: 1px solid #9A3267; }
-
-.course6 {
-  border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
-
-.coursebg6 {
-  border-top: 1px solid #B01E31; }
-
+/*CUrsos*/
 h3 {
   font-size: 1.6rem; }
 
 .course {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  border: 1px solid white;
+  border-top: 4px solid #00BAF2; }
 
-.course h5 {
-  padding: 20px 10px; }
+.course h2 {
+  padding: 0 20px; }
 
 .practica {
+  background: #00BAF2;
+  color: #fff;
   padding: 10px; }
-  .practica span {
-    font-size: 0.9rem; }
 
 /*PRACTICAS*/
 .nivel {
@@ -7060,3 +6990,7 @@ h3 {
   background-color: #00BAF2;
   margin: 10px;
   text-align: center; }
+
+/*Resultado*/
+.bg_nav {
+  background-color: #9A3267; }
