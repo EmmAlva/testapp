@@ -2,8 +2,10 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Cursos());
 
+    // if (state.users != null) {
+      wrapper.append(Cursos());
+    // }
     root.append(wrapper);
 };
 
