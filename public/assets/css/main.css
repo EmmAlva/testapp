@@ -6994,3 +6994,36 @@ h3 {
 /*Resultado*/
 .bg_nav {
   background-color: #9A3267; }
+
+.btn-tema {
+  background-color: #F9AC3E; }
+
+.btn-result {
+  width: 100%;
+  height: 6rem; }
+
+.flex-valign {
+  display: flex;
+  align-items: center; }
+
+.row-result {
+  margin-top: 3rem;
+  margin-bottom: 0; }
+
+.row-result .col {
+  padding: 0; }
+
+.bottom-btn {
+  position: absolute;
+  bottom: 0; }
+
+.bottom-btn .col-btn .btn, .bottom-btn .col-btn .btn-large {
+  padding: 0 3.2rem;
+  font-size: 1.4rem;
+  line-height: 1.6rem; }
+
+.bg_turquesa {
+  background-color: #00BAF2; }
+
+.bg_verde {
+  background-color: #ABCB6A; }
