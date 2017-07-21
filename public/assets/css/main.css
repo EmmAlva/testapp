@@ -6874,7 +6874,10 @@ body {
     width: 100%;
     height: 100%; }
 
-/*REUSABLES*/
+/*REUSAmES*/
+.fs-2 {
+  font-size: 2rem; }
+
 .p-0 {
   padding: 0 !important; }
 
@@ -6931,9 +6934,9 @@ li:first-child > a {
 /*Cursos*/
 .course1 {
   border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -6943,9 +6946,9 @@ li:first-child > a {
 
 .course2 {
   border-top: 5px solid #00BAF2;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -6955,9 +6958,9 @@ li:first-child > a {
 
 .course3 {
   border-top: 5px solid #ABCB6A;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -6967,9 +6970,9 @@ li:first-child > a {
 
 .course4 {
   border-top: 5px solid #F9AC3E;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -6979,9 +6982,9 @@ li:first-child > a {
 
 .course5 {
   border-top: 5px solid #9A3267;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -6991,9 +6994,9 @@ li:first-child > a {
 
 .course6 {
   border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #adadad;
-  border-left: 1px solid #adadad;
-  border-right: 1px solid #adadad;
+  border-bottom: 1px solid #949494;
+  border-left: 1px solid #949494;
+  border-right: 1px solid #949494;
   margin: 10px 0;
   position: relative;
   cursor: pointer; }
@@ -7019,32 +7022,71 @@ h3 {
 /*PRACTICAS*/
 .nivel {
   height: 10rem;
-  background-image: url("http://lorempixel.com/300/175/nature");
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  background: #009688; }
 
 .nivel img {
   width: 70%;
   height: 70%;
-  padding: 10px;
-  background-color: #B01E31; }
+  padding: 10px; }
 
 .test {
   margin: 10px 0; }
 
-.detail {
+.test:nth-child(3) .detail a:nth-child(3),
+.test:nth-child(4) .detail a:nth-child(3) {
+  background-color: #ABCB6A;
+  border: 1px solid #ABCB6A; }
+
+.test:last-child .detail a {
+  width: 50%;
+  display: inline-block;
+  text-align: center; }
+
+.test:last-child .detail a:nth-child(3) {
+  background-color: #F9AC3E;
+  border-top: 1px solid #F9AC3E; }
+
+.title {
+  margin-bottom: 3%;
+  margin-top: 2%;
+  font-size: 600; }
+
+.detail a:nth-child(3) {
+  color: #fff;
   background-color: #00BAF2;
-  border-bottom: 2px solid #F9AC3E; }
+  border-top: 1px solid #00BAF2; }
+
+.detail a:nth-child(2) {
+  color: #949494;
+  border-top: 1px solid #949494; }
 
 .detail a {
-  color: #fff; }
+  padding: 2px 11px; }
 
 .modal {
-  width: 90% !important;
-  max-height: 80% !important; }
+  width: 79% !important;
+  max-height: 85% !important;
+  box-shadow: 0 8px 10px 7px rgba(0, 0, 0, 0.14), 0 3px 14px -4px rgba(0, 0, 0, 0.12), 0 5px 5px -9px rgba(0, 0, 0, 0.3); }
 
 .modal-content .row button {
   width: 80%; }
+
+.btn.center.btn-down, .center.btn-down.btn-large {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  padding: 0; }
+
+.modal .modal-close {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  margin-top: -1rem; }
+
+.modal-overlay {
+  background: white !important;
+  opacity: 1 !important; }
 
 /*botones*/
 .exercise {

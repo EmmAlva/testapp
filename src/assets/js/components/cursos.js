@@ -32,6 +32,7 @@ const curso = (data)  => {
   fila1.on('click', ()=>{
     state.coursesSelected = data.id;
     console.log(state.coursesSelected);
+    $('section').replaceWith(Practicas());
   });
 
   return fila1;

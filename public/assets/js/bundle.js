@@ -7,20 +7,19 @@ const render = (root) => {
   // wrapper.append(Construccion);
   wrapper.append(Header());
 
-  if (state.userLogin == null) {
-    wrapper.append(Login(_ => render(root)));
-  }
-  else {
-    wrapper.append(Cursos(_ => render(root)));
-  }
+  wrapper.append(Login(_ => render(root)));
+
   root.append(wrapper);
+
 };
 
 const state = {
     userLogin : null,
     users: null,
     courses: null,
-    coursesSelected : null
+    coursesSelected : null,
+    nextPage : null,
+    practicSelect:null
 };
 
 $(_ => {
@@ -29,15 +28,17 @@ $(_ => {
         console.log(data);
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-
             console.log(json);
+             //active menu
             const root = $('.root');
             render(root);
-             //active menu
-            $(".button-collapse").sideNav();
+            state.nextPage= Login;
 
+            $(".button-collapse").sideNav();
+            $('#modal1').modal();
         });
     });
+
 });
 
 'use strict';
@@ -61,6 +62,46 @@ const Construccion = () =>{
 	return section;
 
 }
+const Cursos = (update) => {
+  const section = $('<section></section>');
+  const containerPrincipal = $('<div class="container"></div>');
+  const columna1 = $('<div class="row center"></div>');
+  const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
+  const columna2 =$('<div class="row"></div>');
+
+  const numCursos = state.users[state.userLogin].courses;
+    numCursos.forEach((e)=>{
+      columna2.append(curso(state.courses[e-1]));
+      console.log(state.courses[e-1]);
+    });
+
+  columna1.append(title);
+  containerPrincipal.append(columna1);
+  containerPrincipal.append(columna2);
+  section.append(containerPrincipal);
+
+  return section;
+}
+
+const curso = (data)  => {
+  const fila1 = $('<div class="col l4 s6 curso"></div>');
+  const curso1 = $('<div class="course course'+data.id+'"></div>');
+  const titleCourse = $('<h5>'+data.course+'</h5>');
+  const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
+
+  curso1.append(titleCourse);
+  curso1.append(practica);
+  fila1.append(curso1);
+
+  fila1.on('click', ()=>{
+    state.coursesSelected = data.id;
+    console.log(state.coursesSelected);
+    $('section').replaceWith(Practicas());
+  });
+
+  return fila1;
+}
+
 'use strict';
 
 const Header = () => {
@@ -105,36 +146,10 @@ const Header = () => {
 	div.append(back);
 	div.append(ul);
 
-	//back.display.none
-
 
 	return header;
 
-
 }
-
- /*<nav>
-	    	<div class="nav-wrapper">
-		      <a href="#!" class="brand-logo">TestAPP</a>
-		      <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
-		      <ul class="side-nav" id="mobile-demo">
-		     	<li>
-		     		<div class="bg_profile">
-
-		     		</div>
-					<div class="circle">
-					</div>
-					<a class="select-label white-text" href="#">
-						<span>Hola Alonso !</span>
-					</a>
-				</li>
-		        <li><a href="">Profile</a></li>
-		        <li><a href="">Practice</a></li>
-		        <li><a href="">Settings</a></li>
-		        <li><a href="">Log out</a></li>
-		      </ul>
-		    </div>
-	    </nav>*/
 
 'use strict';
 
@@ -197,8 +212,10 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
+				// state.nextPage = Cursos;
 				console.log(state.userLogin);
-				update();
+				// update();
+				$('section').replaceWith(Cursos());
 			}
 			else{
 				span0.text('*Completar campos');
@@ -209,6 +226,104 @@ const Login  = (update) =>{
 
 	return section;
 }
+
+'use strict';
+const Practicas = ()=>{
+
+	const curso = state.courses.filter((obj)=>{
+		if(obj.id == state.coursesSelected) return obj;
+	})[0];
+
+	const practicas = $("<section id='practicas'></section>");
+	const container = $("<div class='container'></div>");
+	const row = $("<div class='row'></div>");
+	const col12 = $("<div class='col s12'></div>");
+	const sub1 = $("<div class='col s12 center'></div>");
+	const h3 = $("<h3>Practicas</h3>");
+	const sub2 = $("<div class='col s12'></div>");
+	const modal = $("<div id='modal1' class='modal'></div>");
+	const modalContent = $("<div class='modal-content'></div>");
+	const button = $("<button class='modal-close right' data-dismiss='modal' aria-label='Close'></button>");
+	const aClose = $("<a class='black-text fs-2'  aria-hidden='true'>&times;</a>");
+	const rowModal = $("<div class='row'></div>");
+	const divButon =$("<div class='col l12 s12 center'>");
+	const butonQuiz = $("<button class='btn center btn-down'>Quiz</button>");
+
+	button.append(aClose);
+	modalContent.append(button);
+	modalContent.append(rowModal);
+	divButon.append(butonQuiz);
+	modalContent.append(divButon);
+	modal.append(modalContent);
+
+	col12.append(modal);
+	sub1.append(h3);
+	col12.append(sub1);
+	col12.append(sub2);
+	row.append(modal);
+	row.append(col12);
+	container.append(row);
+	practicas.append(container);
+
+	butonQuiz.on("click", (e)=>{
+		state.page = cantPreguntas;
+	});
+
+	console.log(curso.tests);
+	$.each(curso.tests, (i, obj)=>{
+		let divCol;
+		if(i>3){
+			divCol = $("<div class='col l4 s12 test'></div>");
+		}else{
+			divCol = $("<div class='col l4 s6 test'></div>");
+		}
+
+		let divImg = $("<div class='nivel valign-wrapper'></div>");
+		let img = $(`<img src='assets/img/${obj.image}'/>`);
+		let divDetails = $(`<div class='detail'></div>`);
+		let title = $(`<p class='title'>${obj.name}</p>`);
+		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
+		let quiz = $("<a>Quiz</a>");
+
+		quiz.on('click',(e)=>{
+			e.preventDefault();
+			state.practicSelect = obj.codigo
+			$('section').replaceWith(Preguntas());
+		})
+
+		temas.on("click", (e)=>{
+			rowModal.empty();
+
+			var filtro = curso.tests.filter((obj)=>{
+				return obj.codigo == $(e.target).prop("id");
+			})[0];
+
+			//llenar modal
+			$.each(filtro.themes, (i, tema)=>{
+				if(i<3){
+					rowModal.append(`<p>${tema}</p>`);
+					rowModal.append("<p>Esta es la información para el tema .Debes considerar este tema para resolver este quiz.</p>");
+				}
+			});
+
+		});
+
+		divImg.append(img);
+
+		divDetails.append(title);
+		divDetails.append(temas);
+		divDetails.append(quiz);
+
+		divCol.append(divImg);
+		divCol.append(divDetails);
+
+		sub2.append(divCol);
+	});
+
+
+
+	return practicas;
+};
 
 'use strict';
 
@@ -328,43 +443,4 @@ const Preguntas = () =>{
 		</div>		
 		<button class="center btn-down select-label" >QUIZ</button>
 	</section>*/
-const Cursos = (update) => {
-  const section = $('<section></section>');
-  const containerPrincipal = $('<div class="container"></div>');
-  const columna1 = $('<div class="row center"></div>');
-  const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
-  const columna2 =$('<div class="row"></div>');
-
-  const numCursos = state.users[state.userLogin].courses;
-    numCursos.forEach((e)=>{
-      columna2.append(curso(state.courses[e-1]));
-      console.log(state.courses[e-1]);
-    });
-
-  columna1.append(title);
-  containerPrincipal.append(columna1);
-  containerPrincipal.append(columna2);
-  section.append(containerPrincipal);
-
-  return section;
-}
-
-const curso = (data)  => {
-  const fila1 = $('<div class="col l4 s6 curso"></div>');
-  const curso1 = $('<div class="course course'+data.id+'"></div>');
-  const titleCourse = $('<h5>'+data.course+'</h5>');
-  const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
-
-  curso1.append(titleCourse);
-  curso1.append(practica);
-  fila1.append(curso1);
-
-  fila1.on('click', ()=>{
-    state.coursesSelected = data.id;
-    console.log(state.coursesSelected);
-  });
-
-  return fila1;
-}
-
 },{}]},{},[1])

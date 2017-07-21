@@ -6,20 +6,19 @@ const render = (root) => {
   // wrapper.append(Construccion);
   wrapper.append(Header());
 
-  if (state.userLogin == null) {
-    wrapper.append(Login(_ => render(root)));
-  }
-  else {
-    wrapper.append(Cursos(_ => render(root)));
-  }
+  wrapper.append(Login(_ => render(root)));
+
   root.append(wrapper);
+
 };
 
 const state = {
     userLogin : null,
     users: null,
     courses: null,
-    coursesSelected : null
+    coursesSelected : null,
+    nextPage : null,
+    practicSelect:null
 };
 
 $(_ => {
@@ -28,13 +27,15 @@ $(_ => {
         console.log(data);
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-
             console.log(json);
+             //active menu
             const root = $('.root');
             render(root);
-             //active menu
-            $(".button-collapse").sideNav();
+            state.nextPage= Login;
 
+            $(".button-collapse").sideNav();
+            $('#modal1').modal();
         });
     });
+
 });

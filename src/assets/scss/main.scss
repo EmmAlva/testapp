@@ -10,7 +10,7 @@ $verde: #ABCB6A;
 $naranja: #F9AC3E;
 $morado: #9A3267;
 $white: #fff;
-$gray : #adadad;
+$gray: #949494;
 
 $colors : (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$main );
 
@@ -43,7 +43,10 @@ body{
   }
 }
 
-/*REUSABLES*/
+/*REUSAmES*/
+.fs-2{
+  font-size: 2rem;
+}
 .p-0{
   padding: 0 !important;
 }
@@ -136,34 +139,73 @@ h3{
 /*PRACTICAS*/
 .nivel{
   height: 10rem;
-  background-image: url("http://lorempixel.com/300/175/nature");
   display: flex;
   justify-content: center;
+  background: #009688;
 }
 .nivel img{
   width: 70%;
   height: 70%;
   padding: 10px;
-  background-color: $main;
 }
 .test{
   margin: 10px 0;
 }
-
-.detail{
+.test:nth-child(3) .detail a:nth-child(3),
+.test:nth-child(4) .detail a:nth-child(3)
+{
+  background-color: $verde;
+  border: 1px solid $verde;
+}
+.test:last-child .detail a{
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.test:last-child .detail a:nth-child(3){
+  background-color: $naranja;
+  border-top: 1px solid $naranja;
+}
+.title{
+  margin-bottom: 3%;
+  margin-top: 2%;
+  font-size: 600;
+}
+.detail a:nth-child(3){
+  color: $white;
   background-color: $turquesa;
-  border-bottom: 2px solid $naranja;
+  border-top: 1px solid $turquesa;
+}
+.detail a:nth-child(2){
+  color: $gray;
+  border-top: 1px solid $gray;
 }
 .detail a {
-  color: $white;
+  padding: 2px 11px;
 }
 .modal{
-  width: 90% !important;
-  max-height: 80% !important;
-}
+  width: 79% !important;
+  max-height: 85% !important;
+  box-shadow: 0 8px 10px 7px rgba(0, 0, 0, 0.14), 0 3px 14px -4px rgba(0, 0, 0, 0.12), 0 5px 5px -9px rgba(0, 0, 0, 0.3);
 
+}
 .modal-content .row button{
   width: 80%;
+}
+.btn.center.btn-down{
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  padding: 0;
+}
+.modal .modal-close{
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  margin-top: -1rem;
+}
+.modal-overlay{
+  background: white!important;
+  opacity: 1!important;
 }
 /*botones*/
 

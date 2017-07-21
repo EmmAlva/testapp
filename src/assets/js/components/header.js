@@ -42,33 +42,7 @@ const Header = () => {
 	div.append(back);
 	div.append(ul);
 
-	//back.display.none
-
 
 	return header;
 
-
 }
-
- /*<nav>
-	    	<div class="nav-wrapper">
-		      <a href="#!" class="brand-logo">TestAPP</a>
-		      <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
-		      <ul class="side-nav" id="mobile-demo">
-		     	<li>
-		     		<div class="bg_profile">
-
-		     		</div>
-					<div class="circle">
-					</div>
-					<a class="select-label white-text" href="#">
-						<span>Hola Alonso !</span>
-					</a>
-				</li>
-		        <li><a href="">Profile</a></li>
-		        <li><a href="">Practice</a></li>
-		        <li><a href="">Settings</a></li>
-		        <li><a href="">Log out</a></li>
-		      </ul>
-		    </div>
-	    </nav>*/

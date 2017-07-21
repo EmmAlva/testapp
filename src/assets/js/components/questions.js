@@ -63,8 +63,13 @@ const Preguntas = () =>{
 	select.append(option19);
 	select.append(option20);
 
+	btn.on('click',(e)=>{
+		e.preventDefault();
+		$('section').replaceWith(Componente KAT());
+	})
+
 	return section;
-	
+
 }
 
 /*<section id="cantidad">
@@ -90,7 +95,7 @@ const Preguntas = () =>{
 				<div class="col l12 s12 center">
 					<button class="btn ">Empezar</button>
 				</div>
-			</div>			
-		</div>		
+			</div>
+		</div>
 		<button class="center btn-down select-label" >QUIZ</button>
 	</section>*/

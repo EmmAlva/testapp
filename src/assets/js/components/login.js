@@ -59,8 +59,10 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
+				// state.nextPage = Cursos;
 				console.log(state.userLogin);
-				update();
+				// update();
+				$('section').replaceWith(Cursos());
 			}
 			else{
 				span0.text('*Completar campos');
