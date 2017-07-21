@@ -10,7 +10,13 @@ $verde: #ABCB6A;
 $naranja: #F9AC3E;
 $morado: #9A3267;
 $white: #fff;
+$gray : #adadad;
 
+$colors : (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$main );
+
+ h5{
+   padding: 3px 8px;
+ }
 //font
 $font-size: 16px;
 
@@ -73,24 +79,38 @@ li:first-child > a{
   top: 8rem;
 }
 
-/*CUrsos*/
+/*Cursos*/
+@each $i, $c in $colors {
+  .course#{$i}{
+    border-top: 5px solid $c;
+    border-bottom: 1px solid $gray;
+    border-left: 1px solid $gray ;
+    border-right: 1px solid $gray;
+    margin: 10px 0;
+    position: relative;
+    cursor: pointer;
+  }
+  .coursebg#{$i}{
+    border-top: 1px solid $c;
+  }
+}
+
 h3{
   font-size: 1.6rem;
 }
 .course{
   width: 100%;
   height: 100%;
-  border: 1px solid rgba($white,1);
-  border-top: 4px solid $turquesa;
 }
-.course h2{
-  padding: 0 20px;
+
+.course h5{
+  padding: 20px 10px;
 }
 .practica{
-  background: $turquesa;
-  color: $white;
   padding: 10px;
-
+  span{
+    font-size: 0.9rem;
+  }
 }
 
 /*PRACTICAS*/
