@@ -2,6 +2,7 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
+    wrapper.append(Header);
 
     root.append(wrapper);
 };
@@ -13,6 +14,7 @@ const state = {
 
 $(_ => {
 
+
     $.getJSON("/api/users/", (data) => {
         state.users = data;
         console.log(data);
@@ -21,6 +23,12 @@ $(_ => {
             console.log(json);
             const root = $('.root');
             render(root);
+             //active menu
+            $(".button-collapse").sideNav();
+
         });
-    });
+
+    });  
+
+
 });
