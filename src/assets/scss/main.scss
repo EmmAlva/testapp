@@ -1,4 +1,6 @@
 @import "../../../node_modules/materialize-css/sass/materialize";
+@import "owl/owl.carousel";
+
 /*
 @font-face {
   font-family: 'CamingoDos Pro';
@@ -14,7 +16,7 @@ $white: #fff;
 //font
 $font-size: 16px;
 
-body{
+body {
   font-size: $font-size;
   margin: 0;
   padding: 0;
@@ -22,13 +24,10 @@ body{
 }
 
 //container
-.container{
-  width: 100%;
-}
-.relative-col{
+.relative-col {
   position: relative;
   height: 100vh;
-  .absolute-child{
+  .absolute-child {
     position: absolute;
     top: 0;
     left: 0;
@@ -38,33 +37,38 @@ body{
 }
 
 /*REUSABLES*/
-.p-0{
+.p-0 {
   padding: 0 !important;
 }
-.m-0{
-  margin:0 !important;
+
+.m-0 {
+  margin: 0 !important;
 }
-.btn-down{
+
+.btn-down {
   background-color: $naranja;
   padding: 12px;
   width: 100%;
-  border:none;
+  border: none;
   color: $white;
   font-weight: 500;
 }
-section{
+
+section {
   padding: 30px 0;
 }
-button.select-label{
+
+button.select-label {
   bottom: 0;
 }
 
 /*MENU*/
-.bg_profile{
+.bg_profile {
   background-color: $morado;
   height: 12rem;
 }
-li .circle{
+
+li .circle {
   background-image: url("http://lorempixel.com/300/175/technics");
   position: absolute;
   top: 4%;
@@ -75,24 +79,28 @@ li .circle{
   background-repeat: no-repeat;
   background-position: 21% 2%;
 }
-li:first-child > a{
+
+li:first-child > a {
   top: 8rem;
 }
 
 /*CUrsos*/
-h3{
+h3 {
   font-size: 1.6rem;
 }
-.course{
+
+.course {
   width: 100%;
   height: 100%;
-  border: 1px solid rgba($white,1);
+  border: 1px solid rgba($white, 1);
   border-top: 4px solid $turquesa;
 }
-.course h2{
+
+.course h2 {
   padding: 0 20px;
 }
-.practica{
+
+.practica {
   background: $turquesa;
   color: $white;
   padding: 10px;
@@ -100,52 +108,60 @@ h3{
 }
 
 /*PRACTICAS*/
-.nivel{
+.nivel {
   height: 10rem;
   background-image: url("http://lorempixel.com/300/175/nature");
   display: flex;
   justify-content: center;
 }
-.nivel img{
+
+.nivel img {
   width: 70%;
   height: 70%;
   padding: 10px;
   background-color: $main;
 }
-.test{
+
+.test {
   margin: 10px 0;
 }
 
-.detail{
+.detail {
   background-color: $turquesa;
   border-bottom: 2px solid $naranja;
 }
+
 .detail a {
   color: $white;
 }
-.modal{
+
+.modal {
   width: 90% !important;
   max-height: 80% !important;
 }
 
-.modal-content .row button{
+.modal-content .row button {
   width: 80%;
 }
+
 /*botones*/
 
-.exercise{
+.exercise {
   width: 100%;
   overflow: auto;
   display: flex;
   justify-content: space-around;
 }
-.exercise span{
+
+.exercise span {
   float: left;
 }
-.exercise p{
-  margin:0 auto;
+
+.exercise p {
+  margin: 0 auto;
 }
-.ex{
+
+.ex {
   width: 2.5rem;
   height: 2.5rem;
   background: $naranja;
@@ -153,19 +169,64 @@ h3{
 }
 
 /*Q preguntas*/
-.number{
+.number {
   width: 100px;
   height: 100px;
   background-color: $verde;
   font-size: 4rem
 }
-#cantidad .row:last-child button{
+
+#cantidad .row:last-child button {
   width: 100%;
 }
+
 /*prueba*/
-.alternatives div{
+.alternatives div {
   padding: 12px;
   background-color: $turquesa;
   margin: 10px;
   text-align: center;
+}
+
+/*Preguntas*/
+.carousel-number {
+  margin: 10% 0 5% 0;
+  h5 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  .item {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid darken($white,30%);
+    border-radius: 50%;
+    a{
+      color: darken($white, 90%);
+    }
+    .item-number {
+      padding: 8px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.carousel-question {
+  .item-question {
+    height: 80vh;
+    .problem{
+      margin: 10% 0;
+    }
+  }
+  .btn {
+    background-color: $turquesa;
+    width: 70%;
+    height: 10%;
+    display: block;
+    margin: 5% auto;
+    &:hover {
+    background-color: darken($turquesa, 10%);
+    }
+  }
 }

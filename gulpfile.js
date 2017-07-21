@@ -16,8 +16,9 @@ const paths = {
     assets: "assets/",
     html: "**/*.html",
     sass: "scss/**/*.scss",
-    js: "js/**/*.js",
+    js: "js/components/*.js",
     mainSass: "scss/main.scss",
+    owl: 'js/owl.carousel.min.js',
     mainJS: "js/app.js"
 };
 
@@ -56,7 +57,7 @@ gulp.task('js', () => {
         .pipe(concat('app.js'))
         .pipe(browserify()) //rename({suffix: '.min'})
         .pipe(rename('bundle.js'))
-        .pipe(addsrc([sources.jquery, sources.materializeJS]))
+        .pipe(addsrc([sources.jquery, sources.materializeJS, sources.assets + paths.owl]))
         .pipe(gulp.dest(config.dist + paths.assets + 'js'));
 });
 

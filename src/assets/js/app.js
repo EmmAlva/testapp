@@ -2,7 +2,7 @@
 
 const render = (root) => {
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Questions(state.courses[3].tests[2], 7));
+    wrapper.append(Questions(state.courses[3].tests[3], 5));
 
     root.append(wrapper);
 };
@@ -16,12 +16,28 @@ $(_ => {
 
     $.getJSON("/api/users/", (data) => {
         state.users = data;
-        console.log(data);
         $.getJSON("/api/courses/", (json) => {
             state.courses = json;
-            console.log(json);
             const root = $('.root');
             render(root);
+            $('.carousel-number').owlCarousel({
+                items:5,
+                loop:false,
+                dots: false,
+                margin:0,
+                URLhashListener:true,
+                autoplay:false,
+                startPosition: 'URLHash',
+            });
+            $('.carousel-question').owlCarousel({
+                items:1,
+                loop:false,
+                dots: false,
+                margin:0,
+                URLhashListener:true,
+                autoplay:false,
+                startPosition: 'URLHash',
+            });
         });
     });
 });
