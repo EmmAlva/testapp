@@ -37,6 +37,10 @@ gulp.task('fonts', () => {
     gulp.src([sources.fonts, sources.assets + 'fonts/CamingoDos-Pro/**.*']).pipe(gulp.dest(config.dist + paths.assets + 'fonts'));
 });
 
+gulp.task('img', () => {
+    gulp.src(sources.assets + 'img/**.*').pipe(gulp.dest(config.dist + paths.assets + 'img'));
+});
+
 gulp.task('html', () => {
     gulp.src(sources.html).pipe(gulp.dest(config.dist));
 });
@@ -102,4 +106,4 @@ gulp.task('nodemon', (cb) => {
     });
 });
 
-gulp.task('run', ['html', 'js', 'sass', 'fonts', "serve"]);
+gulp.task('run', ['html', 'js', 'sass', 'fonts', 'img', "serve"]);
