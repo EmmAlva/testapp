@@ -5,6 +5,7 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const browserify = require('gulp-browserify');
 const addsrc = require('gulp-add-src');
+const nodemon = require('gulp-nodemon');
 
 const config = {
     source: "./src/",
@@ -33,7 +34,7 @@ const sources = {
 };
 
 gulp.task('fonts', () => {
-    gulp.src(sources.fonts).pipe(gulp.dest(config.dist + paths.assets + 'fonts'));
+    gulp.src([sources.fonts, sources.assets + 'fonts/CamingoDos-Pro/**.*']).pipe(gulp.dest(config.dist + paths.assets + 'fonts'));
 });
 
 gulp.task('html', () => {
@@ -60,26 +61,45 @@ gulp.task('sass-watch', ['sass'], (done) => {
     done();
 });
 
-gulp.task('js-watch', ["js"], function (done) {
+gulp.task('js-watch', ["js"],(done) => {
     browserSync.reload();
     done();
 });
 
-gulp.task('html-watch', ["html"], function (done) {
+gulp.task('html-watch', ["html"], (done) => {
     browserSync.reload();
     done();
 });
 
-gulp.task('start', ['html', 'js', 'sass', 'fonts']);
 
-gulp.task('serve', () => {
+gulp.task('serve', ['browser-sync'], () => {
+    gulp.watch(sources.html, ["html-watch"]);
+    gulp.watch(sources.sass, ["sass-watch"]);
+    gulp.watch(sources.js, ["js-watch"]);
+});
+
+gulp.task('browser-sync', ['nodemon'], () => {
     browserSync.init({
-        server: {
-            baseDir: config.dist
+        port: 3007,
+        proxy: {
+            target: 'localhost:3000',
+            ws: true
         }
     });
-
-    gulp.watch(sources.html, ['html-watch']);
-    gulp.watch(sources.sass, ['sass-watch']);
-    gulp.watch(sources.js, ['js-watch']);
 });
+
+gulp.task('nodemon', (cb) => {
+
+    let started = false;
+
+    return nodemon({
+        script: 'server.js'
+    }).on('start', function () {
+        if (!started) {
+            cb();
+            started = true;
+        }
+    });
+});
+
+gulp.task('run', ['html', 'js', 'sass', 'fonts', "serve"]);

@@ -6,7 +6,21 @@ const render = (root) => {
     root.append(wrapper);
 };
 
-$( _ => {
-    const root = $('.root');
-    render(root);
+const state = {
+    users: null,
+    courses: null
+};
+
+$(_ => {
+
+    $.getJSON("/api/users/", (data) => {
+        state.users = data;
+        console.log(data);
+        $.getJSON("/api/courses/", (json) => {
+            state.courses = json;
+            console.log(json);
+            const root = $('.root');
+            render(root);
+        });
+    });
 });
