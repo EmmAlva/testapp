@@ -31,8 +31,12 @@ const Preguntas = () =>{
 	select.append(option15);
 	select.append(option20);
 
+
 	btn.on('click',(e)=>{
+		const questions = $("select option:selected" ).text();
+		state.questions = questions;
 		e.preventDefault();
+		$('section').replaceWith(Result());
 		// $('section').replaceWith(Componente KAT());
 	});
 	return section;

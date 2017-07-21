@@ -1,12 +1,12 @@
 'use strict';
-
 const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
 	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo typo">TestAPP</a>');
-	const a1 = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');
+	const aMenu = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"></a>');
+	const iconMenu = $("<i class='material-icons'>menu</i>");
 	const ul = $('<ul class="side-nav" id="mobile-demo"></ul>');
 	const li0 = $('<li></li>');
 	const profile = $('<div class="bg_profile"></div>');
@@ -21,6 +21,12 @@ const Header = () => {
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
 	const alog = $('<li><a href="">Log out</a></li>');
+	// aMenu.hide();
+	apract.on('click', (e)=>{
+		e.preventDefault();
+		$('section').replaceWith(Construccion());
+
+	})
 
 	header.append(nav);
 	nav.append(div);
@@ -38,7 +44,8 @@ const Header = () => {
 	ul.append(li3);
 	ul.append(li4);
 	div.append(a);
-	div.append(a1);
+	aMenu.append(iconMenu);
+	div.append(aMenu);
 	div.append(back);
 	div.append(ul);
 

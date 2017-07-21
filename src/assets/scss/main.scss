@@ -1,9 +1,11 @@
 @import "../../../node_modules/materialize-css/sass/materialize";
+
 /*
 @font-face {
   font-family: 'CamingoDos Pro';
   src: url('../fonts/CamingoDos-Pro/CamingoDos Pro.otf');
 }*/
+
 $main: #B01E31;
 $turquesa: #00BAF2;
 $verde: #ABCB6A;
@@ -50,24 +52,53 @@ body{
 .p-0{
   padding: 0 !important;
 }
-.m-0{
-  margin:0 !important;
-}
-.btn-down{
-  background-color: $naranja;
-  padding: 12px;
-  width: 100%;
-  border:none;
-  color: $white;
-  font-weight: 500;
-}
-section{
-  padding: 30px 0;
-}
-button.select-label{
-  bottom: 0;
+//font
+$font-size: 16px;
+body {
+    font-size: $font-size;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+//container
+.relative-col {
+    position: relative;
+    height: 100vh;
+    .absolute-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/*REUSABLES*/
+
+.p-0 {
+    padding: 0 !important;
+}
+.m-0 {
+    margin: 0 !important;
+}
+.btn-down {
+    background-color: $naranja;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    color: $white;
+    font-weight: 500;
+}
+
+section {
+    padding: 30px 0;
+}
+
+button.select-label {
+    bottom: 0;
+}
 .bg_morado{
   background-color: $morado;
 }
@@ -80,23 +111,26 @@ button:focus{
   font-size: 0.8rem;
 }
 /*MENU*/
-.bg_profile{
-  background-color: $morado;
-  height: 12rem;
+
+.bg_profile {
+    background-color: $morado;
+    height: 12rem;
 }
-li .circle{
-  background-image: url("http://lorempixel.com/300/175/technics");
-  position: absolute;
-  top: 4%;
-  left: 5%;
-  width: 80px;
-  height: 80px;
-  background-size: 241%;
-  background-repeat: no-repeat;
-  background-position: 21% 2%;
+
+li .circle {
+    background-image: url("http://lorempixel.com/300/175/technics");
+    position: absolute;
+    top: 4%;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    background-size: 241%;
+    background-repeat: no-repeat;
+    background-position: 21% 2%;
 }
-li:first-child > a{
-  top: 8rem;
+
+li:first-child>a {
+    top: 8rem;
 }
 .back i{
   font-size: 3rem !important;
@@ -135,6 +169,30 @@ h3{
     font-size: 0.9rem;
   }
 }
+// /*CUrsos*/
+//
+// h3 {
+//     font-size: 1.6rem;
+// }
+//
+// .course {
+//     width: 100%;
+//     height: 100%;
+//     border: 1px solid rgba($white, 1);
+//     border-top: 4px solid $turquesa;
+// }
+//
+// .course h2 {
+//     padding: 0 20px;
+// }
+//
+// .practica {
+//     background: $turquesa;
+//     color: $white;
+//     padding: 10px;
+// >>>>>>> dbc410628e1a1c44c546c715ac2b3245244c797c
+// }
+
 
 /*PRACTICAS*/
 .nivel{
@@ -148,8 +206,8 @@ h3{
   height: 70%;
   padding: 10px;
 }
-.test{
-  margin: 10px 0;
+.test {
+    margin: 10px 0;
 }
 .test:nth-child(3) .detail a:nth-child(3),
 .test:nth-child(4) .detail a:nth-child(3)
@@ -199,38 +257,54 @@ h3{
   margin-right: 10px;
   color: #000;
 }
+.detail {
+    background-color: $turquesa;
+    border-bottom: 2px solid $naranja;
+}
+
+.detail a {
+    color: $white;
+}
+
 
 /*botones*/
 
-.exercise{
-  width: 100%;
-  overflow: auto;
-  display: flex;
-  justify-content: space-around;
-}
-.exercise span{
-  float: left;
-}
-.exercise p{
-  margin:0 auto;
-}
-.ex{
-  width: 2.5rem;
-  height: 2.5rem;
-  background: $naranja;
-  color: $white;
+.exercise {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: space-around;
 }
 
+.exercise span {
+    float: left;
+}
+
+.exercise p {
+    margin: 0 auto;
+}
+
+.ex {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: $naranja;
+    color: $white;
+}
+
+
 /*Q preguntas*/
-.number{
-  width: 100px;
-  height: 100px;
-  background-color: $verde;
-  font-size: 4rem
+
+.number {
+    width: 100px;
+    height: 100px;
+    background-color: $verde;
+    font-size: 4rem
 }
-#cantidad .row:last-child button{
-  width: 100%;
+
+#cantidad .row:last-child button {
+    width: 100%;
 }
+
 #cantidad  .row{
   margin: 40px 0;
 }
@@ -245,7 +319,6 @@ select {
 select:focus{
   outline: none;
 }
-select option
 /*prueba*/
 .alternatives div{
   padding: 12px;
@@ -266,4 +339,65 @@ select option
 }
 #build p{
   width: 60%;
+}
+
+/*prueba*/
+
+.alternatives div {
+    padding: 12px;
+    background-color: $turquesa;
+    margin: 10px;
+    text-align: center;
+}
+
+
+/*Resultado*/
+
+.bg_nav {
+    background-color: $morado;
+}
+
+.btn-tema {
+    background-color: $naranja;
+}
+
+.btn-result {
+    width: 100%;
+    height: 6rem;
+}
+
+.flex-valign {
+    display: flex;
+    align-items: center;
+}
+
+.row-result {
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+
+.row-result .col {
+    padding: 0;
+}
+
+.bottom-btn {
+    position: absolute;
+    bottom: 0;
+}
+
+.bottom-btn .col-btn .btn {
+    padding: 0 3.2rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+}
+
+.bg_turquesa {
+    background-color: $turquesa;
+}
+
+.bg_verde {
+    background-color: $verde;
+}
+.oculto{
+  display: none;
 }

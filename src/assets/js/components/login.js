@@ -1,6 +1,7 @@
 'use strict';
 
 const Login  = (update) =>{
+
 	const section = $('<section id="register"></section>');
 	const div = $('<div class="container"></div>');
 	const row0 = $('<div class="row"></div>');
@@ -61,6 +62,7 @@ const Login  = (update) =>{
 				state.userLogin = i;
 				console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
+				console.log($("#register").parents());
 			}
 			else{
 				span0.text('*Completar campos');

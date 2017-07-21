@@ -5,8 +5,15 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   // wrapper.append(Construccion);
-  wrapper.append(Header());
-  wrapper.append(Login(_ => render(root)));
+
+
+    //if(state.userLogin != null){
+
+    wrapper.append(Header);
+     //wrapper.append(Cursos(_=>render(root)));
+//  }else{
+    wrapper.append(Login(_ => render(root)));
+  //}
   root.append(wrapper);
 
 };
@@ -16,7 +23,8 @@ const state = {
     users: null,
     courses: null,
     coursesSelected : null,
-    practicSelect:null
+    practicSelect:null,
+    questions : null
 };
 
 $(_ => {
@@ -33,6 +41,7 @@ $(_ => {
 
             $(".button-collapse").sideNav();
             $('#modal1').modal();
+
         });
     });
 });
@@ -100,14 +109,14 @@ const curso = (data)  => {
 }
 
 'use strict';
-
 const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
 	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo typo">TestAPP</a>');
-	const a1 = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>');
+	const aMenu = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"></a>');
+	const iconMenu = $("<i class='material-icons'>menu</i>");
 	const ul = $('<ul class="side-nav" id="mobile-demo"></ul>');
 	const li0 = $('<li></li>');
 	const profile = $('<div class="bg_profile"></div>');
@@ -122,6 +131,12 @@ const Header = () => {
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
 	const alog = $('<li><a href="">Log out</a></li>');
+	// aMenu.hide();
+	apract.on('click', (e)=>{
+		e.preventDefault();
+		$('section').replaceWith(Construccion());
+
+	})
 
 	header.append(nav);
 	nav.append(div);
@@ -139,7 +154,8 @@ const Header = () => {
 	ul.append(li3);
 	ul.append(li4);
 	div.append(a);
-	div.append(a1);
+	aMenu.append(iconMenu);
+	div.append(aMenu);
 	div.append(back);
 	div.append(ul);
 
@@ -151,6 +167,7 @@ const Header = () => {
 'use strict';
 
 const Login  = (update) =>{
+
 	const section = $('<section id="register"></section>');
 	const div = $('<div class="container"></div>');
 	const row0 = $('<div class="row"></div>');
@@ -211,6 +228,7 @@ const Login  = (update) =>{
 				state.userLogin = i;
 				console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
+				console.log($("#register").parents());
 			}
 			else{
 				span0.text('*Completar campos');
@@ -341,12 +359,72 @@ const Preguntas = () =>{
 	select.append(option15);
 	select.append(option20);
 
+
 	btn.on('click',(e)=>{
+		const questions = $("select option:selected" ).text();
+		state.questions = questions;
 		e.preventDefault();
+		$('section').replaceWith(Result());
 		// $('section').replaceWith(Componente KAT());
 	});
 	return section;
 }
+
+'use strict';
+const Result = () => {
+    const main = $('<section id="resultado"></section>');
+    const container = $('<div class="container"></div>');
+    const row = $('<div class="row row-result center"></div>');
+    const porcentaje = $('<div class="col l12 s12"></div>');
+    const h1 = $('<h1>60%</h1>');
+    const h5 = $('<h5>¡Sigue mejorando!</h5>');
+    porcentaje.append(h1);
+    porcentaje.append(h5);
+    row.append(porcentaje);
+
+    const row2 = $('<div class="row row-result center"></div>');
+    const respuestas = $('<div class="col l12 s12"></div>');
+    const dropdown = $('<a class="dropdown-button btn" data-beloworigin="true" href="#" data-activates="dropdown1">Tus respuestas <i class="material-icons">arrow_drop_down</i></a>');
+    const ulDD = $('<ul id="dropdown1" class="dropdown-content"></ul>');
+    const liDD1 = $('<li><a href="#!">Correctas</a></li>');
+    const liDD2 = $('<li><a href="#!">Incorrectas</a></li>');
+    ulDD.append(liDD1);
+    ulDD.append(liDD2);
+    respuestas.append(dropdown);
+    respuestas.append(ulDD);
+    row2.append(respuestas);
+
+    const row3 = $('<div class="row row-result center"></div>');
+    const feedback = $('<div class="col l12 s12"></div>');
+    const title = $('<h5>Debes repasar:</h5>');
+    const tema1 = $('<div class="col l12 s6"></div>');
+    const span1 = $('<span class="btn btn-tema">Tema1</span>');
+    const tema2 = $('<div class="col l12 s6"></div>');
+    const span2 = $('<span class="btn btn-tema">Tema2</span>');
+    tema2.append(span2);
+    tema1.append(span1);
+    feedback.append(title);
+    feedback.append(tema1);
+    feedback.append(tema2);
+    row3.append(feedback);
+
+    const row4 = $('<div class="row row-result bottom-btn center"></div>');
+    const aTest = $('<div class="col l12 s6 col-btn"></div>');
+    const spanA1 = $('<span class="btn btn-result flex-valign bg_turquesa">LISTA TEST</span>');
+    const aCurso = $('<div class="col l12 s6 col-btn"></div>');
+    const spanA2 = $('<span class="btn btn-result flex-valign bg_verde">LISTA CURSOS</span>');
+    aCurso.append(spanA2);
+    aTest.append(spanA1);
+    row4.append(aTest);
+    row4.append(aCurso);
+
+    container.append(row);
+    container.append(row2);
+    container.append(row3);
+    container.append(row4);
+    main.append(container);
+    return main;
+};
 
 
 },{}]},{},[1])

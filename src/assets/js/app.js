@@ -4,8 +4,15 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   // wrapper.append(Construccion);
-  wrapper.append(Header());
-  wrapper.append(Login(_ => render(root)));
+
+
+    //if(state.userLogin != null){
+
+    wrapper.append(Header);
+     //wrapper.append(Cursos(_=>render(root)));
+//  }else{
+    wrapper.append(Login(_ => render(root)));
+  //}
   root.append(wrapper);
 
 };
@@ -15,7 +22,8 @@ const state = {
     users: null,
     courses: null,
     coursesSelected : null,
-    practicSelect:null
+    practicSelect:null,
+    questions : null
 };
 
 $(_ => {
@@ -32,6 +40,7 @@ $(_ => {
 
             $(".button-collapse").sideNav();
             $('#modal1').modal();
+
         });
     });
 });

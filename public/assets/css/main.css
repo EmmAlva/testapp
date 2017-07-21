@@ -6881,6 +6881,26 @@ body {
 .p-0 {
   padding: 0 !important; }
 
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.relative-col {
+  position: relative;
+  height: 100vh; }
+  .relative-col .absolute-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+/*REUSABLES*/
+.p-0 {
+  padding: 0 !important; }
+
 .m-0 {
   margin: 0 !important; }
 
@@ -7080,6 +7100,13 @@ h3 {
   margin-right: 10px;
   color: #000; }
 
+.detail {
+  background-color: #00BAF2;
+  border-bottom: 2px solid #F9AC3E; }
+
+.detail a {
+  color: #fff; }
+
 /*botones*/
 .exercise {
   width: 100%;
@@ -7123,7 +7150,8 @@ select {
 select:focus {
   outline: none; }
 
-select option .alternatives div {
+/*prueba*/
+.alternatives div {
   padding: 12px;
   background-color: #00BAF2;
   margin: 10px;
@@ -7141,3 +7169,50 @@ select option .alternatives div {
 
 #build p {
   width: 60%; }
+
+/*prueba*/
+.alternatives div {
+  padding: 12px;
+  background-color: #00BAF2;
+  margin: 10px;
+  text-align: center; }
+
+/*Resultado*/
+.bg_nav {
+  background-color: #9A3267; }
+
+.btn-tema {
+  background-color: #F9AC3E; }
+
+.btn-result {
+  width: 100%;
+  height: 6rem; }
+
+.flex-valign {
+  display: flex;
+  align-items: center; }
+
+.row-result {
+  margin-top: 3rem;
+  margin-bottom: 0; }
+
+.row-result .col {
+  padding: 0; }
+
+.bottom-btn {
+  position: absolute;
+  bottom: 0; }
+
+.bottom-btn .col-btn .btn, .bottom-btn .col-btn .btn-large {
+  padding: 0 3.2rem;
+  font-size: 1.4rem;
+  line-height: 1.6rem; }
+
+.bg_turquesa {
+  background-color: #00BAF2; }
+
+.bg_verde {
+  background-color: #ABCB6A; }
+
+.oculto {
+  display: none; }
