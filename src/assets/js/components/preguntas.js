@@ -1,15 +1,13 @@
 'use strict';
 
 const Questions = (theme, quantity) => {
-    console.log(theme);
-    const container = $('<div class="container"></div>');
+
+    const container = $('<div class="question-container main-container"></div>');
     const row = $('<div class="row"></div>');
-    const relative = $('<div class="col s12 relative-col"></div>');
-    const absolute = $('<div class="absolute-child"></div>');
+    const relative = $('<div class="col s12"></div>');
 
     const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
-    const carruselQuestion = $('<div class="owl-carousel owl-theme center' +
-        ' carousel-question"></div>');
+    const carruselQuestion = $('<div class="owl-carousel owl-theme center carousel-question"></div>');
 
     const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
 
@@ -59,14 +57,15 @@ const Questions = (theme, quantity) => {
     let totalQuestion = 0;
 
     showQuestion.forEach((data, index) => {
+        console.log(data);
         if (index < showQuestion.length) {
             const i = index + 1;
             const title = $('<h5>Pregunta ' + i + ':</h5>');
             const problem = $('<h4 class="problem">' + data.problem + '</h4>');
 
-            const itemNumber = $('<div class="item"><a href="#' + data.name + '"><div' +
+            const itemNumber = $('<div class="item"><a href="#' + i + '"><div' +
                 ' class="item-number">' + i + '</div></a></div>');
-            const itemQuestion = $('<div class="item item-question" data-hash="' + data.name + '"></div>');
+            const itemQuestion = $('<div class="item item-question" data-hash="' + i + '"></div>');
 
             itemQuestion.append(title);
             itemQuestion.append(problem);
@@ -89,18 +88,37 @@ const Questions = (theme, quantity) => {
 
     submit.on('click', (e) =>{
         //Result(percentFinal, totalQuestion,showQuestion);
-        $('.absolute-child').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
+        $('.col.s12').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
     });
 
 
-    absolute.append(carouselNumber);
-    absolute.append(carruselQuestion);
-    absolute.append(submit);
-    relative.append(absolute);
+    relative.append(carouselNumber);
+    relative.append(carruselQuestion);
     row.append(relative);
     container.append(row);
 
 
-
     return container;
 };
+
+
+/*const counterContainer = $('<div class="counter-container"></div>');
+const questionsLength = (quantity * 64 );
+counterContainer.css('width', questionsLength + 'px');
+
+theme.questions.forEach((e, index) => {
+    const windowWith = Math.floor($(window).width() / 64);
+
+    if (index < quantity) {
+        const counter = $('<div class="counter"></div>');
+        console.log(windowWith);
+
+        const i = index + 1;
+        //const medida =
+        if (index < windowWith) {
+            counter.addClass('active');
+        }
+        counter.append(i);
+        counterContainer.append(counter);
+    }
+});*/

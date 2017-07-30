@@ -57,7 +57,7 @@ const Preguntas = () =>{
           startPosition: 'URLHash'
       });
 		console.log(state.questions);
-	})
+	});
 	return section;
 };
 

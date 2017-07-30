@@ -15,14 +15,15 @@ $morado: #9A3267;
 $white: #fff;
 $gray: #949494;
 
-$colors : (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$main );
+$colors: (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$main);
 
- h5{
-   padding: 3px 8px;
- }
+h5 {
+  padding: 3px 8px;
+}
+
 //font
 $font-size: 16px;
-.typo{
+.typo {
   font-family: 'Shadows Into Light', cursive;
 }
 
@@ -33,7 +34,42 @@ body {
   box-sizing: border-box;
 }
 
-.relative-col{
+.relative-col {
+  position: relative;
+  .absolute-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/*REUSAmES*/
+.fs-2 {
+  font-size: 2rem;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+//font
+$font-size: 16px;
+body {
+  font-size: $font-size;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//container
+.main-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.relative-col {
   position: relative;
   height: 100vh;
   .absolute-child {
@@ -45,63 +81,37 @@ body {
   }
 }
 
-/*REUSAmES*/
-.fs-2{
-  font-size: 2rem;
-}
-.p-0{
-  padding: 0 !important;
-}
-//font
-$font-size: 16px;
-body {
-    font-size: $font-size;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-//container
-.relative-col {
-    position: relative;
-    height: 100vh;
-    .absolute-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-
 /*REUSABLES*/
 
 .p-0 {
-    padding: 0 !important;
+  padding: 0 !important;
 }
+
 .m-0 {
-    margin: 0 !important;
+  margin: 0 !important;
 }
+
 .btn-down {
-    background-color: $naranja;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    color: $white;
-    font-weight: 500;
+  background-color: $naranja;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  color: $white;
+  font-weight: 500;
 }
 
 section {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 
 button.select-label {
-    bottom: 0;
+  bottom: 0;
 }
-.bg_morado{
+
+.bg_morado {
   background-color: $morado;
 }
+
 /*REUSABLES*/
 .p-0 {
   padding: 0 !important;
@@ -129,55 +139,59 @@ button.select-label {
 }
 
 /*MENU*/
-.bg_profile{
+.bg_profile {
   background-color: $morado;
 }
-button:focus{
-  background-color: rgba(143,43,143,0.5) !important;
+
+button:focus {
+  background-color: rgba(143, 43, 143, 0.5) !important;
 }
+
 /*LOGIN*/
-.login_error{
-  color:red;
+.login_error {
+  color: red;
   font-size: 0.8rem;
 }
+
 /*MENU*/
 
 .bg_profile {
-    background-color: $morado;
-    height: 12rem;
+  background-color: $morado;
+  height: 12rem;
 }
 
 li .circle {
-    background-image: url("http://lorempixel.com/300/175/technics");
-    position: absolute;
-    top: 4%;
-    left: 5%;
-    width: 80px;
-    height: 80px;
-    background-size: 241%;
-    background-repeat: no-repeat;
-    background-position: 21% 2%;
+  background-image: url("http://lorempixel.com/300/175/technics");
+  position: absolute;
+  top: 4%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  background-size: 241%;
+  background-repeat: no-repeat;
+  background-position: 21% 2%;
 }
 
-li:first-child>a {
-    top: 8rem;
+li:first-child > a {
+  top: 8rem;
 }
-.back i{
+
+.back i {
   font-size: 3rem !important;
 }
 
 /*Cursos*/
 @each $i, $c in $colors {
-  .course#{$i}{
+  .course#{$i} {
     border-top: 5px solid $c;
     border-bottom: 1px solid $gray;
-    border-left: 1px solid $gray ;
+    border-left: 1px solid $gray;
     border-right: 1px solid $gray;
     margin: 10px 0;
     position: relative;
     cursor: pointer;
   }
-  .coursebg#{$i}{
+  .coursebg#{$i} {
     border-top: 1px solid $c;
   }
 }
@@ -208,7 +222,7 @@ h3 {
   height: 100%;
 }
 
-.course h5{
+.course h5 {
   padding: 20px 10px;
 }
 
@@ -218,11 +232,10 @@ h3 {
 
 .practica {
   padding: 10px;
-  span{
+  span {
     font-size: 0.9rem;
   }
 }
-
 
 /*PRACTICAS*/
 .nivel {
@@ -237,33 +250,39 @@ h3 {
   height: 70%;
   padding: 10px;
 }
+
 .test {
-    margin: 10px 0;
+  margin: 10px 0;
 }
+
 .test:nth-child(3) .detail a:nth-child(3),
-.test:nth-child(4) .detail a:nth-child(3)
-{
+.test:nth-child(4) .detail a:nth-child(3) {
   background-color: $verde;
   border: 1px solid $verde;
 }
-.test:last-child .detail a{
+
+.test:last-child .detail a {
   width: 50%;
   display: inline-block;
   text-align: center;
 }
-.test:last-child .detail a:nth-child(3){
+
+.test:last-child .detail a:nth-child(3) {
   background-color: $naranja;
   border-top: 1px solid $naranja;
 }
-.btn-danger{
+
+.btn-danger {
   background-color: $naranja;
 }
-.title{
+
+.title {
   margin-bottom: 3%;
   margin-top: 2%;
   font-weight: 600;
 }
-.detail a:nth-child(3){
+
+.detail a:nth-child(3) {
   color: $white;
 }
 
@@ -275,7 +294,8 @@ h3 {
   background-color: $turquesa;
   border-top: 1px solid $turquesa;
 }
-.detail a:nth-child(2){
+
+.detail a:nth-child(2) {
   color: $gray;
   border-top: 1px solid $gray;
 }
@@ -284,12 +304,13 @@ h3 {
   padding: 2px 11px;
 }
 
-.btn.center.btn-down{
+.btn.center.btn-down {
   margin-bottom: 20px;
   font-size: 1.3rem;
   padding: 0;
 }
-.close{
+
+.close {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -299,39 +320,40 @@ h3 {
   margin-right: 10px;
   color: #000;
 }
+
 .detail {
-    background-color: $turquesa;
-    border-bottom: 2px solid $naranja;
+  background-color: $turquesa;
+  border-bottom: 2px solid $naranja;
 }
 
 .detail a {
-    color: $white;
+  color: $white;
 }
-
 
 /*botones*/
 
 .exercise {
-    width: 100%;
-    overflow: auto;
-    display: flex;
-    justify-content: space-around;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-around;
 }
 
 .exercise span {
-    float: left;
+  float: left;
 }
 
 .exercise p {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
-.ex{
-    width: 2.5rem;
-    height: 2.5rem;
-    background: $naranja;
-    color: $white;
+.ex {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: $naranja;
+  color: $white;
 }
+
 .modal {
   width: 90% !important;
   max-height: 80% !important;
@@ -364,22 +386,24 @@ h3 {
   background: $naranja;
   color: $white;
 }
+
 /*Q preguntas*/
 
 .number {
-    width: 100px;
-    height: 100px;
-    background-color: $verde;
-    font-size: 4rem
+  width: 100px;
+  height: 100px;
+  background-color: $verde;
+  font-size: 4rem
 }
 
 #cantidad .row:last-child button {
-    width: 100%;
+  width: 100%;
 }
 
-#cantidad  .row{
+#cantidad .row {
   margin: 40px 0;
 }
+
 select {
   display: block;
   width: 28%;
@@ -388,9 +412,11 @@ select {
   font-size: 2.6rem;
   height: 11%;
 }
-select:focus{
+
+select:focus {
   outline: none;
 }
+
 .number {
   width: 100px;
   height: 100px;
@@ -411,16 +437,18 @@ select:focus{
 }
 
 /*COntrucción*/
-#build img{
+#build img {
   width: 60%;
 }
-#build .col{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+#build .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#build p{
+
+#build p {
   width: 60%;
 }
 
@@ -431,6 +459,7 @@ select:focus{
   margin: 10px;
   text-align: center;
 }
+
 /*Resultado*/
 
 .bg_nav {
@@ -476,11 +505,13 @@ select:focus{
 }
 
 .bg_verde {
-    background-color: $verde;
+  background-color: $verde;
 }
-.oculto{
+
+.oculto {
   display: none;
 }
+
 /*Preguntas*/
 .carousel-number {
   margin: 10% 0 5% 0;
@@ -523,6 +554,7 @@ select:focus{
     }
   }
 }
+
 button.btn-submit {
   position: absolute;
   width: 50%;
@@ -530,7 +562,7 @@ button.btn-submit {
   left: 25%;
   background-color: $naranja;
   z-index: 9;
-  &:hover{
-    background-color: darken($naranja,25%);
+  &:hover {
+    background-color: darken($naranja, 25%);
   }
 }

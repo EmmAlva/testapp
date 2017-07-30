@@ -81,6 +81,7 @@ gulp.task('serve', ['browser-sync'], () => {
     gulp.watch(sources.html, ["html-watch"]);
     gulp.watch(sources.sass, ["sass-watch"]);
     gulp.watch(sources.js, ["js-watch"]);
+    gulp.watch(sources.rootJS, ["js-watch"]);
 });
 
 gulp.task('browser-sync', ['nodemon'], () => {
