@@ -57,38 +57,40 @@ const Questions = (theme, quantity) => {
     let totalQuestion = 0;
 
     showQuestion.forEach((data, index) => {
-        console.log(data);
         if (index < showQuestion.length) {
             const i = index + 1;
-            const title = $('<h5>Pregunta ' + i + ':</h5>');
-            const problem = $('<h4 class="problem">' + data.problem + '</h4>');
-
-            const itemNumber = $('<div class="item"><a href="#' + i + '"><div' +
-                ' class="item-number">' + i + '</div></a></div>');
+            const problem = $('<div class="problem"><p>' + data.problem + '</p></div>');
+            const itemNumber = $('<div class="item item-hash"></div>');
+            const itemNumberHref = $('<a href="#' + i + '"><div class="item-number">' + i + '</div></a>');
             const itemQuestion = $('<div class="item item-question" data-hash="' + i + '"></div>');
 
-            itemQuestion.append(title);
+            itemNumber.append(itemNumberHref);
             itemQuestion.append(problem);
 
             const array = [1, 2, 3, 4];
             array.forEach((ind) => {
-                const btn = $('<button class="btn btn-info">' + data["" + ind + ""] + '</button>');
-                btn.on('click', () => {
+                const input = $('<input type="radio" name="' + data.name + '" value="' + ind + '" id="' + data.name + ind + '">');
+                const label = $(' <label for="' + data.name + ind + '">' + data["" + ind + ""] + '</label>');
+                label.on('click', () => {
                     if (ind.toString() === data.correct.toString()) {
                         percentFinal += percentQ;
                         totalQuestion += index;
                     }
+                    console.log(percentFinal);
+                    console.log(totalQuestion);
+
                 });
-                itemQuestion.append(btn);
+                itemQuestion.append(input);
+                itemQuestion.append(label);
             });
             carouselNumber.append(itemNumber);
             carruselQuestion.append(itemQuestion);
         }
     });
 
-    submit.on('click', (e) =>{
+    submit.on('click', (e) => {
         //Result(percentFinal, totalQuestion,showQuestion);
-        $('.col.s12').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
+        $('.col.s12').replaceWith(Result(percentFinal, totalQuestion, showQuestion));
     });
 
 
@@ -100,6 +102,29 @@ const Questions = (theme, quantity) => {
 
     return container;
 };
+
+//Change Hash Carousel
+const hashSelected = (parentHash) => {
+    parentHash.addClass('selected');
+};
+$(window).bind('hashchange', () => {
+    const windowHash = location.hash;
+    $('.item-hash a').each((i, data) => {
+        if (data.hash == windowHash) {
+            $('.item-hash')[i].classList.add('selected');
+            const carouselWidth = $('.carousel-number').width() / 5;
+
+            //transform: translate3d(-203px, 0px, 0px)
+            console.log($('.carousel-number .owl-stage')[0].style.transform);
+            console.log($('.carousel-number .owl-stage')[0].style.width);
+            console.log(carouselWidth);
+        } else {
+            $('.item-hash')[i].classList.remove('selected');
+        }
+
+    });
+
+});
 
 
 /*const counterContainer = $('<div class="counter-container"></div>');

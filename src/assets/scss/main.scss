@@ -514,7 +514,7 @@ select:focus {
 
 /*Preguntas*/
 .carousel-number {
-  margin: 10% 0 5% 0;
+  margin: 15% 0 5% 0;
   h5 {
     margin: 0;
     font-size: 1.3rem;
@@ -534,25 +534,49 @@ select:focus {
       height: 100%;
     }
   }
+  .selected {
+    background-color: darken($white, 15%);
+  }
 }
 
 .carousel-question {
+  height: 70vh;
   .item-question {
-    height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     .problem {
-      margin: 10% 0;
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5%;
+      p {
+        font-size: xx-large;
+      }
     }
   }
-  .btn {
-    background-color: $turquesa;
-    width: 70%;
-    height: 10%;
-    display: block;
-    margin: 5% auto;
-    &:hover {
-      background-color: darken($turquesa, 10%);
-    }
+
+  [type="radio"]:not(:checked), [type="radio"]:checked,
+  [type="radio"] + label:before, [type="radio"] + label:after {
+    display: none;
   }
+  [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
+    display: flex;
+    background-color: #00BAF2;
+    color: #fff;
+    font-size: larger;
+    padding: 6% 0;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 2% 0;
+  }
+  [type="radio"]:checked + label {
+    background-color: darken($turquesa, 20%);
+  }
+
 }
 
 button.btn-submit {
