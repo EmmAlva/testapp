@@ -535,7 +535,8 @@ select:focus {
     }
   }
   .selected {
-    background-color: darken($white, 15%);
+    background-color: $naranja;
+    border-color: $naranja;
   }
 }
 

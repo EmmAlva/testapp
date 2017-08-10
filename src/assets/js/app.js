@@ -49,7 +49,9 @@ $(_ => {
                 margin: 0,
                 URLhashListener: true,
                 autoplay: false,
-                startPosition: 'URLHash'
+                startPosition: 'URLHash',
+                mouseDrag: false,
+                touchDrag: false
             });
 
         });
