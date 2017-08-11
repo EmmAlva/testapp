@@ -86,6 +86,9 @@ const Questions = (theme, quantity) => {
                 label.on('click', () => {
                     totalQuestion += 1;
                     setTimeout(() => {
+                        //Agregar color a la pregunta marcada
+                        $('.item-hash')[i - 1].classList.add('question-checked');
+
                         //change hash
                         if (i < showQuestion.length) {
                             location.hash = (i + 1).toString();
@@ -97,7 +100,7 @@ const Questions = (theme, quantity) => {
                     }, 700);
 
                     //Activar boton de enviar
-                    if ( totalQuestion === (showQuestion.length - Math.round(showQuestion.length/2))) {
+                    if (totalQuestion === (showQuestion.length - Math.round(showQuestion.length / 2))) {
                         submit.removeAttr('disabled');
                     }
                 });

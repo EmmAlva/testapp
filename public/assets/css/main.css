@@ -7598,6 +7598,9 @@ select:focus {
       padding: 8px;
       width: 100%;
       height: 100%; }
+  .carousel-number .question-checked {
+    background-color: #cb7a06;
+    border-color: #F9AC3E; }
   .carousel-number .selected {
     background-color: #F9AC3E;
     border-color: #F9AC3E; }
@@ -7643,3 +7646,9 @@ button.btn-submit {
   z-index: 9; }
   button.btn-submit:hover {
     background-color: #b26b06; }
+
+/*Centrado de app en desktop*/
+@media only screen and (min-width: 601px) {
+  .question-container .row .col.m4 {
+    margin: 0 auto;
+    float: none; } }

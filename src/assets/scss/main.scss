@@ -534,6 +534,10 @@ select:focus {
       height: 100%;
     }
   }
+  .question-checked {
+    background-color: darken($naranja, 20%);
+    border-color: $naranja;
+  }
   .selected {
     background-color: $naranja;
     border-color: $naranja;
@@ -590,5 +594,15 @@ button.btn-submit {
   z-index: 9;
   &:hover {
     background-color: darken($naranja, 25%);
+  }
+}
+
+/*Centrado de app en desktop*/
+@media only screen and (min-width: 601px) {
+  .question-container {
+    .row .col.m4 {
+      margin: 0 auto;
+      float: none;
+    }
   }
 }
