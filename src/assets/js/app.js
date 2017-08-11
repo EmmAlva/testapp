@@ -4,7 +4,8 @@ const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
     //wrapper.append(Header);
-    wrapper.append(Questions(state.courses[3].tests[3], 5));
+    wrapper.append(Questions(state.courses[3].tests[3], 10));
+    //wrapper.append(Result(85,4,6,[1,2,3,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4]));
     //wrapper.append(Login(_ => render(root)));
 
     root.append(wrapper);

@@ -1,15 +1,14 @@
 'use strict';
 
 const Questions = (theme, quantity) => {
-
     const container = $('<div class="question-container main-container"></div>');
     const row = $('<div class="row"></div>');
-    const relative = $('<div class="col s12 m4"></div>');
+    const column = $('<div class="col s12 m4 center-column"></div>');
 
     const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
     const carruselQuestion = $('<div class="owl-carousel owl-theme center carousel-question"></div>');
 
-    const submit = $('<button class="btn btn-submit" disabled>Enviar prueba</button>');
+    const submit = $('<button class="btn btn-submit" disabled>Enviar Prueba</button>');
 
     const easy = [];
     const medium = [];
@@ -54,10 +53,11 @@ const Questions = (theme, quantity) => {
     const percentQ = 100 / showQuestion.length; // porcentaje por respuesta
     let percentFinal = 0;
     let totalQuestion = 0;
+    const correctAnswer = [];
 
     //Nombre de input radio // Respuestas Correctas
     const inputName = [];
-    const correctAnswer = [];
+    const correctQuestion = [];
 
     showQuestion.forEach((data, index) => {
         if (index < showQuestion.length) {
@@ -72,12 +72,11 @@ const Questions = (theme, quantity) => {
                 itemNumber.addClass('selected')
             }
 
-
             itemNumber.append(itemNumberHref);
             itemQuestion.append(problem);
 
             inputName.push(data.name);
-            correctAnswer.push(data.correct);
+            correctQuestion.push(data.correct);
             const array = [1, 2, 3, 4];
             array.forEach((ind) => {
                 const input = $('<input type="radio" name="' + data.name + '" value="' + ind + '" id="' + data.name + ind + '">');
@@ -114,30 +113,25 @@ const Questions = (theme, quantity) => {
     });
 
     submit.on('click', () => {
-        totalQuestion = 0;
         //Filtrando respuestas
         inputName.forEach((name, index) => {
-            const nameVal = $("input[name=" + name + " ]:checked").val();
-            if (nameVal === correctAnswer[index].toString()) {
-                totalQuestion += 1;
+            const nameVal = $("input[name=" + name + " ]:checked");
+            if (nameVal.val() === correctQuestion[index].toString()) {
+                correctAnswer.push(nameVal.parent().data('hash'));
             }
         });
-
-        percentFinal = Math.round(totalQuestion * percentQ);
+        percentFinal = Math.round(correctAnswer.length * percentQ);
         setTimeout(() => {
             location.hash = "";
-            relative.replaceWith(Result(percentFinal, totalQuestion, showQuestion));
+            container.replaceWith(Result(percentFinal, correctAnswer, showQuestion));
         }, 500);
     });
 
-
-    relative.append(carouselNumber);
-    relative.append(carruselQuestion);
-    relative.append(submit);
-    row.append(relative);
+    column.append(carouselNumber);
+    column.append(carruselQuestion);
+    column.append(submit);
+    row.append(column);
     container.append(row);
-
-
     return container;
 };
 
