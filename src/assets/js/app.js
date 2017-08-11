@@ -4,7 +4,7 @@ const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
     //wrapper.append(Header);
-    wrapper.append(Questions(state.courses[3].tests[3], 15));
+    wrapper.append(Questions(state.courses[3].tests[3], 5));
     //wrapper.append(Login(_ => render(root)));
 
     root.append(wrapper);
@@ -40,6 +40,7 @@ $(_ => {
                 margin: 0,
                 URLhashListener: true,
                 autoplay: false,
+                autoplayHoverPause:true,
                 startPosition: 'URLHash'
             });
             $('.carousel-question').owlCarousel({

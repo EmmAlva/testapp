@@ -7634,10 +7634,11 @@ select:focus {
     background-color: #006c8c; }
 
 button.btn-submit {
-  position: absolute;
-  width: 50%;
+  width: 75%;
   bottom: 7%;
-  left: 25%;
+  margin: 0 auto;
+  display: block;
+  height: 40px;
   background-color: #F9AC3E;
   z-index: 9; }
   button.btn-submit:hover {

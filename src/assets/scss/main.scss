@@ -581,11 +581,12 @@ select:focus {
 }
 
 button.btn-submit {
-  position: absolute;
-  width: 50%;
+  width: 75%;
   bottom: 7%;
-  left: 25%;
-  background-color: $naranja;
+  margin: 0 auto;
+  display: block;
+  height: 40px;
+  background-color: #F9AC3E;
   z-index: 9;
   &:hover {
     background-color: darken($naranja, 25%);

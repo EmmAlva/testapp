@@ -266,20 +266,21 @@ const Questions = (theme, quantity) => {
     const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
     const carruselQuestion = $('<div class="owl-carousel owl-theme center carousel-question"></div>');
 
-    const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
+    const submit = $('<button class="btn btn-submit" disabled>Enviar prueba</button>');
 
     const easy = [];
     const medium = [];
     const difficult = [];
 
+    //Total de preguntas que se muestran
     const showQuestion = [];
+    //Cantidad de preguntas y cantidad por nivel facil/intermedio/dificil
     const quesquan = {
         "5": [2, 2, 1],
         "10": [4, 3, 3],
         "15": [5, 5, 5],
         "20": [7, 7, 6]
     };
-
 
     theme.questions.forEach((data) => {
         if (data.difficult == 1) {
@@ -290,34 +291,36 @@ const Questions = (theme, quantity) => {
             difficult.push(data);
         }
     });
+
+    //Cantidad de preguntas
     const selectQuantity = quesquan["" + quantity + ""];
 
-    easy.forEach((e, index) => {
-        if (index < selectQuantity[0]) {
-            showQuestion.push(e);
-        }
-    });
-    medium.forEach((e, index) => {
-        if (index < selectQuantity[1]) {
-            showQuestion.push(e);
-        }
-    });
-    difficult.forEach((e, index) => {
-        if (index < selectQuantity[2]) {
-            showQuestion.push(e);
-        }
-    });
+    //filtrando niveles de preguntas por cantidad
+    const questionLevel = (level, i) => {
+        level.forEach((e, index) => {
+            if (index < selectQuantity[i]) {
+                showQuestion.push(e);
+            }
+        });
+    };
+    questionLevel(easy, 0);
+    questionLevel(medium, 1);
+    questionLevel(difficult, 2);
 
-    const percentQ = 100 / showQuestion.length;
+    //Porcentajes de respuesta
+    const percentQ = 100 / showQuestion.length; // porcentaje por respuesta
     let percentFinal = 0;
-
     let totalQuestion = 0;
+
+    //Nombre de input radio // Respuestas Correctas
+    const inputName = [];
+    const correctAnswer = [];
 
     showQuestion.forEach((data, index) => {
         if (index < showQuestion.length) {
             const i = index + 1;
             const problem = $('<div class="problem"><p>' + data.problem + '</p></div>');
-            const itemNumber = $('<div class="item item-hash"></div>');
+            const itemNumber = $('<div class="item item-hash" ></div>');
             const itemNumberHref = $('<a href="#' + i + '"><div class="item-number">' + i + '</div></a>');
             const itemQuestion = $('<div class="item item-question" data-hash="' + i + '"></div>');
 
@@ -326,25 +329,34 @@ const Questions = (theme, quantity) => {
                 itemNumber.addClass('selected')
             }
 
+
             itemNumber.append(itemNumberHref);
             itemQuestion.append(problem);
 
+            inputName.push(data.name);
+            correctAnswer.push(data.correct);
             const array = [1, 2, 3, 4];
             array.forEach((ind) => {
                 const input = $('<input type="radio" name="' + data.name + '" value="' + ind + '" id="' + data.name + ind + '">');
                 const label = $(' <label for="' + data.name + ind + '">' + data["" + ind + ""] + '</label>');
-                label.on('click', () => {
-                    setTimeout(() => {
-                        location.hash = (i + 1).toString();
-                    }, 700);
-                    if (ind.toString() === data.correct.toString()) {
-                        console.log(input.val());
-                        percentFinal += percentQ;
-                        totalQuestion += index;
-                    }
-                    //console.log(percentFinal);
-                    //console.log(totalQuestion);
 
+                label.on('click', () => {
+                    totalQuestion += 1;
+                    setTimeout(() => {
+                        //change hash
+                        if (i < showQuestion.length) {
+                            location.hash = (i + 1).toString();
+                        }
+                        //active tranform
+                        const owl = $('.carousel-number');
+                        owl.owlCarousel();
+                        owl.trigger('next.owl.carousel');
+                    }, 700);
+
+                    //Activar boton de enviar
+                    if ( totalQuestion === (showQuestion.length - Math.round(showQuestion.length/2))) {
+                        submit.removeAttr('disabled');
+                    }
                 });
                 itemQuestion.append(input);
                 itemQuestion.append(label);
@@ -352,16 +364,30 @@ const Questions = (theme, quantity) => {
             carouselNumber.append(itemNumber);
             carruselQuestion.append(itemQuestion);
         }
+
     });
 
-    submit.on('click', (e) => {
-        //Result(percentFinal, totalQuestion,showQuestion);
-        $('.col.s12').replaceWith(Result(percentFinal, totalQuestion, showQuestion));
+    submit.on('click', () => {
+        totalQuestion = 0;
+        //Filtrando respuestas
+        inputName.forEach((name, index) => {
+            const nameVal = $("input[name=" + name + " ]:checked").val();
+            if (nameVal === correctAnswer[index].toString()) {
+                totalQuestion += 1;
+            }
+        });
+
+        percentFinal = Math.round(totalQuestion * percentQ);
+        setTimeout(() => {
+            location.hash = "";
+            relative.replaceWith(Result(percentFinal, totalQuestion, showQuestion));
+        }, 500);
     });
 
 
     relative.append(carouselNumber);
     relative.append(carruselQuestion);
+    relative.append(submit);
     row.append(relative);
     container.append(row);
 
@@ -374,44 +400,13 @@ $(window).bind('hashchange', () => {
     const windowHash = location.hash;
     $('.item-hash a').each((i, data) => {
         if (data.hash == windowHash) {
+            //add color to number selected
             $('.item-hash')[i].classList.add('selected');
-            /*const carouselWidth = $('.carousel-number').width() / 5;
-            $('.carousel-number .owl-stage')[0].style.transform = 'translate3d(' + (-1 * (i * carouselWidth)) + ', 0, 0)';
-
-            //transform: translate3d(-203px, 0px, 0px)
-            console.log((-1 * (i * carouselWidth)));
-            console.log($('.carousel-number .owl-stage')[0].style.transform);
-            //console.log($('.carousel-number .owl-stage')[0].style.width);
-            console.log(carouselWidth * i);*/
         } else {
             $('.item-hash')[i].classList.remove('selected');
         }
-
     });
-
 });
-
-
-/*const counterContainer = $('<div class="counter-container"></div>');
-const questionsLength = (quantity * 64 );
-counterContainer.css('width', questionsLength + 'px');
-
-theme.questions.forEach((e, index) => {
-    const windowWith = Math.floor($(window).width() / 64);
-
-    if (index < quantity) {
-        const counter = $('<div class="counter"></div>');
-        console.log(windowWith);
-
-        const i = index + 1;
-        //const medida =
-        if (index < windowWith) {
-            counter.addClass('active');
-        }
-        counter.append(i);
-        counterContainer.append(counter);
-    }
-});*/
 
 'use strict';
 
@@ -542,7 +537,7 @@ const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
     //wrapper.append(Header);
-    wrapper.append(Questions(state.courses[3].tests[3], 15));
+    wrapper.append(Questions(state.courses[3].tests[3], 5));
     //wrapper.append(Login(_ => render(root)));
 
     root.append(wrapper);
@@ -578,6 +573,7 @@ $(_ => {
                 margin: 0,
                 URLhashListener: true,
                 autoplay: false,
+                autoplayHoverPause:true,
                 startPosition: 'URLHash'
             });
             $('.carousel-question').owlCarousel({
