@@ -7211,11 +7211,14 @@ button.select-label {
   bottom: 0; }
 
 /*MENU*/
-.bg_profile {
+header .bg_profile {
   background-color: #9A3267; }
 
-button:focus {
+header button:focus {
   background-color: rgba(143, 43, 143, 0.5) !important; }
+
+header .side-nav {
+  width: 250px; }
 
 /*LOGIN*/
 .login_error {
@@ -7573,7 +7576,7 @@ select:focus {
 
 /*Preguntas*/
 .carousel-number {
-  margin: 15% 0 5% 0; }
+  margin-top: 6%; }
   .carousel-number h5 {
     margin: 0;
     font-size: 1.3rem; }

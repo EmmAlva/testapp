@@ -20,9 +20,10 @@ $font-size: 16px;
 
 $colors: (1 : $main, 2 : $turquesa, 3 : $verde, 4 : $naranja, 5:$morado, 6:$main);
 
-*{
+* {
   box-sizing: border-box;
 }
+
 h5 {
   padding: 3px 8px;
 }
@@ -129,12 +130,17 @@ button.select-label {
 }
 
 /*MENU*/
-.bg_profile {
-  background-color: $morado;
-}
+header {
+  .bg_profile {
+    background-color: $morado;
+  }
 
-button:focus {
-  background-color: rgba(143, 43, 143, 0.5) !important;
+  button:focus {
+    background-color: rgba(143, 43, 143, 0.5) !important;
+  }
+  .side-nav {
+    width: 250px;
+  }
 }
 
 /*LOGIN*/
@@ -496,7 +502,7 @@ select:focus {
 
 /*Preguntas*/
 .carousel-number {
-  margin: 15% 0 5% 0;
+  margin-top: 6%;
   h5 {
     margin: 0;
     font-size: 1.3rem;

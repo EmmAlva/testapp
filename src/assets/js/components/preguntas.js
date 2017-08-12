@@ -1,6 +1,7 @@
 'use strict';
 
 const Questions = (theme, quantity) => {
+    $(".button-collapse").css({ 'display': "none" });
     const container = $('<div class="question-container main-container"></div>');
     const row = $('<div class="row"></div>');
     const column = $('<div class="col s12 m4 center-column"></div>');

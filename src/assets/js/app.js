@@ -3,10 +3,7 @@
 const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
-    //wrapper.append(Header);
-    wrapper.append(Questions(state.courses[3].tests[3], 10));
-    //wrapper.append(Result(85,4,6,[1,2,3,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4]));
-    //wrapper.append(Login(_ => render(root)));
+    wrapper.append(Login(_ => render(root), wrapper));
 
     root.append(wrapper);
 
@@ -30,10 +27,8 @@ $(_ => {
             //active menu
             const root = $('.root');
             render(root);
-            // state.nextPage= Login;
+            state.nextPage= Login;
 
-            $(".button-collapse").sideNav();
-            /*$('#modal1').modal();*/
             $('.carousel-number').owlCarousel({
                 items: 5,
                 loop: false,

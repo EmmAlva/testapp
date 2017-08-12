@@ -3,7 +3,7 @@ const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
-	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
+	const back = $('<a href="#!" class="back left" style="display: none;"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo typo">TestAPP</a>');
 	const aMenu = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"></a>');
 	const iconMenu = $("<i class='material-icons'>menu</i>");
@@ -21,7 +21,6 @@ const Header = () => {
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
 	const alog = $('<li><a href="">Log out</a></li>');
-	// aMenu.hide();
 	apract.on('click', (e)=>{
 		e.preventDefault();
 		$('section').replaceWith(Construccion());
@@ -51,4 +50,4 @@ const Header = () => {
 
 	return header;
 
-}
+};

@@ -66,7 +66,7 @@ const Header = () => {
 	const header = $('<header></header>');
 	const nav  = $('<nav class="bg_morado"></nav>');
 	const div = $("<div class='nav-wrapper'></div>");
-	const back = $('<a href="#!" class="back  left"><i class="material-icons ">chevron_left</i></a>');
+	const back = $('<a href="#!" class="back left" style="display: none;"><i class="material-icons ">chevron_left</i></a>');
 	const a = $('<a href="#!" class="brand-logo typo">TestAPP</a>');
 	const aMenu = $('<a href="#" data-activates="mobile-demo" class="button-collapse right"></a>');
 	const iconMenu = $("<i class='material-icons'>menu</i>");
@@ -84,7 +84,6 @@ const Header = () => {
 	const aset = $('<a href="">Settings</a>');
 	const li4 = $('<li></li>');
 	const alog = $('<li><a href="">Log out</a></li>');
-	// aMenu.hide();
 	apract.on('click', (e)=>{
 		e.preventDefault();
 		$('section').replaceWith(Construccion());
@@ -114,82 +113,82 @@ const Header = () => {
 
 	return header;
 
-}
+};
 
 'use strict';
 
-const Login  = (update) =>{
+const Login = (update, wrapper) => {
 
-	const section = $('<section id="register"></section>');
-	const div = $('<div class="container"></div>');
-	const row0 = $('<div class="row"></div>');
-	const col0 = $('<div class="col l12 s12 center"></div>');
-	const logo = $('<img src="assets/img/logo-utp.png" alt="logo">');
+    const section = $('<section id="register"></section>');
+    const div = $('<div class="container"></div>');
+    const row0 = $('<div class="row"></div>');
+    const col0 = $('<div class="col l12 s12 center"></div>');
+    const logo = $('<img src="assets/img/logo-utp.png" alt="logo">');
 
-	const row1 = $('<div class="row"></div>');
-	const col1 = $('<div class="col l12 s12 center"></div>');
-	const title =$('<h1 class="typo">TestAPP</h1>');
+    const row1 = $('<div class="row"></div>');
+    const col1 = $('<div class="col l12 s12 center"></div>');
+    const title = $('<h1 class="typo">TestAPP</h1>');
 
-	const row2 = $('<div class="row"></div>');
-	const form =$('<form class="col l12 s12"></form>');
-	const divIn0 = $('<div class="input-field col s12"></div>');
-	const span0 = $('<span id="response0" class="login_error"></span>');
-	const input0 = $('<input id="user_name" type="text" class="validate m-0">');
-	const label0 = $(' <label for="user_name">Usuario</label>');
+    const row2 = $('<div class="row"></div>');
+    const form = $('<form class="col l12 s12"></form>');
+    const divIn0 = $('<div class="input-field col s12"></div>');
+    const span0 = $('<span id="response0" class="login_error"></span>');
+    const input0 = $('<input id="user_name" type="text" class="validate m-0">');
+    const label0 = $(' <label for="user_name">Usuario</label>');
 
-	const divIn1 = $('<div class="input-field col s12"></div>');
-	const input1 = $('<input id="password" type="password" class="validate m-0">');
-	const label1 = $('<label for="password">Password</label>');
-	const span1 = $('<span id="response1" class="login_error"></span>');
-
-
-	const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>');
-
-	section.append(div);
-	section.append(btn);
-	div.append(row0);
-	row0.append(col0);
-	col0.append(logo);
-
-	div.append(row1);
-	row1.append(col1);
-	col1.append(title);
-
-	div.append(row2);
-	row2.append(form);
-	form.append(divIn0);
-	form.append(divIn1);
-
-	divIn0.append(input0);
-	divIn0.append(label0);
-	divIn0.append(span0);
-
-	divIn1.append(input1);
-	divIn1.append(label1);
-	divIn1.append(span1);
+    const divIn1 = $('<div class="input-field col s12"></div>');
+    const input1 = $('<input id="password" type="password" class="validate m-0">');
+    const label1 = $('<label for="password">Password</label>');
+    const span1 = $('<span id="response1" class="login_error"></span>');
 
 
-	btn.on('click', (e) =>{
-		e.preventDefault();
-		state.users.forEach((e,i)=>{
-			if($('#user_name').val() != e.id && $('#password').val() != e.password){
-				span0.text('*Campo inválido');
-				$('#response1').text('*Campo inválido');
-			}
-			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
-				state.userLogin = i;
-				//console.log(state.userLogin);
-				$('section').replaceWith(Cursos());
-			}
-			else{
-				span0.text('*Completar campos');
-				$('#response1').text('*Completar campos');
-			}
-		})
-	});
+    const btn = $('<button class="center btn-down bg_morado select-label" >INGRESAR</button>');
 
-	return section;
-}
+
+    btn.on('click', (e) => {
+        e.preventDefault();
+        state.users.forEach((e, i) => {
+            if ($('#user_name').val() != e.id && $('#password').val() != e.password) {
+                span0.text('*Campo inválido');
+                $('#response1').text('*Campo inválido');
+            }
+            else if ($('#user_name').val() == e.id && $('#password').val() == e.password) {
+                state.userLogin = i;
+                //console.log(state.userLogin);
+                $('section').replaceWith(Cursos());
+                wrapper.prepend(Header());
+                $(".button-collapse").sideNav();
+            }
+            else {
+                span0.text('*Completar campos');
+                $('#response1').text('*Completar campos');
+            }
+        })
+    });
+    section.append(div);
+    section.append(btn);
+    div.append(row0);
+    row0.append(col0);
+    col0.append(logo);
+
+    div.append(row1);
+    row1.append(col1);
+    col1.append(title);
+
+    div.append(row2);
+    row2.append(form);
+    form.append(divIn0);
+    form.append(divIn1);
+
+    divIn0.append(input0);
+    divIn0.append(label0);
+    divIn0.append(span0);
+
+    divIn1.append(input1);
+    divIn1.append(label1);
+    divIn1.append(span1);
+    return section;
+};
 
 'use strict';
 const Practicas = ()=>{
@@ -258,6 +257,7 @@ const Practicas = ()=>{
 'use strict';
 
 const Questions = (theme, quantity) => {
+    $(".button-collapse").css({ 'display': "none" });
     const container = $('<div class="question-container main-container"></div>');
     const row = $('<div class="row"></div>');
     const column = $('<div class="col s12 m4 center-column"></div>');
@@ -555,10 +555,7 @@ const Result = (percentFinal, correctAnswer, questions) => {
 const render = (root) => {
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
-    //wrapper.append(Header);
-    wrapper.append(Questions(state.courses[3].tests[3], 10));
-    //wrapper.append(Result(85,4,6,[1,2,3,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4]));
-    //wrapper.append(Login(_ => render(root)));
+    wrapper.append(Login(_ => render(root), wrapper));
 
     root.append(wrapper);
 
@@ -582,10 +579,8 @@ $(_ => {
             //active menu
             const root = $('.root');
             render(root);
-            // state.nextPage= Login;
+            state.nextPage= Login;
 
-            $(".button-collapse").sideNav();
-            /*$('#modal1').modal();*/
             $('.carousel-number').owlCarousel({
                 items: 5,
                 loop: false,
