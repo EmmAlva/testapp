@@ -17,11 +17,11 @@ const Login = (update, wrapper) => {
     const form = $('<form class="col l12 s12"></form>');
     const divIn0 = $('<div class="input-field col s12"></div>');
     const span0 = $('<span id="response0" class="login_error"></span>');
-    const input0 = $('<input id="user_name" value="1234" type="text" class="validate m-0">');
+    const input0 = $('<input id="user_name" type="text" class="validate m-0">');
     const label0 = $(' <label for="user_name">Usuario</label>');
 
     const divIn1 = $('<div class="input-field col s12"></div>');
-    const input1 = $('<input id="password" value="1234" type="password" class="validate m-0">');
+    const input1 = $('<input id="password" type="password" class="validate m-0">');
     const label1 = $('<label for="password">Password</label>');
     const span1 = $('<span id="response1" class="login_error"></span>');
 

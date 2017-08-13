@@ -32,7 +32,7 @@ const Result = (percentFinal, correctAnswer, questions) => {
         }
         const modalContainer = $('<div id="modal' + index + '" class="modal"></div>');
         const modalContent = $(' <div class="modal-content"></div>');
-        const closeModal = $('<a href="#!" class="modal-action modal-close">&#10005</a>');
+        const closeModal = $('<span class="modal-action modal-close icon-close">&#10005</span>');
         const questionNumber = $('<p>Pregunta ' + index + ':</p>');
         const questionText = $('<h5>' + data.problem + '</h5>');
         const questionAnswer = $('<p>Respuesta Correcta:<br><h3>' + data[data.correct.toString()] + '</h3></p>');

@@ -9,43 +9,71 @@ const Practicas = () => {
     const row = $('<div class="row"></div>');
     const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
-    const sub1 = $("<div class='row center'></div>");
+    const sub1 = $("<div class='col s12 center'></div>");
     const h3 = $("<h4>Practicas</h4>");
-    const sub2 = $("<div class='row'></div>");
+    const sub2 = $("<div class='col s12'></div>");
 
 
     $.each(state.coursesSelected.tests, (i, obj) => {
 
-        const divCol = $("<div class='col s10 offset-s1 test'></div>");
-
-        let divImg = $("<a class='col s4'></a>");
+        let divCol = $("<div class='col s6'></div>");
+        if (i > 3) {
+            divCol = $("<div class='col s12'></div>");
+        }
+        const containerTest = $(`<div class='col s12 test test-${obj.codigo}'></div>`);
+        let divImg = $("<div class='col s12 center'></div>");
         let img = $(`<img src='assets/img/${obj.image}'/>`);
-        let divDetails = $(`<div class=' col s8 detail'></div>`);
         let title = $(`<p class='title'>${obj.name}</p>`);
-        let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-        let quiz = $("<a href='#' class='btn-danger'>Quiz</a>");
-
-        if (obj.name == "Exámen Final"){
-            divCol.css({'border-color':'#F9AC3E'});
+        let themes = $(`<a class='modal-trigger' href='#modal${obj.codigo}'></a>`);
+        let divDetails = $(`<div class=' col s12 detail detail-${obj.codigo} center'></div>`);
+        const detailText = $('<span>Temario</span>');
+        if (obj.name == "Exámen Final") {
+            containerTest.css({'border-color': '#F9AC3E'});
         }
 
-        quiz.on("click", (e) => {
-            e.preventDefault();
+        //Modal of Themes
+        const modalContainer = $(`<div id="modal${obj.codigo}" class="modal"></div>`);
+        const modalContent = $('<div class="modal-content"></div>');
+        const modalClose = $('<span class="modal-action modal-close icon-close">&#10005</span>');
+        const modalQuiz = $('<button class="btn btn-modal bg_naranja modal-action modal-close">Prueba</button>');
+        modalContent.append(modalClose);
+
+        $.each(obj.themes, (index, data) => {
+            if (index < 3) {
+                const titleTheme = $(`<strong><p>${data}</p></strong>`);
+                const textTheme = $(`<span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci amet consequatur debitis deserunt, excepturi.</span>`);
+
+
+                modalContent.append(titleTheme);
+                modalContent.append(textTheme);
+            }
+        });
+
+        modalQuiz.on('click', () => {
             state.practicSelect = obj;
-            //console.log(obj);
+            console.log(obj);
+            container.replaceWith(Preguntas());
+        });
+        modalContent.append(modalQuiz);
+
+        divImg.on("click", (e) => {
+            state.practicSelect = obj;
             container.replaceWith(Preguntas());
         });
 
-
         divImg.append(img);
+        divImg.append(title);
 
-        divDetails.append(title);
-        divDetails.append(temas);
-        divDetails.append(quiz);
+        divDetails.append(detailText);
+        themes.append(divDetails);
 
-        divCol.append(divImg);
-        divCol.append(divDetails);
+        modalContainer.append(modalContent);
+        containerTest.append(divImg);
+        containerTest.append(themes);
+        containerTest.append(modalContainer);
+        modalContainer.modal();
 
+        divCol.append(containerTest);
         sub2.append(divCol);
     });
 

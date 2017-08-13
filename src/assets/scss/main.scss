@@ -24,32 +24,11 @@ body {
   padding: 0;
 }
 
+/*REUSABLES*/
+
 .font-logo {
   font-family: 'Shadows Into Light', cursive;
 }
-
-//container
-.main-container {
-  width: 100%;
-  .row {
-    margin: 0;
-  }
-  .center-column {
-    .row {
-      padding-bottom: 20px;
-    }
-  }
-}
-
-section.main-container {
-  .center-column {
-    height: 91vh;
-    position: relative;
-    padding: 0;
-  }
-}
-
-/*REUSABLES*/
 
 .p-0 {
   padding: 0 !important;
@@ -78,6 +57,41 @@ section.main-container {
   bottom: 0;
   width: 100%;
   height: 50px;
+}
+
+//container
+.main-container {
+  width: 100%;
+  .row {
+    margin: 0;
+  }
+  .center-column {
+    .row {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+section.main-container {
+  .center-column {
+    height: 91vh;
+    position: relative;
+    padding: 0;
+  }
+}
+
+//Modal Close
+a.modal-trigger {
+  color: black;
+}
+
+.modal .modal-close.icon-close {
+  cursor: pointer;
+  color: lighten(black, 20%);
+  font-size: 2.3rem;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
 /*MENU*/
@@ -191,7 +205,8 @@ header {
   }
 
   .course h5 {
-    padding: 20px 10px;
+    text-align: center;
+    padding: 20px 0;
   }
 
   .course h2 {
@@ -206,64 +221,70 @@ header {
   }
 }
 
-/*PRACTICAS*/
+/*Practicas*/
 .exams-container {
-  h4{
+  h4 {
     margin: 0;
-    padding: 1.14rem 0 0.912rem 0;
+    padding: 8% 0;
   }
+
   .test {
-    border: 2px solid $verde;
-    border-radius: 15px;
-    padding: 0.25rem 0.75rem;
-    margin: 2%;
-  }
-  img {
-    height: 50px;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 0;
+    padding-top: 0.25rem;
+    margin-bottom: 5%;
+    cursor: pointer;
+
+    &-1, &-2 {
+      border-color: $turquesa;
+    }
+    &-3, &-4 {
+      border-color: $verde;
+    }
+    &-5 {
+      border-color: $naranja;
+    }
+
+    img {
+      margin: 2%;
+      height: 50px;
+    }
+    .title {
+      margin-bottom: 3%;
+      margin-top: 2%;
+      font-weight: 600;
+    }
   }
 
-  .test:nth-child(3) .detail a:nth-child(3),
-  .test:nth-child(4) .detail a:nth-child(3) {
-    background-color: $verde;
-    border: 1px solid $verde;
-  }
-
-  .test:last-child .detail a {
-    width: 50%;
-    display: inline-block;
-    text-align: center;
-  }
-
-  .test:last-child .detail a:nth-child(3) {
-    background-color: $naranja;
-    border-top: 1px solid $naranja;
-  }
-
-  .btn-danger {
-    background-color: $naranja;
-  }
-
-  .title {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    font-weight: 600;
-  }
-
-  .detail a:nth-child(3) {
-    color: $white;
-  }
-
-  .detail a:nth-child(2) {
-    color: $gray;
-    border-top: 1px solid $gray;
-  }
-
-  .detail a {
+  .detail {
     padding: 2px 11px;
+    & span {
+      color: $white;
+    }
+    &-1, &-2 {
+      background-color: $turquesa;
+    }
+    &-3, &-4 {
+      background-color: $verde;
+    }
+    &-5 {
+      background-color: $naranja;
+    }
+  }
+  .modal {
+    min-height: 80vh;
+  }
+  .modal-content .small {
+    font-size: 0.9rem;
+  }
+  .btn-modal {
+    width: 100%;
+    margin: 8% 0;
   }
 }
 
-/*Q preguntas*/
+/*Cantidad de preguntas*/
 .quantity-container {
   h4 {
     padding: 15% 5%;
@@ -284,22 +305,6 @@ header {
   }
 }
 
-/*COntrucción*/
-#build img {
-  width: 60%;
-}
-
-#build .col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#build p {
-  width: 60%;
-}
-
 /*Resultado*/
 
 .result-container {
@@ -312,22 +317,12 @@ header {
     height: 35px;
     border: 2px solid $main;
     background-color: lighten($main, 50%);
+
     margin: 1.5%;
     border-radius: 50%;
     font-size: 1.2rem;
     padding: 5px;
     cursor: pointer;
-  }
-  a.modal-trigger {
-    color: black;
-  }
-  .modal .modal-close {
-    cursor: pointer;
-    color: lighten(black, 20%);
-    font-size: 2.3rem;
-    position: absolute;
-    top: 0;
-    right: 10px;
   }
   .correct-answer {
     border-color: $verde;
@@ -432,7 +427,25 @@ button.btn-submit {
   }
 }
 
-/*Centrado de app en desktop*/
+/*Construcción*/
+.build-container {
+  img {
+    width: 60%;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    width: 60%;
+  }
+}
+
+/*App en desktop*/
 @media only screen and (min-width: 601px) {
   .row .col.center-column {
     margin: 0 auto;
@@ -449,6 +462,7 @@ button.btn-submit {
     .center-column {
       height: 73vh;
       border: 1px solid lighten($gray, 35%);
+      border-top: 0;
       h1 {
         margin: 0;
         padding: 2.1rem 0 1.68rem 0;
@@ -457,5 +471,8 @@ button.btn-submit {
   }
   .login-container .row .col.s12.center-column {
     height: 80vh;
+  }
+  .exams-container .modal {
+    width: 40%;
   }
 }

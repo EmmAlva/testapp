@@ -1,23 +1,27 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-const Construccion = () =>{
-	const section = $('<section id="build" class="relative-col bg_morado" ></section>');
-	const div = $('<div class="container absolute-child "></div>');
-	const row0 = $('<div class="row"></div>');
-	const col0 = $('<div class="col l12 s12 center relative-col white-text"></div>');
-	const img = $('<img src="assets/img/data.svg" alt ="construccion">');
-	const title = $('<h3><strong>¡EN CONSTRUCCIÓN</strong></h3>');
-	const p = $('<p><strong>Esta sección estará disponible para ti muy pronto</strong></p>');
+const Construccion = () => {
+    const container = $('<section class="build-container main-container"></section>');
+    const row = $('<div class="row"></div>');
+    const column = $('<div class="col s12 m6 l4 center-column  bg_morado"></div>');
+    const div = $('<div class="container absolute-child "></div>');
+    const row0 = $('<div class="row"></div>');
+    const col0 = $('<div class="col l12 s12 center relative-col white-text"></div>');
+    const img = $('<img src="assets/img/data.svg" alt ="construccion">');
+    const title = $('<h3><strong>¡En Construcción!</strong></h3>');
+    const p = $('<p><strong>Esta sección estará disponible para ti muy pronto.</strong></p>');
 
-	section.append(div);
-	div.append(row0);
-	row0.append(col0);
-	col0.append(img);
-	col0.append(title);
-	col0.append(p);
+    column.append(div);
+    div.append(row0);
+    row0.append(col0);
+    col0.append(img);
+    col0.append(title);
+    col0.append(p);
 
-	return section;
+    row.append(column);
+    container.append(row);
+    return container;
 
 };
 const Cursos = () => {
@@ -148,11 +152,11 @@ const Login = (update, wrapper) => {
     const form = $('<form class="col l12 s12"></form>');
     const divIn0 = $('<div class="input-field col s12"></div>');
     const span0 = $('<span id="response0" class="login_error"></span>');
-    const input0 = $('<input id="user_name" value="1234" type="text" class="validate m-0">');
+    const input0 = $('<input id="user_name" type="text" class="validate m-0">');
     const label0 = $(' <label for="user_name">Usuario</label>');
 
     const divIn1 = $('<div class="input-field col s12"></div>');
-    const input1 = $('<input id="password" value="1234" type="password" class="validate m-0">');
+    const input1 = $('<input id="password" type="password" class="validate m-0">');
     const label1 = $('<label for="password">Password</label>');
     const span1 = $('<span id="response1" class="login_error"></span>');
 
@@ -259,43 +263,71 @@ const Practicas = () => {
     const row = $('<div class="row"></div>');
     const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
-    const sub1 = $("<div class='row center'></div>");
+    const sub1 = $("<div class='col s12 center'></div>");
     const h3 = $("<h4>Practicas</h4>");
-    const sub2 = $("<div class='row'></div>");
+    const sub2 = $("<div class='col s12'></div>");
 
 
     $.each(state.coursesSelected.tests, (i, obj) => {
 
-        const divCol = $("<div class='col s10 offset-s1 test'></div>");
-
-        let divImg = $("<a class='col s4'></a>");
+        let divCol = $("<div class='col s6'></div>");
+        if (i > 3) {
+            divCol = $("<div class='col s12'></div>");
+        }
+        const containerTest = $(`<div class='col s12 test test-${obj.codigo}'></div>`);
+        let divImg = $("<div class='col s12 center'></div>");
         let img = $(`<img src='assets/img/${obj.image}'/>`);
-        let divDetails = $(`<div class=' col s8 detail'></div>`);
         let title = $(`<p class='title'>${obj.name}</p>`);
-        let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-        let quiz = $("<a href='#' class='btn-danger'>Quiz</a>");
-
-        if (obj.name == "Exámen Final"){
-            divCol.css({'border-color':'#F9AC3E'});
+        let themes = $(`<a class='modal-trigger' href='#modal${obj.codigo}'></a>`);
+        let divDetails = $(`<div class=' col s12 detail detail-${obj.codigo} center'></div>`);
+        const detailText = $('<span>Temario</span>');
+        if (obj.name == "Exámen Final") {
+            containerTest.css({'border-color': '#F9AC3E'});
         }
 
-        quiz.on("click", (e) => {
-            e.preventDefault();
+        //Modal of Themes
+        const modalContainer = $(`<div id="modal${obj.codigo}" class="modal"></div>`);
+        const modalContent = $('<div class="modal-content"></div>');
+        const modalClose = $('<span class="modal-action modal-close icon-close">&#10005</span>');
+        const modalQuiz = $('<button class="btn btn-modal bg_naranja modal-action modal-close">Prueba</button>');
+        modalContent.append(modalClose);
+
+        $.each(obj.themes, (index, data) => {
+            if (index < 3) {
+                const titleTheme = $(`<strong><p>${data}</p></strong>`);
+                const textTheme = $(`<span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci amet consequatur debitis deserunt, excepturi.</span>`);
+
+
+                modalContent.append(titleTheme);
+                modalContent.append(textTheme);
+            }
+        });
+
+        modalQuiz.on('click', () => {
             state.practicSelect = obj;
-            //console.log(obj);
+            console.log(obj);
+            container.replaceWith(Preguntas());
+        });
+        modalContent.append(modalQuiz);
+
+        divImg.on("click", (e) => {
+            state.practicSelect = obj;
             container.replaceWith(Preguntas());
         });
 
-
         divImg.append(img);
+        divImg.append(title);
 
-        divDetails.append(title);
-        divDetails.append(temas);
-        divDetails.append(quiz);
+        divDetails.append(detailText);
+        themes.append(divDetails);
 
-        divCol.append(divImg);
-        divCol.append(divDetails);
+        modalContainer.append(modalContent);
+        containerTest.append(divImg);
+        containerTest.append(themes);
+        containerTest.append(modalContainer);
+        modalContainer.modal();
 
+        divCol.append(containerTest);
         sub2.append(divCol);
     });
 
@@ -562,7 +594,7 @@ const Result = (percentFinal, correctAnswer, questions) => {
         }
         const modalContainer = $('<div id="modal' + index + '" class="modal"></div>');
         const modalContent = $(' <div class="modal-content"></div>');
-        const closeModal = $('<a href="#!" class="modal-action modal-close">&#10005</a>');
+        const closeModal = $('<span class="modal-action modal-close icon-close">&#10005</span>');
         const questionNumber = $('<p>Pregunta ' + index + ':</p>');
         const questionText = $('<h5>' + data.problem + '</h5>');
         const questionAnswer = $('<p>Respuesta Correcta:<br><h3>' + data[data.correct.toString()] + '</h3></p>');
