@@ -109,9 +109,9 @@ const Header = (data) => {
  column.append(nav);
  nav.append(div);
  name.append(span);
+ profile.append(circle);
+ profile.append(name);
  li0.append(profile);
- li0.append(circle);
- li0.append(name);
  li2.append(menuProfile);
  li1.append(menuCourses);
  li3.append(menuSettings);

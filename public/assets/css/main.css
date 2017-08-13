@@ -7196,12 +7196,9 @@ header button:focus {
   background-color: rgba(143, 43, 143, 0.5) !important; }
 
 header .bg_profile {
-  height: 12rem; }
+  padding: 20px; }
 
 header li .circle {
-  position: absolute;
-  top: 4%;
-  left: 5%;
   width: 80px;
   height: 80px;
   background-size: 241%;
