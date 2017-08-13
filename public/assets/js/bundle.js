@@ -21,44 +21,42 @@ const Construccion = () =>{
 
 }
 const Cursos = () => {
-  const section = $('<section></section>');
-  const containerPrincipal = $('<div class="container"></div>');
-  const columna1 = $('<div class="row center"></div>');
-  const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
-  const columna2 =$('<div class="row"></div>');
+ const section = $('<section></section>');
+ const containerPrincipal = $('<div class="container"></div>');
+ const columna1 = $('<div class="row center"></div>');
+ const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
+ const columna2 =$('<div class="row"></div>');
 
-  const numCursos = state.users[state.userLogin].courses;
-    numCursos.forEach((e)=>{
-      columna2.append(curso(state.courses[e-1]));
-      //console.log(state.courses[e-1]);
-    });
+ const numCursos = state.users[state.userLogin].courses;
+ numCursos.forEach((e)=>{
+  columna2.append(curso(state.courses[e-1]));
+ });
 
-  columna1.append(title);
-  containerPrincipal.append(columna1);
-  containerPrincipal.append(columna2);
-  section.append(containerPrincipal);
+ columna1.append(title);
+ containerPrincipal.append(columna1);
+ containerPrincipal.append(columna2);
+ section.append(containerPrincipal);
 
-  return section;
+ return section;
 };
 
 const curso = (data)  => {
-  const fila1 = $('<div class="col l4 s6 curso"></div>');
-  const curso1 = $('<div class="course course'+data.id+'"></div>');
-  const titleCourse = $('<h5>'+data.course+'</h5>');
-  const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
-  $('.back').hide();
+ const fila1 = $('<div class="col l4 s6 curso"></div>');
+ const curso1 = $('<div class="course course'+data.id+'"></div>');
+ const titleCourse = $('<h5>'+data.course+'</h5>');
+ const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
+ $('.back').hide();
 
-  curso1.append(titleCourse);
-  curso1.append(practica);
-  fila1.append(curso1);
+ curso1.append(titleCourse);
+ curso1.append(practica);
+ fila1.append(curso1);
 
-  fila1.on('click', ()=>{
-    state.coursesSelected = data;
-    //console.log(data);
-    $('section').replaceWith(Practicas());
-  });
+ fila1.on('click', ()=>{
+  state.coursesSelected = data;
+  $('section').replaceWith(Practicas());
+ });
 
-  return fila1;
+ return fila1;
 }
 
 'use strict';
@@ -110,7 +108,6 @@ const Header = () => {
 	div.append(aMenu);
 	div.append(back);
 	div.append(ul);
-
 
 	return header;
 
@@ -178,7 +175,6 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
-				//console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
 			}
 			else{
@@ -192,8 +188,8 @@ const Login  = (update) =>{
 }
 
 'use strict';
+
 const Practicas = ()=>{
-/*	console.log(state.coursesSelected);*/
 	const practicas = $("<section id='practicas'></section>");
 	const container = $("<div class='container'></div>");
 	const row = $("<div class='row'></div>");
@@ -222,16 +218,14 @@ const Practicas = ()=>{
 		let quiz = $("<a href='# class='btn-danger'>Quiz</a>");
 
 		quiz.on("click", (e)=>{
-		    		e.preventDefault();
-						state.practicSelect = obj;
-						//console.log(obj);
-		    		$('section').replaceWith(Preguntas());
+			e.preventDefault();
+			state.practicSelect = obj;
+			$('section').replaceWith(Preguntas());
 		});
 
 		temas.on("click", (e)=>{
 			e.preventDefault();
 			state.practicSelect = obj;
-			//console.log(obj);
 			$('section').replaceWith(Temario());
 		});
 		divImg.append(img);
@@ -258,108 +252,108 @@ const Practicas = ()=>{
 'use strict';
 
 const Questions = (theme, quantity) => {
-    console.log(theme);
-    const container = $('<div class="container"></div>');
-    const row = $('<div class="row"></div>');
-    const relative = $('<div class="col s12 relative-col"></div>');
-    const absolute = $('<div class="absolute-child"></div>');
+ console.log(theme);
+ const container = $('<div class="container"></div>');
+ const row = $('<div class="row"></div>');
+ const relative = $('<div class="col s12 relative-col"></div>');
+ const absolute = $('<div class="absolute-child"></div>');
 
-    const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
-    const carruselQuestion = $('<div class="owl-carousel owl-theme center' +
-        ' carousel-question"></div>');
+ const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
+ const carruselQuestion = $('<div class="owl-carousel owl-theme center' +
+  ' carousel-question"></div>');
 
-    const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
+ const submit = $('<button class="btn btn-submit">Enviar prueba</button>');
 
-    const easy = [];
-    const medium = [];
-    const difficult = [];
+ const easy = [];
+ const medium = [];
+ const difficult = [];
 
-    const showQuestion = [];
-    const quesquan = {
-        "5": [2, 2, 1],
-        "10": [4, 3, 3],
-        "15": [5, 5, 5],
-        "20": [7, 7, 6]
-    };
+ const showQuestion = [];
+ const quesquan = {
+  "5": [2, 2, 1],
+  "10": [4, 3, 3],
+  "15": [5, 5, 5],
+  "20": [7, 7, 6]
+ };
 
 
-    theme.questions.forEach((data) => {
-        if (data.difficult == 1) {
-            easy.push(data);
-        } else if (data.difficult == 2) {
-            medium.push(data);
-        } else if (data.difficult == 3) {
-            difficult.push(data);
-        }
+ theme.questions.forEach((data) => {
+  if (data.difficult == 1) {
+   easy.push(data);
+  } else if (data.difficult == 2) {
+   medium.push(data);
+  } else if (data.difficult == 3) {
+   difficult.push(data);
+  }
+ });
+ const selectQuantity = quesquan["" + quantity + ""];
+
+ easy.forEach((e, index) => {
+  if (index < selectQuantity[0]) {
+   showQuestion.push(e);
+  }
+ });
+ medium.forEach((e, index) => {
+  if (index < selectQuantity[1]) {
+   showQuestion.push(e);
+  }
+ });
+ difficult.forEach((e, index) => {
+  if (index < selectQuantity[2]) {
+   showQuestion.push(e);
+  }
+ });
+
+ const percentQ = 100 / showQuestion.length;
+ let percentFinal = 0;
+
+ let totalQuestion = 0;
+
+ showQuestion.forEach((data, index) => {
+  if (index < showQuestion.length) {
+   const i = index + 1;
+   const title = $('<h5>Pregunta ' + i + ':</h5>');
+   const problem = $('<h4 class="problem">' + data.problem + '</h4>');
+
+   const itemNumber = $('<div class="item"><a href="#' + data.name + '"><div' +
+    ' class="item-number">' + i + '</div></a></div>');
+   const itemQuestion = $('<div class="item item-question" data-hash="' + data.name + '"></div>');
+
+   itemQuestion.append(title);
+   itemQuestion.append(problem);
+
+   const array = [1, 2, 3, 4];
+   array.forEach((ind) => {
+    const btn = $('<button class="btn btn-info">' + data["" + ind + ""] + '</button>');
+    btn.on('click', () => {
+     if (ind.toString() === data.correct.toString()) {
+      percentFinal += percentQ;
+      totalQuestion += index;
+     }
     });
-    const selectQuantity = quesquan["" + quantity + ""];
+    itemQuestion.append(btn);
+   });
+   carouselNumber.append(itemNumber);
+   carruselQuestion.append(itemQuestion);
+  }
+ });
 
-    easy.forEach((e, index) => {
-        if (index < selectQuantity[0]) {
-            showQuestion.push(e);
-        }
-    });
-    medium.forEach((e, index) => {
-        if (index < selectQuantity[1]) {
-            showQuestion.push(e);
-        }
-    });
-    difficult.forEach((e, index) => {
-        if (index < selectQuantity[2]) {
-            showQuestion.push(e);
-        }
-    });
-
-    const percentQ = 100 / showQuestion.length;
-    let percentFinal = 0;
-
-    let totalQuestion = 0;
-
-    showQuestion.forEach((data, index) => {
-        if (index < showQuestion.length) {
-            const i = index + 1;
-            const title = $('<h5>Pregunta ' + i + ':</h5>');
-            const problem = $('<h4 class="problem">' + data.problem + '</h4>');
-
-            const itemNumber = $('<div class="item"><a href="#' + data.name + '"><div' +
-                ' class="item-number">' + i + '</div></a></div>');
-            const itemQuestion = $('<div class="item item-question" data-hash="' + data.name + '"></div>');
-
-            itemQuestion.append(title);
-            itemQuestion.append(problem);
-
-            const array = [1, 2, 3, 4];
-            array.forEach((ind) => {
-                const btn = $('<button class="btn btn-info">' + data["" + ind + ""] + '</button>');
-                btn.on('click', () => {
-                    if (ind.toString() === data.correct.toString()) {
-                        percentFinal += percentQ;
-                        totalQuestion += index;
-                    }
-                });
-                itemQuestion.append(btn);
-            });
-            carouselNumber.append(itemNumber);
-            carruselQuestion.append(itemQuestion);
-        }
-    });
-
-    submit.on('click', (e) =>{
-        //Result(percentFinal, totalQuestion,showQuestion);
-        $('.absolute-child').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
-    });
+ submit.on('click', (e) =>{
+  //Result(percentFinal, totalQuestion,showQuestion);
+  $('.absolute-child').replaceWith(Result(percentFinal, totalQuestion,showQuestion));
+ });
 
 
-    absolute.append(carouselNumber);
-    absolute.append(carruselQuestion);
-    absolute.append(submit);
-    relative.append(absolute);
-    row.append(relative);
-    container.append(row);
+ absolute.append(carouselNumber);
+ absolute.append(carruselQuestion);
+ absolute.append(submit);
+ relative.append(absolute);
+ row.append(relative);
+ container.append(row);
 
 
 
-    return container;
+ return container;
 };
 
 'use strict';
@@ -488,40 +482,38 @@ const Result = (final, correctas, preguntas) => {
 'use strict';
 
 const render = (root) => {
-    root.empty();
-    const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Header);
+ root.empty();
+ const wrapper = $('<div class="wrapper"></div>');
+ wrapper.append(Header);
 
-    wrapper.append(Login(_ => render(root)));
-    //}
-    root.append(wrapper);
+ wrapper.append(Login(_ => render(root)));
+ root.append(wrapper);
 
 };
 
 const state = {
-    userLogin: null,
-    users: null,
-    courses: null,
-    coursesSelected: null,
-    practicSelect: null,
-    questions: null
+ userLogin: null,
+ users: null,
+ courses: null,
+ coursesSelected: null,
+ practicSelect: null,
+ questions: null
 };
 
 $(_ => {
-    $.getJSON("/api/users/", (data) => {
-        state.users = data;
-        $.getJSON("/api/courses/", (json) => {
-            state.courses = json;
-            //active menu
-            const root = $('.root');
-            render(root);
-            // state.nextPage= Login;
+ $.getJSON("/api/users/", (data) => {
+  state.users = data;
+  $.getJSON("/api/courses/", (json) => {
+   state.courses = json;
+   //active menu
+   const root = $('.root');
+   render(root);
+   // state.nextPage= Login;
 
-            $(".button-collapse").sideNav();
-            /*$('#modal1').modal();*/
+   $(".button-collapse").sideNav();
 
-        });
-    });
+  });
+ });
 });
 
 },{}]},{},[1])
