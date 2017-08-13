@@ -306,7 +306,6 @@ const Practicas = () => {
 
   modalQuiz.on('click', () => {
    state.practicSelect = obj;
-   console.log(obj);
    container.replaceWith(Preguntas());
   });
   modalContent.append(modalQuiz);
