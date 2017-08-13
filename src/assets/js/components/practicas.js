@@ -1,6 +1,6 @@
 'use strict';
+
 const Practicas = ()=>{
-/*	console.log(state.coursesSelected);*/
 	const practicas = $("<section id='practicas'></section>");
 	const container = $("<div class='container'></div>");
 	const row = $("<div class='row'></div>");
@@ -29,16 +29,14 @@ const Practicas = ()=>{
 		let quiz = $("<a href='# class='btn-danger'>Quiz</a>");
 
 		quiz.on("click", (e)=>{
-		    		e.preventDefault();
-						state.practicSelect = obj;
-						//console.log(obj);
-		    		$('section').replaceWith(Preguntas());
+			e.preventDefault();
+			state.practicSelect = obj;
+			$('section').replaceWith(Preguntas());
 		});
 
 		temas.on("click", (e)=>{
 			e.preventDefault();
 			state.practicSelect = obj;
-			//console.log(obj);
 			$('section').replaceWith(Temario());
 		});
 		divImg.append(img);

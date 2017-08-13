@@ -60,7 +60,6 @@ const Login  = (update) =>{
 			}
 			else if($('#user_name').val() == e.id && $('#password').val() == e.password){
 				state.userLogin = i;
-				//console.log(state.userLogin);
 				$('section').replaceWith(Cursos());
 			}
 			else{

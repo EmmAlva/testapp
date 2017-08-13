@@ -48,7 +48,6 @@ const Header = () => {
 	div.append(back);
 	div.append(ul);
 
-
 	return header;
 
 }
