@@ -1,63 +1,59 @@
 'use strict';
-const Practicas = ()=>{
-/*	console.log(state.coursesSelected);*/
-	const practicas = $("<section id='practicas'></section>");
-	const container = $("<div class='container'></div>");
-	const row = $("<div class='row'></div>");
-	const sub1 = $("<div class='col s12 center'></div>");
-	const h3 = $("<h3>Practicas</h3>");
-	const sub2 = $("<div class='col s12'></div>");
+const Practicas = () => {
+    $('.back').show();
+    $('.back').on('click', () => {
+        container.replaceWith(Cursos());
+    });
 
-	$('.back').show();
-	$('.back').on('click', ()=>{
-		state.coursesSelected = null;
-		$('section').replaceWith(Cursos());
-	});
+    const container = $('<section class="exams-container main-container"></section>');
+    const row = $('<div class="row"></div>');
+    const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
-	$.each(state.coursesSelected.tests, (i, obj)=>{
-		let divCol;
-		if(i>3){
-			divCol = $("<div class='col l4 s12 test'></div>");
-		}else{
-			divCol = $("<div class='col l4 s6 test'></div>");
-		}
-		let divImg = $("<a class='nivel valign-wrapper'></a>");
-		let img = $(`<img src='assets/img/${obj.image}'/>`);
-		let divDetails = $(`<div class='detail'></div>`);
-		let title = $(`<p class='title'>${obj.name}</p>`);
-		let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
-		let quiz = $("<a href='# class='btn-danger'>Quiz</a>");
+    const sub1 = $("<div class='row center'></div>");
+    const h3 = $("<h4>Practicas</h4>");
+    const sub2 = $("<div class='row'></div>");
 
-		quiz.on("click", (e)=>{
-		    		e.preventDefault();
-						state.practicSelect = obj;
-						//console.log(obj);
-		    		$('section').replaceWith(Preguntas());
-		});
 
-		temas.on("click", (e)=>{
-			e.preventDefault();
-			state.practicSelect = obj;
-			//console.log(obj);
-			$('section').replaceWith(Temario());
-		});
-		divImg.append(img);
+    $.each(state.coursesSelected.tests, (i, obj) => {
 
-		divDetails.append(title);
-		divDetails.append(temas);
-		divDetails.append(quiz);
+        const divCol = $("<div class='col s10 offset-s1 test'></div>");
 
-		divCol.append(divImg);
-		divCol.append(divDetails);
+        let divImg = $("<a class='col s4'></a>");
+        let img = $(`<img src='assets/img/${obj.image}'/>`);
+        let divDetails = $(`<div class=' col s8 detail'></div>`);
+        let title = $(`<p class='title'>${obj.name}</p>`);
+        let temas = $(`<a class='modal-trigger' href='#modal1' id='${obj.codigo}'>Temario</a>`);
+        let quiz = $("<a href='#' class='btn-danger'>Quiz</a>");
 
-		sub2.append(divCol);
-	});
+        if (obj.name == "Exámen Final"){
+            divCol.css({'border-color':'#F9AC3E'});
+        }
 
-	sub1.append(h3);
-	row.append(sub1);
-	row.append(sub2);
-	container.append(row);
-	practicas.append(container);
+        quiz.on("click", (e) => {
+            e.preventDefault();
+            state.practicSelect = obj;
+            //console.log(obj);
+            container.replaceWith(Preguntas());
+        });
 
-	return practicas;
+
+        divImg.append(img);
+
+        divDetails.append(title);
+        divDetails.append(temas);
+        divDetails.append(quiz);
+
+        divCol.append(divImg);
+        divCol.append(divDetails);
+
+        sub2.append(divCol);
+    });
+
+    sub1.append(h3);
+    column.append(sub1);
+    column.append(sub2);
+    row.append(column);
+    container.append(row);
+
+    return container;
 };

@@ -10,9 +10,9 @@ const render = (root) => {
 };
 
 const state = {
-    userLogin: null,
     users: null,
     courses: null,
+    userLogin: null,
     coursesSelected: null,
     practicSelect: null,
     questions: null
@@ -27,7 +27,6 @@ $(_ => {
             //active menu
             const root = $('.root');
             render(root);
-            state.nextPage= Login;
 
             $('.carousel-number').owlCarousel({
                 items: 5,

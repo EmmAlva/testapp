@@ -1,10 +1,10 @@
 'use strict';
 
 const Result = (percentFinal, correctAnswer, questions) => {
-
-    const container = $('<div class="result-container main-container"></div>');
+    $(".button-collapse").show();
+    const container = $('<section class="result-container main-container"></section>');
     const row = $('<div class="row"></div>');
-    const column = $('<div class="col s12 m4 center-column"></div>');
+    const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
     const row1 = $('<div class="row center"></div>');
     const h1 = $('<h1>' + percentFinal + '% </h1>');

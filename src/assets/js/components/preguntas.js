@@ -1,10 +1,11 @@
 'use strict';
 
 const Questions = (theme, quantity) => {
-    $(".button-collapse").css({ 'display': "none" });
-    const container = $('<div class="question-container main-container"></div>');
+    $(".button-collapse").hide();
+    $('.back').hide();
+    const container = $('<section class="question-container main-container"></section>');
     const row = $('<div class="row"></div>');
-    const column = $('<div class="col s12 m4 center-column"></div>');
+    const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
     const carouselNumber = $('<div class="owl-carousel owl-theme center carousel-number"></div>');
     const carruselQuestion = $('<div class="owl-carousel owl-theme center carousel-question"></div>');
@@ -36,7 +37,7 @@ const Questions = (theme, quantity) => {
     });
 
     //Cantidad de preguntas
-    const selectQuantity = quesquan["" + quantity + ""];
+    const selectQuantity = quesquan[quantity.toString()];
 
     //filtrando niveles de preguntas por cantidad
     const questionLevel = (level, i) => {
@@ -63,10 +64,10 @@ const Questions = (theme, quantity) => {
     showQuestion.forEach((data, index) => {
         if (index < showQuestion.length) {
             const i = index + 1;
-            const problem = $('<div class="problem"><p>' + data.problem + '</p></div>');
+            const problem = $(`<div class="problem"><p>${data.problem }</p></div>`);
             const itemNumber = $('<div class="item item-hash" ></div>');
-            const itemNumberHref = $('<a href="#' + i + '"><div class="item-number">' + i + '</div></a>');
-            const itemQuestion = $('<div class="item item-question" data-hash="' + i + '"></div>');
+            const itemNumberHref = $(`<a href="#${i}"><div class="item-number">${i}</div></a>`);
+            const itemQuestion = $(`<div class="item item-question" data-hash="${i}"></div>`);
 
             //default selected
             if (i === 1) {
@@ -80,8 +81,8 @@ const Questions = (theme, quantity) => {
             correctQuestion.push(data.correct);
             const array = [1, 2, 3, 4];
             array.forEach((ind) => {
-                const input = $('<input type="radio" name="' + data.name + '" value="' + ind + '" id="' + data.name + ind + '">');
-                const label = $(' <label for="' + data.name + ind + '">' + data["" + ind + ""] + '</label>');
+                const input = $(`<input type="radio" name="${data.name}" value="${ind}" id="${data.name + ind}">`);
+                const label = $(`<label for="${data.name + ind}">${data[ind.toString()]}</label>`);
 
                 label.on('click', () => {
                     totalQuestion += 1;
@@ -116,7 +117,7 @@ const Questions = (theme, quantity) => {
     submit.on('click', () => {
         //Filtrando respuestas
         inputName.forEach((name, index) => {
-            const nameVal = $("input[name=" + name + " ]:checked");
+            const nameVal = $(`input[name="${name}" ]:checked`);
             if (nameVal.val() === correctQuestion[index].toString()) {
                 correctAnswer.push(nameVal.parent().data('hash'));
             }

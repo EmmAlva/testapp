@@ -7122,55 +7122,28 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
   background: #869791; }
 
-/*
-@font-face {
-  font-family: 'CamingoDos Pro';
-  src: url('../fonts/CamingoDos-Pro/CamingoDos Pro.otf');
-}*/
 * {
   box-sizing: border-box; }
 
-h5 {
-  padding: 3px 8px; }
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0; }
 
-.typo {
+.font-logo {
   font-family: 'Shadows Into Light', cursive; }
-
-body {
-  font-size: 16px;
-  margin: 0;
-  padding: 0; }
-
-.relative-col {
-  position: relative; }
-  .relative-col .absolute-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; }
-
-/*REUSAmES*/
-.fs-2 {
-  font-size: 2rem; }
-
-body {
-  font-size: 16px;
-  margin: 0;
-  padding: 0; }
 
 .main-container {
   width: 100%; }
+  .main-container .row {
+    margin: 0; }
+  .main-container .center-column .row {
+    padding-bottom: 20px; }
 
-.relative-col {
+section.main-container .center-column {
+  height: 91vh;
   position: relative;
-  height: 100vh; }
-  .relative-col .absolute-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
+  padding: 0; }
 
 /*REUSABLES*/
 .p-0 {
@@ -7179,59 +7152,42 @@ body {
 .m-0 {
   margin: 0 !important; }
 
-.btn-down {
-  background-color: #F9AC3E;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  color: #fff;
-  font-weight: 500; }
-
-section {
-  padding: 30px 0; }
-
-button.select-label {
-  bottom: 0; }
-
 .bg_morado {
   background-color: #9A3267; }
+  .bg_morado:focus, .bg_morado:hover {
+    background-color: #74264d; }
 
-/*REUSABLES*/
-.btn-down {
-  padding: 12px;
+.bg_naranja {
+  background-color: #F9AC3E; }
+  .bg_naranja:focus, .bg_naranja:hover {
+    background-color: #f7970d; }
+
+.btn-bottom {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  border: none;
-  color: #fff;
-  font-weight: 500; }
-
-section {
-  padding: 30px 0; }
-
-button.select-label {
-  bottom: 0; }
+  height: 50px; }
 
 /*MENU*/
-header .bg_profile {
-  background-color: #9A3267; }
+header nav {
+  height: 9vh; }
+  header nav .brand-logo {
+    left: 50%;
+    transform: translateX(-50%); }
+
+header .row .col.center-column {
+  padding: 0; }
+
+header nav a, header nav a.button-collapse {
+  height: 100%; }
 
 header button:focus {
   background-color: rgba(143, 43, 143, 0.5) !important; }
 
-header .side-nav {
-  width: 250px; }
-
-/*LOGIN*/
-.login_error {
-  color: red;
-  font-size: 0.8rem; }
-
-/*MENU*/
-.bg_profile {
-  background-color: #9A3267;
+header .bg_profile {
   height: 12rem; }
 
-li .circle {
-  background-image: url("http://lorempixel.com/300/175/technics");
+header li .circle {
   position: absolute;
   top: 4%;
   left: 5%;
@@ -7241,86 +7197,76 @@ li .circle {
   background-repeat: no-repeat;
   background-position: 21% 2%; }
 
-li:first-child > a {
+header li:first-child > a {
   top: 8rem; }
 
-.back i {
+header .back i {
   font-size: 3rem !important; }
 
-/*Cursos*/
-.course1 {
-  border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+/*LOGIN*/
+.login-container .row .col.s12.center-column {
+  height: 100vh; }
+  .login-container .row .col.s12.center-column .row {
+    padding: 5% 0; }
+  .login-container .row .col.s12.center-column .login-logo {
+    padding-top: 15%; }
 
-.coursebg1 {
+.login-container img {
+  height: 35px; }
+
+.login-container .login_error {
+  color: #B01E31;
+  font-size: 0.8rem; }
+
+.login-container .input-field input[type=text]:focus,
+.login-container .input-field input[type=password]:focus,
+.login-container .input-field input[type=text].valid,
+.login-container .input-field input[type=password].valid {
+  border-bottom-color: #F9AC3E;
+  box-shadow: 0 1px 0 0 #F9AC3E; }
+
+.login-container .input-field input[type=text]:focus + label,
+.login-container .input-field input[type=password]:focus + label {
+  color: gray; }
+
+/*Cursos*/
+.cursos-container .course1 {
+  border-top: 5px solid #B01E31; }
+
+.cursos-container .coursebg1 {
   border-top: 1px solid #B01E31; }
 
-.course2 {
-  border-top: 5px solid #00BAF2;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+.cursos-container .course2 {
+  border-top: 5px solid #00BAF2; }
 
-.coursebg2 {
+.cursos-container .coursebg2 {
   border-top: 1px solid #00BAF2; }
 
-.course3 {
-  border-top: 5px solid #ABCB6A;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+.cursos-container .course3 {
+  border-top: 5px solid #ABCB6A; }
 
-.coursebg3 {
+.cursos-container .coursebg3 {
   border-top: 1px solid #ABCB6A; }
 
-.course4 {
-  border-top: 5px solid #F9AC3E;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+.cursos-container .course4 {
+  border-top: 5px solid #F9AC3E; }
 
-.coursebg4 {
+.cursos-container .coursebg4 {
   border-top: 1px solid #F9AC3E; }
 
-.course5 {
-  border-top: 5px solid #9A3267;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+.cursos-container .course5 {
+  border-top: 5px solid #9A3267; }
 
-.coursebg5 {
+.cursos-container .coursebg5 {
   border-top: 1px solid #9A3267; }
 
-.course6 {
-  border-top: 5px solid #B01E31;
-  border-bottom: 1px solid #949494;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  margin: 10px 0;
-  position: relative;
-  cursor: pointer; }
+.cursos-container .course6 {
+  border-top: 5px solid #B01E31; }
 
-.coursebg6 {
+.cursos-container .coursebg6 {
   border-top: 1px solid #B01E31; }
 
-li .circle {
+.cursos-container li .circle {
   background-image: url("http://lorempixel.com/300/175/technics");
   position: absolute;
   top: 4%;
@@ -7331,185 +7277,91 @@ li .circle {
   background-repeat: no-repeat;
   background-position: 21% 2%; }
 
-li:first-child > a {
+.cursos-container li:first-child > a {
   top: 8rem; }
 
-/*CUrsos*/
-.course {
+.cursos-container .course {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  border-bottom: 1px solid #c7c7c7;
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+  margin: 10px 0;
+  position: relative;
+  cursor: pointer; }
 
-.course h5 {
+.cursos-container .course h5 {
   padding: 20px 10px; }
 
-.course h2 {
+.cursos-container .course h2 {
   padding: 0 20px; }
 
-.practica {
+.cursos-container .practica {
   padding: 10px; }
-  .practica span {
+  .cursos-container .practica span {
     font-size: 0.9rem; }
 
 /*PRACTICAS*/
-.nivel {
-  height: 10rem;
-  display: flex;
-  justify-content: center;
-  background: #009688; }
+.exams-container h4 {
+  margin: 0;
+  padding: 1.14rem 0 0.912rem 0; }
 
-.nivel img {
-  width: 70%;
-  height: 70%;
-  padding: 10px; }
+.exams-container .test {
+  border: 2px solid #ABCB6A;
+  border-radius: 15px;
+  padding: 0.25rem 0.75rem;
+  margin: 2%; }
 
-.test {
-  margin: 10px 0; }
+.exams-container img {
+  height: 50px; }
 
-.test:nth-child(3) .detail a:nth-child(3),
-.test:nth-child(4) .detail a:nth-child(3) {
+.exams-container .test:nth-child(3) .detail a:nth-child(3),
+.exams-container .test:nth-child(4) .detail a:nth-child(3) {
   background-color: #ABCB6A;
   border: 1px solid #ABCB6A; }
 
-.test:last-child .detail a {
+.exams-container .test:last-child .detail a {
   width: 50%;
   display: inline-block;
   text-align: center; }
 
-.test:last-child .detail a:nth-child(3) {
+.exams-container .test:last-child .detail a:nth-child(3) {
   background-color: #F9AC3E;
   border-top: 1px solid #F9AC3E; }
 
-.btn-danger {
+.exams-container .btn-danger {
   background-color: #F9AC3E; }
 
-.title {
+.exams-container .title {
   margin-bottom: 3%;
   margin-top: 2%;
   font-weight: 600; }
 
-.detail a:nth-child(3) {
+.exams-container .detail a:nth-child(3) {
   color: #fff; }
 
-.test {
-  margin: 10px 0; }
-
-.detail {
-  background-color: #00BAF2;
-  border-top: 1px solid #00BAF2; }
-
-.detail a:nth-child(2) {
+.exams-container .detail a:nth-child(2) {
   color: #949494;
   border-top: 1px solid #949494; }
 
-.detail a {
+.exams-container .detail a {
   padding: 2px 11px; }
 
-.btn.center.btn-down, .center.btn-down.btn-large {
-  margin-bottom: 20px;
-  font-size: 1.3rem;
-  padding: 0; }
-
-.close {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  margin-top: -1rem;
-  float: right;
-  font-size: 3rem;
-  margin-right: 10px;
-  color: #000; }
-
-.detail {
-  background-color: #00BAF2;
-  border-bottom: 2px solid #F9AC3E; }
-
-.detail a {
-  color: #fff; }
-
-/*botones*/
-.exercise {
-  width: 100%;
-  overflow: auto;
-  display: flex;
-  justify-content: space-around; }
-
-.exercise span {
-  float: left; }
-
-.exercise p {
-  margin: 0 auto; }
-
-.ex {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: #F9AC3E;
-  color: #fff; }
-
-.modal {
-  width: 90% !important;
-  max-height: 80% !important; }
-
-.modal-content .row button {
-  width: 80%; }
-
-/*botones*/
-.exercise {
-  width: 100%;
-  overflow: auto;
-  display: flex;
-  justify-content: space-around; }
-
-.exercise span {
-  float: left; }
-
-.exercise p {
-  margin: 0 auto; }
-
-.ex {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: #F9AC3E;
-  color: #fff; }
-
 /*Q preguntas*/
-.number {
-  width: 100px;
-  height: 100px;
-  background-color: #ABCB6A;
-  font-size: 4rem; }
+.quantity-container h4 {
+  padding: 15% 5%; }
 
-#cantidad .row:last-child button {
-  width: 100%; }
-
-#cantidad .row {
-  margin: 40px 0; }
-
-select {
+.quantity-container select {
   display: block;
   width: 28%;
   margin: auto;
   border: none;
   font-size: 2.6rem;
   height: 11%; }
-
-select:focus {
-  outline: none; }
-
-.number {
-  width: 100px;
-  height: 100px;
-  background-color: #ABCB6A;
-  font-size: 4rem; }
-
-#cantidad .row:last-child button {
-  width: 100%; }
-
-/*prueba*/
-.alternatives div {
-  padding: 12px;
-  background-color: #00BAF2;
-  margin: 10px;
-  text-align: center; }
+  .quantity-container select:focus {
+    outline: none; }
+  .quantity-container select option {
+    border: 0; }
 
 /*COntrucción*/
 #build img {
@@ -7523,13 +7375,6 @@ select:focus {
 
 #build p {
   width: 60%; }
-
-/*prueba*/
-.alternatives div {
-  padding: 12px;
-  background-color: #00BAF2;
-  margin: 10px;
-  text-align: center; }
 
 /*Resultado*/
 .result-container .row-result {
@@ -7576,7 +7421,7 @@ select:focus {
 
 /*Preguntas*/
 .carousel-number {
-  margin-top: 6%; }
+  padding-top: 6%; }
   .carousel-number h5 {
     margin: 0;
     font-size: 1.3rem; }
@@ -7645,4 +7490,16 @@ button.btn-submit {
 @media only screen and (min-width: 601px) {
   .row .col.center-column {
     margin: 0 auto;
-    float: none; } }
+    float: none; }
+  nav a, nav a.button-collapse {
+    display: inherit; }
+  header nav {
+    height: 7vh; }
+  section.main-container .center-column {
+    height: 73vh;
+    border: 1px solid #ededed; }
+    section.main-container .center-column h1 {
+      margin: 0;
+      padding: 2.1rem 0 1.68rem 0; }
+  .login-container .row .col.s12.center-column {
+    height: 80vh; } }

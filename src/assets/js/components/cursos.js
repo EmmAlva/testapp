@@ -1,40 +1,42 @@
 const Cursos = () => {
-  const section = $('<section></section>');
-  const containerPrincipal = $('<div class="container"></div>');
-  const columna1 = $('<div class="row center"></div>');
-  const title = $('<div class="col l12 s12"><h3>CURSOS DISPONIBLES</h3></div>');
-  const columna2 =$('<div class="row"></div>');
+    $('.back').hide();
+    const container = $('<section class="cursos-container main-container"></section>');
+    const row = $('<div class="row"></div>');
+    const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
-  const numCursos = state.users[state.userLogin].courses;
-    numCursos.forEach((e)=>{
-      columna2.append(curso(state.courses[e-1]));
-      //console.log(state.courses[e-1]);
+    const columna1 = $('<div class="row center"></div>');
+    const title = $('<div class="col l12 s12"><h4>Cursos</h4></div>');
+    const columna2 = $('<div class="row"></div>');
+
+    const numCursos = state.userLogin.courses;
+    numCursos.forEach((e) => {
+        columna2.append(curso(state.courses[e - 1]));
     });
 
-  columna1.append(title);
-  containerPrincipal.append(columna1);
-  containerPrincipal.append(columna2);
-  section.append(containerPrincipal);
+    columna1.append(title);
+    column.append(columna1);
+    column.append(columna2);
 
-  return section;
+    row.append(column);
+    container.append(row);
+    return container;
 };
 
-const curso = (data)  => {
-  const fila1 = $('<div class="col l4 s6 curso"></div>');
-  const curso1 = $('<div class="course course'+data.id+'"></div>');
-  const titleCourse = $('<h5>'+data.course+'</h5>');
-  const practica = $('<div class="practica coursebg'+data.id+'"><span>'+"Practicas"+'</span class="right">'+'#'+'<span></span></div>')
-  $('.back').hide();
+const curso = (data) => {
+    const fila = $('<div class="col s6 curso"></div>');
+    const curso = $(`<div class="course course${data.id}"></div>`);
+    const titleCourse = $(`<h5>${data.course}</h5>`);
+    const practica = $(`<div class="practica coursebg${data.id}"><span class="right">Practicas</span><span>${data.tests.length}</span></div>`);
 
-  curso1.append(titleCourse);
-  curso1.append(practica);
-  fila1.append(curso1);
+    curso.append(titleCourse);
+    curso.append(practica);
+    fila.append(curso);
 
-  fila1.on('click', ()=>{
-    state.coursesSelected = data;
-    //console.log(data);
-    $('section').replaceWith(Practicas());
-  });
+    fila.on('click', () => {
+        state.coursesSelected = data;
+        //console.log(data);
+        $('section').replaceWith(Practicas());
+    });
 
-  return fila1;
-}
+    return fila;
+};
