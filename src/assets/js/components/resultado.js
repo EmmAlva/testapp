@@ -1,56 +1,79 @@
 'use strict';
-const Result = (final, correctas, preguntas) => {
-    const main = $('<section id="resultado"></section>');
-    const container = $('<div class="container"></div>');
-    const row = $('<div class="row row-result center"></div>');
-    const porcentaje = $('<div class="col l12 s12"></div>');
-    const h1 = $('<h1>'+final+'% </h1>');
-    const h5 = $('<h5>¡Sigue mejorando!</h5>');
-    porcentaje.append(h1);
-    porcentaje.append(h5);
-    row.append(porcentaje);
 
-    const row2 = $('<div class="row row-result center"></div>');
-    const respuestas = $('<div class="col l12 s12"></div>');
-    const dropdown = $('<a class="dropdown-button btn" data-beloworigin="true" href="#" data-activates="dropdown1">Tus respuestas <i class="material-icons">arrow_drop_down</i></a>');
-    const ulDD = $('<ul id="dropdown1" class="dropdown-content"></ul>');
-    const liDD1 = $('<li><a href="#!">'+correctas+'</a></li>');
-    const liDD2 = $('<li><a href="#!">Incorrectas</a></li>');
-    ulDD.append(liDD1);
-    ulDD.append(liDD2);
-    respuestas.append(dropdown);
-    respuestas.append(ulDD);
-    row2.append(respuestas);
+const Result = (percentFinal, correctAnswer, questions) => {
+ $(".button-collapse").show();
+ const container = $('<section class="result-container main-container"></section>');
+ const row = $('<div class="row"></div>');
+ const column = $('<div class="col s12 m6 l4 center-column"></div>');
 
-    const row3 = $('<div class="row row-result center"></div>');
-    const feedback = $('<div class="col l12 s12"></div>');
-    const title = $('<h5>Debes repasar:</h5>');
-    const tema1 = $('<div class="col l12 s6"></div>');
-    const span1 = $('<span class="btn btn-tema">Tema1</span>');
-    const tema2 = $('<div class="col l12 s6"></div>');
-    const span2 = $('<span class="btn btn-tema">Tema2</span>');
-    tema2.append(span2);
-    tema1.append(span1);
-    feedback.append(title);
-    feedback.append(tema1);
-    feedback.append(tema2);
-    row3.append(feedback);
+ const row1 = $('<div class="row center"></div>');
+ const h1 = $('<h1>' + percentFinal + '% </h1>');
+ let message;
+ percentFinal >= 85 ? message = "¡Excelente!" : message = "¡Sigue Practicando!";
+ const h5 = $('<h5>' + message + '</h5>');
+ row1.append(h1);
+ row1.append(h5);
 
-    const row4 = $('<div class="row row-result bottom-btn center"></div>');
-    const aTest = $('<div class="col l12 s6 col-btn"></div>');
-    const spanA1 = $('<span class="btn btn-result flex-valign bg_turquesa">LISTA TEST</span>');
-    const aCurso = $('<div class="col l12 s6 col-btn"></div>');
-    const spanA2 = $('<span class="btn btn-result flex-valign bg_verde">LISTA CURSOS</span>');
-    aCurso.append(spanA2);
-    aTest.append(spanA1);
-    row4.append(aTest);
-    row4.append(aCurso);
+ const themesWrongAnswer = [];
+ const row2 = $('<div class="row row-result center"></div>');
+ questions.forEach((data, i) => {
+  themesWrongAnswer.push(data.theme);
 
-    container.append(row);
-    container.append(row2);
-    container.append(row3);
-    container.append(row4);
-    main.append(container);
+  const index = i + 1;
+  const modalAnswer = $('<a class="modal-trigger" href="#modal' + index + '"></a>');
+  const containerNumber = $('<div class="general-answer" ></div>');
+  const number = $('<span>' + index + '</span>');
+  if (correctAnswer.length > 0) {
+   correctAnswer.forEach((data) => {
+    if (data === index) {
+     containerNumber.addClass('correct-answer');
+    }
+   });
+  }
+  const modalContainer = $('<div id="modal' + index + '" class="modal"></div>');
+  const modalContent = $(' <div class="modal-content"></div>');
+  const closeModal = $('<span class="modal-action modal-close icon-close">&#10005</span>');
+  const questionNumber = $('<p>Pregunta ' + index + ':</p>');
+  const questionText = $('<h5>' + data.problem + '</h5>');
+  const questionAnswer = $('<p>Respuesta Correcta:<br><h3>' + data[data.correct.toString()] + '</h3></p>');
+  modalContent.append(closeModal);
+  modalContent.append(questionNumber);
+  modalContent.append(questionText);
+  modalContent.append(questionAnswer);
+  modalContainer.append(modalContent);
+  modalContainer.modal();
 
-    return main;
+  containerNumber.append(number);
+  modalAnswer.append(containerNumber);
+  row2.append(modalContainer);
+  row2.append(modalAnswer);
+ });
+
+ //Filtrar elementos repitentes
+ Array.prototype.unique = function (a) {
+  return function () {
+   return this.filter(a)
+  }
+ }(function (a, b, c) {
+  return c.indexOf(a, b + 1) < 0
+ });
+
+ const newTheme = themesWrongAnswer.unique();
+ const row3 = $('<div class="row center"></div>');
+ const title = $('<h5>Repasar:</h5>');
+ row3.append(title);
+ newTheme.forEach((theme) => {
+  const tema = $('<div class="btn-tema"></div>');
+  const span = $('<span class="">'+theme+'</span>');
+  tema.append(span);
+  row3.append(tema);
+ });
+
+ column.append(row1);
+ column.append(row2);
+ column.append(row3);
+ row.append(column);
+ container.append(row);
+
+ return container;
 };
